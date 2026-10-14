@@ -1,0 +1,1349 @@
+{
+  "course": {
+    "id": "javascript-basics",
+    "title": "JavaScript Basics",
+    "description": "Small steps. Real JavaScript. Build a coding habit one lesson at a time.",
+    "units": [
+      {
+        "id": "basics",
+        "title": "Basics",
+        "description": "Meet values, names, and calculations.",
+        "lessons": [
+          {
+            "id": "js-1",
+            "title": "Variables",
+            "xp": 10,
+            "questions": [
+              {
+                "id": "js-1-q1",
+                "type": "mcq",
+                "prompt": "Which keyword declares a variable you can reassign later?",
+                "options": [
+                  "let",
+                  "const",
+                  "static",
+                  "final"
+                ],
+                "answer": 0,
+                "explanation": "let creates a variable whose value can change. const cannot be reassigned."
+              },
+              {
+                "id": "js-1-q2",
+                "type": "fill",
+                "prompt": "Complete the code to create a variable.",
+                "code": "___ name = \"Asha\";",
+                "options": [
+                  "let",
+                  "print",
+                  "echo"
+                ],
+                "answer": "let",
+                "explanation": "let declares a new variable."
+              },
+              {
+                "id": "js-1-q3",
+                "type": "mcq",
+                "prompt": "What happens here?\n\nconst x = 5;\nx = 6;",
+                "options": [
+                  "x becomes 6",
+                  "An error is thrown",
+                  "x stays 5 silently",
+                  "x becomes undefined"
+                ],
+                "answer": 1,
+                "explanation": "A const variable cannot be reassigned, so JavaScript throws a TypeError."
+              },
+              {
+                "id": "js-1-q4",
+                "type": "reorder",
+                "prompt": "Put the lines in the right order to print 5.",
+                "blocks": [
+                  "let a = 2;",
+                  "let b = 3;",
+                  "console.log(a + b);"
+                ],
+                "answer": [
+                  "let a = 2;",
+                  "let b = 3;",
+                  "console.log(a + b);"
+                ],
+                "explanation": "Variables must be declared before you use them."
+              },
+              {
+                "id": "js-1-q5",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "options": [
+                  "1",
+                  "4",
+                  "5",
+                  "14"
+                ],
+                "answer": 2,
+                "explanation": "a starts at 1, then becomes 1 + 4 = 5.",
+                "code": "let a = 1;\na = a + 4;\nconsole.log(a);"
+              }
+            ],
+            "minutes": 4,
+            "concept": "A variable gives a value a name. Use let when you will reassign it and const when you will not.",
+            "examples": [
+              "let score = 0;\nscore = score + 5;",
+              "const name = \"Asha\";"
+            ]
+          },
+          {
+            "id": "js-2",
+            "title": "Data Types",
+            "xp": 10,
+            "questions": [
+              {
+                "id": "js-2-q1",
+                "type": "mcq",
+                "prompt": "Which of these is a string?",
+                "options": [
+                  "42",
+                  "\"42\"",
+                  "true",
+                  "[42]"
+                ],
+                "answer": 1,
+                "explanation": "Anything inside quotes is a string, even if it looks like a number."
+              },
+              {
+                "id": "js-2-q2",
+                "type": "mcq",
+                "prompt": "What does typeof 3.14 return?",
+                "options": [
+                  "\"float\"",
+                  "\"decimal\"",
+                  "\"number\"",
+                  "\"double\""
+                ],
+                "answer": 2,
+                "explanation": "JavaScript has one number type for both integers and decimals."
+              },
+              {
+                "id": "js-2-q3",
+                "type": "fill",
+                "prompt": "Complete the code with a boolean value.",
+                "code": "let isLoggedIn = ___;",
+                "options": [
+                  "true",
+                  "yes",
+                  "\"true\""
+                ],
+                "answer": "true",
+                "explanation": "Booleans are true or false, without quotes. \"true\" in quotes would be a string."
+              },
+              {
+                "id": "js-2-q4",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "options": [
+                  "8",
+                  "53",
+                  "Error",
+                  "5 3"
+                ],
+                "answer": 1,
+                "explanation": "When + meets a string, JavaScript joins them as text: \"5\" + 3 gives \"53\".",
+                "code": "console.log(\"5\" + 3);"
+              },
+              {
+                "id": "js-2-q5",
+                "type": "mcq",
+                "prompt": "Which value means \"intentionally empty\"?",
+                "options": [
+                  "null",
+                  "0",
+                  "\"\"",
+                  "NaN"
+                ],
+                "answer": 0,
+                "explanation": "null is used to say a variable deliberately has no value."
+              }
+            ],
+            "minutes": 4,
+            "concept": "Values have types. Numbers calculate, strings store text, and booleans represent true or false. null represents an intentional absence.",
+            "examples": [
+              "let age = 20;\nlet name = \"Asha\";\nlet ready = true;",
+              "console.log(typeof 3.14);"
+            ]
+          },
+          {
+            "id": "js-3",
+            "title": "Operators",
+            "xp": 10,
+            "questions": [
+              {
+                "id": "js-3-q1",
+                "type": "mcq",
+                "prompt": "What is 10 % 3?",
+                "options": [
+                  "3",
+                  "1",
+                  "0",
+                  "3.33"
+                ],
+                "answer": 1,
+                "explanation": "% gives the remainder. 10 divided by 3 leaves 1."
+              },
+              {
+                "id": "js-3-q2",
+                "type": "mcq",
+                "prompt": "What is 2 ** 3?",
+                "options": [
+                  "6",
+                  "5",
+                  "8",
+                  "9"
+                ],
+                "answer": 2,
+                "explanation": "** is the power operator: 2 x 2 x 2 = 8."
+              },
+              {
+                "id": "js-3-q3",
+                "type": "mcq",
+                "prompt": "What does 5 === \"5\" evaluate to?",
+                "options": [
+                  "true",
+                  "false",
+                  "undefined",
+                  "Error"
+                ],
+                "answer": 1,
+                "explanation": "=== compares value and type. A number and a string are different types."
+              },
+              {
+                "id": "js-3-q4",
+                "type": "fill",
+                "prompt": "Make total equal 20.",
+                "code": "let total = 4 ___ 5;",
+                "options": [
+                  "*",
+                  "+",
+                  "%"
+                ],
+                "answer": "*",
+                "explanation": "* multiplies: 4 * 5 = 20."
+              },
+              {
+                "id": "js-3-q5",
+                "type": "reorder",
+                "prompt": "Put the lines in order to print the total cost.",
+                "blocks": [
+                  "let price = 10;",
+                  "let qty = 3;",
+                  "console.log(price * qty);"
+                ],
+                "answer": [
+                  "let price = 10;",
+                  "let qty = 3;",
+                  "console.log(price * qty);"
+                ],
+                "explanation": "Declare both values first, then use them. This prints 30."
+              }
+            ],
+            "minutes": 4,
+            "concept": "Operators work with values. * multiplies, % finds a remainder, ** raises a power, and === compares without converting types.",
+            "examples": [
+              "console.log(10 % 3);",
+              "console.log(5 === \"5\");"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "logic",
+        "title": "Logic",
+        "description": "Make decisions and write reusable functions.",
+        "lessons": [
+          {
+            "id": "js-4",
+            "title": "Conditionals",
+            "xp": 15,
+            "questions": [
+              {
+                "id": "js-4-q1",
+                "type": "mcq",
+                "prompt": "Which keyword runs code when the if condition is false?",
+                "options": [
+                  "then",
+                  "else",
+                  "otherwise",
+                  "elif"
+                ],
+                "answer": 1,
+                "explanation": "else runs when the if condition is not true."
+              },
+              {
+                "id": "js-4-q2",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "options": [
+                  "Adult",
+                  "Minor",
+                  "Nothing",
+                  "Error"
+                ],
+                "answer": 0,
+                "explanation": "18 >= 18 is true, so the if block runs.",
+                "code": "let age = 18;\nif (age >= 18) {\n  console.log(\"Adult\");\n} else {\n  console.log(\"Minor\");\n}"
+              },
+              {
+                "id": "js-4-q3",
+                "type": "fill",
+                "prompt": "Print Pass when score is at least 50.",
+                "code": "if (score ___ 50) {\n  console.log(\"Pass\");\n}",
+                "options": [
+                  ">=",
+                  "=",
+                  "=>"
+                ],
+                "answer": ">=",
+                "explanation": ">= means greater than or equal to. A single = assigns a value instead of comparing."
+              },
+              {
+                "id": "js-4-q4",
+                "type": "mcq",
+                "prompt": "What does true && false evaluate to?",
+                "options": [
+                  "true",
+                  "false",
+                  "undefined",
+                  "Error"
+                ],
+                "answer": 1,
+                "explanation": "&& (AND) is true only when both sides are true."
+              },
+              {
+                "id": "js-4-q5",
+                "type": "reorder",
+                "prompt": "Arrange the lines into a working if statement.",
+                "blocks": [
+                  "let temp = 30;",
+                  "if (temp > 25) {",
+                  "  console.log(\"Hot\");",
+                  "}"
+                ],
+                "answer": [
+                  "let temp = 30;",
+                  "if (temp > 25) {",
+                  "  console.log(\"Hot\");",
+                  "}"
+                ],
+                "explanation": "Declare the variable, open the if, put the action inside, then close the block."
+              }
+            ],
+            "minutes": 4,
+            "concept": "An if block runs when a condition is true. An else block runs otherwise. Use comparisons to make the decision.",
+            "examples": [
+              "let score = 75;\nif (score >= 50) {\n  console.log(\"Pass\");\n} else {\n  console.log(\"Try again\");\n}"
+            ]
+          },
+          {
+            "id": "js-5",
+            "title": "Functions",
+            "xp": 15,
+            "questions": [
+              {
+                "id": "js-5-q1",
+                "type": "mcq",
+                "prompt": "Which keyword defines a function?",
+                "options": [
+                  "def",
+                  "func",
+                  "function",
+                  "method"
+                ],
+                "answer": 2,
+                "explanation": "JavaScript uses the function keyword (arrow functions come later)."
+              },
+              {
+                "id": "js-5-q2",
+                "type": "fill",
+                "prompt": "Make the function give back a value.",
+                "code": "function greet() {\n  ___ \"Hi\";\n}",
+                "options": [
+                  "return",
+                  "give",
+                  "print"
+                ],
+                "answer": "return",
+                "explanation": "return sends a value back to whoever called the function."
+              },
+              {
+                "id": "js-5-q3",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "options": [
+                  "23",
+                  "5",
+                  "undefined",
+                  "Error"
+                ],
+                "answer": 1,
+                "explanation": "add(2, 3) returns 2 + 3 = 5.",
+                "code": "function add(a, b) {\n  return a + b;\n}\nconsole.log(add(2, 3));"
+              },
+              {
+                "id": "js-5-q4",
+                "type": "mcq",
+                "prompt": "What does a function return if it has no return statement?",
+                "options": [
+                  "0",
+                  "null",
+                  "undefined",
+                  "An error"
+                ],
+                "answer": 2,
+                "explanation": "Without return, a function gives back undefined."
+              },
+              {
+                "id": "js-5-q5",
+                "type": "reorder",
+                "prompt": "Build a function that doubles a number and call it.",
+                "blocks": [
+                  "function double(n) {",
+                  "  return n * 2;",
+                  "}",
+                  "console.log(double(4));"
+                ],
+                "answer": [
+                  "function double(n) {",
+                  "  return n * 2;",
+                  "}",
+                  "console.log(double(4));"
+                ],
+                "explanation": "Define the function first, then call it. This prints 8."
+              },
+              {
+                "id": "js-5-q6",
+                "type": "code",
+                "prompt": "Complete add(a, b) so it returns the sum of its two numbers.",
+                "starter": "function add(a, b) {\n  // Return the sum of a and b.\n}",
+                "functionName": "add",
+                "tests": [
+                  {
+                    "args": [
+                      2,
+                      3
+                    ],
+                    "expected": 5
+                  },
+                  {
+                    "args": [
+                      0,
+                      0
+                    ],
+                    "expected": 0
+                  },
+                  {
+                    "args": [
+                      -2,
+                      5
+                    ],
+                    "expected": 3
+                  },
+                  {
+                    "args": [
+                      1.5,
+                      2.5
+                    ],
+                    "expected": 4
+                  }
+                ],
+                "hint": "Use return with the + operator and both parameters.",
+                "explanation": "return a + b sends the sum back to the caller."
+              },
+              {
+                "id": "js-5-q7",
+                "type": "code",
+                "prompt": "Complete double(n) so it returns the number multiplied by 2.",
+                "starter": "function double(n) {\n  // Return twice the value of n.\n}",
+                "functionName": "double",
+                "tests": [
+                  {
+                    "args": [
+                      4
+                    ],
+                    "expected": 8
+                  },
+                  {
+                    "args": [
+                      0
+                    ],
+                    "expected": 0
+                  },
+                  {
+                    "args": [
+                      -3
+                    ],
+                    "expected": -6
+                  },
+                  {
+                    "args": [
+                      2.5
+                    ],
+                    "expected": 5
+                  }
+                ],
+                "hint": "Multiply n by 2, then return that result.",
+                "explanation": "Multiplying n by 2 returns twice its original value."
+              }
+            ],
+            "minutes": 5,
+            "concept": "A function packages reusable instructions. Parameters receive inputs; return sends a result back to the caller.",
+            "examples": [
+              "function add(a, b) {\n  return a + b;\n}\nconsole.log(add(2, 3));"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "loops-arrays",
+        "title": "Loops & Arrays",
+        "description": "Repeat useful work and organize collections.",
+        "lessons": [
+          {
+            "id": "js-6",
+            "title": "For Loops",
+            "xp": 15,
+            "minutes": 4,
+            "concept": "A for loop repeats a block. Its header sets a starting value, checks a condition, and updates after each run. i++ adds 1 to i.",
+            "examples": [
+              "for (let i = 0; i < 3; i++) {\n  console.log(i);\n}"
+            ],
+            "questions": [
+              {
+                "id": "js-6-q1",
+                "type": "mcq",
+                "prompt": "Which loop is a natural choice when you know how many repetitions you want?",
+                "options": [
+                  "for",
+                  "if",
+                  "return",
+                  "const"
+                ],
+                "answer": 0,
+                "explanation": "A for loop keeps the start, condition, and update together."
+              },
+              {
+                "id": "js-6-q2",
+                "type": "fill",
+                "prompt": "Make this loop run exactly three times.",
+                "code": "for (let i = 0; i < ___; i++) {\n  console.log(i);\n}",
+                "options": [
+                  "3",
+                  "0",
+                  "-1"
+                ],
+                "answer": "3",
+                "explanation": "The values 0, 1, and 2 each pass the condition i < 3."
+              },
+              {
+                "id": "js-6-q3",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "let count = 0;\nfor (let i = 0; i < 3; i++) {\n  count = count + 1;\n}\nconsole.log(count);",
+                "options": [
+                  "0",
+                  "2",
+                  "3",
+                  "4"
+                ],
+                "answer": 2,
+                "explanation": "The loop runs three times and adds 1 to count each time."
+              },
+              {
+                "id": "js-6-q4",
+                "type": "reorder",
+                "prompt": "Build a for loop that prints 0, then 1.",
+                "blocks": [
+                  "  console.log(i);",
+                  "}",
+                  "for (let i = 0; i < 2; i++) {"
+                ],
+                "answer": [
+                  "for (let i = 0; i < 2; i++) {",
+                  "  console.log(i);",
+                  "}"
+                ],
+                "explanation": "Open the loop, put the action inside, then close the block."
+              },
+              {
+                "id": "js-6-q5",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "let total = 0;\nfor (let i = 1; i <= 3; i++) {\n  total = total + i;\n}\nconsole.log(total);",
+                "options": [
+                  "3",
+                  "5",
+                  "6",
+                  "7"
+                ],
+                "answer": 2,
+                "explanation": "The loop adds 1, then 2, then 3, giving a total of 6."
+              }
+            ]
+          },
+          {
+            "id": "js-7",
+            "title": "While Loops",
+            "xp": 15,
+            "minutes": 4,
+            "concept": "A while loop checks its condition before each run. Update something inside the block so the condition can eventually become false.",
+            "examples": [
+              "let count = 0;\nwhile (count < 3) {\n  count++;\n}\nconsole.log(count);"
+            ],
+            "questions": [
+              {
+                "id": "js-7-q1",
+                "type": "mcq",
+                "prompt": "When does a while loop check its condition?",
+                "options": [
+                  "Before each run",
+                  "Only after the first run",
+                  "Only once",
+                  "After the program ends"
+                ],
+                "answer": 0,
+                "explanation": "The condition is checked before every run, including the first."
+              },
+              {
+                "id": "js-7-q2",
+                "type": "fill",
+                "prompt": "Stop when count reaches 3.",
+                "code": "let count = 0;\nwhile (count < ___) {\n  count++;\n}\nconsole.log(count);",
+                "options": [
+                  "3",
+                  "0",
+                  "1"
+                ],
+                "answer": "3",
+                "explanation": "The loop increments count until count < 3 becomes false."
+              },
+              {
+                "id": "js-7-q3",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "let lives = 3;\nwhile (lives > 0) {\n  lives = lives - 1;\n}\nconsole.log(lives);",
+                "options": [
+                  "3",
+                  "1",
+                  "0",
+                  "-1"
+                ],
+                "answer": 2,
+                "explanation": "The loop subtracts 1 until lives reaches 0, then stops."
+              },
+              {
+                "id": "js-7-q4",
+                "type": "reorder",
+                "prompt": "Build a while loop that prints 1, then 2, then 3.",
+                "blocks": [
+                  "  console.log(count);",
+                  "}",
+                  "let count = 0;",
+                  "  count++;",
+                  "while (count < 3) {"
+                ],
+                "answer": [
+                  "let count = 0;",
+                  "while (count < 3) {",
+                  "  count++;",
+                  "  console.log(count);",
+                  "}"
+                ],
+                "explanation": "Increment before printing, so the first displayed value is 1."
+              },
+              {
+                "id": "js-7-q5",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "let n = 1;\nwhile (n < 10) {\n  n = n * 2;\n}\nconsole.log(n);",
+                "options": [
+                  "8",
+                  "10",
+                  "16",
+                  "20"
+                ],
+                "answer": 2,
+                "explanation": "n becomes 2, 4, 8, then 16. At 16, the condition is false."
+              }
+            ]
+          },
+          {
+            "id": "js-8",
+            "title": "Arrays & Indexing",
+            "xp": 15,
+            "minutes": 4,
+            "concept": "An array stores an ordered collection inside square brackets. Indexes start at 0. Use array[index] to read or replace an item.",
+            "examples": [
+              "let colors = [\"red\", \"green\", \"blue\"];\nconsole.log(colors[0]);\ncolors[1] = \"gold\";"
+            ],
+            "questions": [
+              {
+                "id": "js-8-q1",
+                "type": "mcq",
+                "prompt": "What index selects the first item in an array?",
+                "options": [
+                  "0",
+                  "1",
+                  "-1",
+                  "first"
+                ],
+                "answer": 0,
+                "explanation": "JavaScript arrays start counting positions at 0."
+              },
+              {
+                "id": "js-8-q2",
+                "type": "fill",
+                "prompt": "Select toast, the second item.",
+                "code": "const snacks = [\"apple\", \"toast\", \"rice\"];\nconsole.log(snacks[___]);",
+                "options": [
+                  "1",
+                  "0",
+                  "2"
+                ],
+                "answer": "1",
+                "explanation": "The second item has index 1 because indexing begins at 0."
+              },
+              {
+                "id": "js-8-q3",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const colors = [\"red\", \"green\", \"blue\"];\nconsole.log(colors[2]);",
+                "options": [
+                  "red",
+                  "green",
+                  "blue",
+                  "undefined"
+                ],
+                "answer": 2,
+                "explanation": "Index 2 selects the third item, blue."
+              },
+              {
+                "id": "js-8-q4",
+                "type": "reorder",
+                "prompt": "Create scores, replace its first item with 5, then print that item.",
+                "blocks": [
+                  "console.log(scores[0]);",
+                  "scores[0] = 5;",
+                  "let scores = [1, 2];"
+                ],
+                "answer": [
+                  "let scores = [1, 2];",
+                  "scores[0] = 5;",
+                  "console.log(scores[0]);"
+                ],
+                "explanation": "Create the array before changing an item, then read its updated value."
+              },
+              {
+                "id": "js-8-q5",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const scores = [3, 7, 9];\nscores[1] = scores[0] + 2;\nconsole.log(scores[1]);",
+                "options": [
+                  "2",
+                  "5",
+                  "7",
+                  "9"
+                ],
+                "answer": 1,
+                "explanation": "scores[0] is 3, so the second item becomes 3 + 2 = 5."
+              }
+            ]
+          },
+          {
+            "id": "js-9",
+            "title": "Push & Pop",
+            "xp": 15,
+            "minutes": 4,
+            "concept": "push(value) adds an item to an array’s end. pop() removes and returns the last item. A const array can change its contents.",
+            "examples": [
+              "const pets = [\"cat\"];\npets.push(\"dog\");\nconsole.log(pets.pop());"
+            ],
+            "questions": [
+              {
+                "id": "js-9-q1",
+                "type": "mcq",
+                "prompt": "Which method adds an item to the end of an array?",
+                "options": [
+                  "push()",
+                  "pop()",
+                  "addFirst()",
+                  "return()"
+                ],
+                "answer": 0,
+                "explanation": "push() adds the supplied value after the existing items."
+              },
+              {
+                "id": "js-9-q2",
+                "type": "fill",
+                "prompt": "Remove the last item and display it.",
+                "code": "const colors = [\"red\", \"blue\"];\nconsole.log(colors.___());",
+                "options": [
+                  "pop",
+                  "push",
+                  "end"
+                ],
+                "answer": "pop",
+                "explanation": "pop() removes and returns blue, the last item."
+              },
+              {
+                "id": "js-9-q3",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const pets = [\"cat\"];\npets.push(\"dog\");\nconsole.log(pets[1]);",
+                "options": [
+                  "cat",
+                  "dog",
+                  "undefined",
+                  "2"
+                ],
+                "answer": 1,
+                "explanation": "push() puts dog at the next position, index 1."
+              },
+              {
+                "id": "js-9-q4",
+                "type": "reorder",
+                "prompt": "Create a stack with 1, add 2, then remove and print the last item.",
+                "blocks": [
+                  "console.log(stack.pop());",
+                  "stack.push(2);",
+                  "const stack = [1];"
+                ],
+                "answer": [
+                  "const stack = [1];",
+                  "stack.push(2);",
+                  "console.log(stack.pop());"
+                ],
+                "explanation": "The last item added is 2, so pop() removes and returns 2."
+              },
+              {
+                "id": "js-9-q5",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const items = [1, 2];\nitems.push(3);\nitems.pop();\nconsole.log(items.pop());",
+                "options": [
+                  "1",
+                  "2",
+                  "3",
+                  "undefined"
+                ],
+                "answer": 1,
+                "explanation": "The first pop removes 3. The next pop removes and returns 2."
+              }
+            ]
+          },
+          {
+            "id": "js-10",
+            "title": "Array Length",
+            "xp": 15,
+            "minutes": 4,
+            "concept": "An array’s length property counts its items. For a nonempty array, its last index is length - 1. Read length without parentheses.",
+            "examples": [
+              "const names = [\"Asha\", \"Lin\", \"Sam\"];\nconsole.log(names.length);\nconsole.log(names[names.length - 1]);"
+            ],
+            "questions": [
+              {
+                "id": "js-10-q1",
+                "type": "mcq",
+                "prompt": "What does an array’s length property tell you?",
+                "options": [
+                  "Its number of items",
+                  "Its last item",
+                  "Its first index",
+                  "Its largest number"
+                ],
+                "answer": 0,
+                "explanation": "length counts the items in the array."
+              },
+              {
+                "id": "js-10-q2",
+                "type": "fill",
+                "prompt": "Display how many items are in names.",
+                "code": "const names = [\"Asha\", \"Lin\"];\nconsole.log(names.___);",
+                "options": [
+                  "length",
+                  "length()",
+                  "size"
+                ],
+                "answer": "length",
+                "explanation": "length is a property, so it does not need parentheses."
+              },
+              {
+                "id": "js-10-q3",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const items = [];\nconsole.log(items.length);",
+                "options": [
+                  "0",
+                  "1",
+                  "-1",
+                  "undefined"
+                ],
+                "answer": 0,
+                "explanation": "An empty array contains zero items."
+              },
+              {
+                "id": "js-10-q4",
+                "type": "reorder",
+                "prompt": "Create three names, find the last index, then display the last name.",
+                "blocks": [
+                  "console.log(names[last]);",
+                  "const last = names.length - 1;",
+                  "const names = [\"Asha\", \"Lin\", \"Sam\"];"
+                ],
+                "answer": [
+                  "const names = [\"Asha\", \"Lin\", \"Sam\"];",
+                  "const last = names.length - 1;",
+                  "console.log(names[last]);"
+                ],
+                "explanation": "Three items have indexes 0, 1, and 2. length - 1 gives 2."
+              },
+              {
+                "id": "js-10-q5",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const items = [10, 20];\nitems.push(30);\nitems.pop();\nconsole.log(items.length);",
+                "options": [
+                  "1",
+                  "2",
+                  "3",
+                  "30"
+                ],
+                "answer": 1,
+                "explanation": "push adds one item, then pop removes one. Two items remain."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "objects-methods",
+        "title": "Objects & Methods",
+        "description": "Describe things, transform data, and build messages.",
+        "lessons": [
+          {
+            "id": "js-11",
+            "title": "Objects",
+            "xp": 20,
+            "minutes": 4,
+            "concept": "An object groups named values, called properties. Write property names and values inside curly braces, separated by colons and commas.",
+            "examples": [
+              "const player = { name: \"Asha\", score: 10 };\nconsole.log(player.score);"
+            ],
+            "questions": [
+              {
+                "id": "js-11-q1",
+                "type": "mcq",
+                "prompt": "Which value is an object with a name property?",
+                "options": [
+                  "{ name: \"Asha\" }",
+                  "[\"Asha\"]",
+                  "\"Asha\"",
+                  "name = \"Asha\""
+                ],
+                "answer": 0,
+                "explanation": "Curly braces with a property name and colon create an object here."
+              },
+              {
+                "id": "js-11-q2",
+                "type": "fill",
+                "prompt": "Complete the separator between a property name and its value.",
+                "code": "const player = { score ___ 10 };\nconsole.log(player.score);",
+                "options": [
+                  ":",
+                  "=",
+                  ";"
+                ],
+                "answer": ":",
+                "explanation": "A colon separates each property name from its value in an object literal."
+              },
+              {
+                "id": "js-11-q3",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const player = { name: \"Asha\", score: 10 };\nconsole.log(player.score);",
+                "options": [
+                  "Asha",
+                  "10",
+                  "score",
+                  "undefined"
+                ],
+                "answer": 1,
+                "explanation": "The score property stores the number 10."
+              },
+              {
+                "id": "js-11-q4",
+                "type": "reorder",
+                "prompt": "Build an object with score 7, close it, then display its score.",
+                "blocks": [
+                  "console.log(player.score);",
+                  "  score: 7",
+                  "};",
+                  "const player = {"
+                ],
+                "answer": [
+                  "const player = {",
+                  "  score: 7",
+                  "};",
+                  "console.log(player.score);"
+                ],
+                "explanation": "Finish creating the object before reading its property."
+              },
+              {
+                "id": "js-11-q5",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const player = { score: 4 };\nconst bonus = { points: 3 };\nconsole.log(player.score + bonus.points);",
+                "options": [
+                  "43",
+                  "4",
+                  "7",
+                  "undefined"
+                ],
+                "answer": 2,
+                "explanation": "The two properties hold numbers, so 4 + 3 produces 7."
+              }
+            ]
+          },
+          {
+            "id": "js-12",
+            "title": "Property Access",
+            "xp": 20,
+            "minutes": 4,
+            "concept": "Read or update an object property with dot notation. Bracket notation accepts a string, including a property name stored in a variable.",
+            "examples": [
+              "const player = { score: 10 };\nplayer.score = 12;\nconst key = \"score\";\nconsole.log(player[key]);"
+            ],
+            "questions": [
+              {
+                "id": "js-12-q1",
+                "type": "mcq",
+                "prompt": "Which expression reads player’s score property?",
+                "options": [
+                  "player.score",
+                  "player(score)",
+                  "score.player",
+                  "player->score"
+                ],
+                "answer": 0,
+                "explanation": "Dot notation reads a property by name."
+              },
+              {
+                "id": "js-12-q2",
+                "type": "fill",
+                "prompt": "Read the property whose name is stored in key.",
+                "code": "const player = { score: 10 };\nconst key = \"score\";\nconsole.log(player[___]);",
+                "options": [
+                  "key",
+                  "\"key\"",
+                  "0"
+                ],
+                "answer": "key",
+                "explanation": "player[key] uses the value of key, which is the string score."
+              },
+              {
+                "id": "js-12-q3",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const player = { score: 2 };\nplayer.score = 8;\nconsole.log(player.score);",
+                "options": [
+                  "2",
+                  "8",
+                  "10",
+                  "undefined"
+                ],
+                "answer": 1,
+                "explanation": "Assigning to player.score replaces its previous value with 8."
+              },
+              {
+                "id": "js-12-q4",
+                "type": "reorder",
+                "prompt": "Create the player, add a level property, then display that level.",
+                "blocks": [
+                  "console.log(player.level);",
+                  "player.level = 2;",
+                  "const player = { name: \"Asha\" };"
+                ],
+                "answer": [
+                  "const player = { name: \"Asha\" };",
+                  "player.level = 2;",
+                  "console.log(player.level);"
+                ],
+                "explanation": "Assigning a new property name adds that property to the object."
+              },
+              {
+                "id": "js-12-q5",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const player = { score: 5, level: 2 };\nconst key = \"level\";\nplayer[key] = player[key] + 1;\nconsole.log(player.level);",
+                "options": [
+                  "2",
+                  "3",
+                  "6",
+                  "undefined"
+                ],
+                "answer": 1,
+                "explanation": "key selects level, so the update changes level from 2 to 3."
+              }
+            ]
+          },
+          {
+            "id": "js-13",
+            "title": "Map",
+            "xp": 20,
+            "minutes": 4,
+            "concept": "map() makes a new array by transforming each item. In n => n * 2, n is the current item and n * 2 is the returned result. The original array stays unchanged.",
+            "examples": [
+              "const numbers = [1, 2, 3];\nconst doubled = numbers.map(n => n * 2);\nconsole.log(doubled[0]);"
+            ],
+            "questions": [
+              {
+                "id": "js-13-q1",
+                "type": "mcq",
+                "prompt": "What does map() return?",
+                "options": [
+                  "A new array of transformed items",
+                  "Only the first item",
+                  "The number of items",
+                  "Nothing"
+                ],
+                "answer": 0,
+                "explanation": "map() stores one transformed result for each original item in a new array."
+              },
+              {
+                "id": "js-13-q2",
+                "type": "fill",
+                "prompt": "Use the method that doubles every item into a new array.",
+                "code": "const numbers = [1, 2];\nconst doubled = numbers.___(n => n * 2);\nconsole.log(doubled[1]);",
+                "options": [
+                  "map",
+                  "pop",
+                  "push"
+                ],
+                "answer": "map",
+                "explanation": "map() applies n => n * 2 to each item."
+              },
+              {
+                "id": "js-13-q3",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const numbers = [2, 4];\nconst doubled = numbers.map(n => n * 2);\nconsole.log(doubled[0]);",
+                "options": [
+                  "2",
+                  "4",
+                  "6",
+                  "8"
+                ],
+                "answer": 1,
+                "explanation": "The first original item is 2. Doubling it produces 4."
+              },
+              {
+                "id": "js-13-q4",
+                "type": "reorder",
+                "prompt": "Create the numbers, map each to one more, then display the second result.",
+                "blocks": [
+                  "console.log(plusOne[1]);",
+                  "const plusOne = numbers.map(n => n + 1);",
+                  "const numbers = [1, 2];"
+                ],
+                "answer": [
+                  "const numbers = [1, 2];",
+                  "const plusOne = numbers.map(n => n + 1);",
+                  "console.log(plusOne[1]);"
+                ],
+                "explanation": "The mapped array is [2, 3], so index 1 holds 3."
+              },
+              {
+                "id": "js-13-q5",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const numbers = [1, 2, 3];\nconst doubled = numbers.map(n => n * 2);\nconsole.log(numbers[1] + doubled[1]);",
+                "options": [
+                  "4",
+                  "6",
+                  "8",
+                  "12"
+                ],
+                "answer": 1,
+                "explanation": "The original second item remains 2; the mapped second item is 4. Their sum is 6."
+              }
+            ]
+          },
+          {
+            "id": "js-14",
+            "title": "Filter",
+            "xp": 20,
+            "minutes": 4,
+            "concept": "filter() creates a new array containing the items that pass a test. In n => n > 2, each item is kept only when n > 2 is true. The original array stays unchanged.",
+            "examples": [
+              "const numbers = [1, 2, 3, 4];\nconst big = numbers.filter(n => n > 2);\nconsole.log(big[0]);"
+            ],
+            "questions": [
+              {
+                "id": "js-14-q1",
+                "type": "mcq",
+                "prompt": "What does filter() keep in its new array?",
+                "options": [
+                  "Items whose test returns true",
+                  "Every item doubled",
+                  "Only the first item",
+                  "Only the last item"
+                ],
+                "answer": 0,
+                "explanation": "filter() keeps the original items that pass the condition."
+              },
+              {
+                "id": "js-14-q2",
+                "type": "fill",
+                "prompt": "Keep only numbers greater than 2.",
+                "code": "const numbers = [1, 2, 3, 4];\nconst big = numbers.___(n => n > 2);\nconsole.log(big.length);",
+                "options": [
+                  "filter",
+                  "map",
+                  "pop"
+                ],
+                "answer": "filter",
+                "explanation": "filter() keeps 3 and 4 because those values pass n > 2."
+              },
+              {
+                "id": "js-14-q3",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const numbers = [1, 2, 3, 4];\nconst big = numbers.filter(n => n > 2);\nconsole.log(big[0]);",
+                "options": [
+                  "1",
+                  "2",
+                  "3",
+                  "4"
+                ],
+                "answer": 2,
+                "explanation": "The kept items are 3 and 4, so the first result is 3."
+              },
+              {
+                "id": "js-14-q4",
+                "type": "reorder",
+                "prompt": "Create the scores, keep scores at least 5, then display how many passed.",
+                "blocks": [
+                  "console.log(passed.length);",
+                  "const scores = [3, 5, 8];",
+                  "const passed = scores.filter(score => score >= 5);"
+                ],
+                "answer": [
+                  "const scores = [3, 5, 8];",
+                  "const passed = scores.filter(score => score >= 5);",
+                  "console.log(passed.length);"
+                ],
+                "explanation": "Only 5 and 8 pass the test, so the new array has two items."
+              },
+              {
+                "id": "js-14-q5",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const numbers = [1, 2, 3, 4];\nconst even = numbers.filter(n => n % 2 === 0);\nconsole.log(numbers.length - even.length);",
+                "options": [
+                  "0",
+                  "1",
+                  "2",
+                  "4"
+                ],
+                "answer": 2,
+                "explanation": "The original has four items. Two even items pass the filter, so 4 - 2 is 2."
+              }
+            ]
+          },
+          {
+            "id": "js-15",
+            "title": "Template Literals",
+            "xp": 20,
+            "minutes": 4,
+            "concept": "Template literals use backticks. Put an expression inside ${...} to insert its value into the text. Expressions can use variables or calculations.",
+            "examples": [
+              "const name = \"Asha\";\nconsole.log(`Hi, ${name}!`);"
+            ],
+            "questions": [
+              {
+                "id": "js-15-q1",
+                "type": "mcq",
+                "prompt": "Which characters surround a template literal?",
+                "options": [
+                  "Backticks: ` `",
+                  "Brackets: [ ]",
+                  "Braces: { }",
+                  "Parentheses: ( )"
+                ],
+                "answer": 0,
+                "explanation": "Backticks allow template literals to include expressions with ${...}."
+              },
+              {
+                "id": "js-15-q2",
+                "type": "fill",
+                "prompt": "Insert name into the greeting.",
+                "code": "const name = \"Asha\";\nconsole.log(`Hi, ${___}!`);",
+                "options": [
+                  "name",
+                  "\"name\"",
+                  "0"
+                ],
+                "answer": "name",
+                "explanation": "The expression name is replaced with its value, Asha."
+              },
+              {
+                "id": "js-15-q3",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const score = 7;\nconsole.log(`Score: ${score}`);",
+                "options": [
+                  "Score: 7",
+                  "Score: score",
+                  "Score: ${score}",
+                  "7"
+                ],
+                "answer": 0,
+                "explanation": "The expression inside ${...} inserts the value 7 into the text."
+              },
+              {
+                "id": "js-15-q4",
+                "type": "reorder",
+                "prompt": "Save the name, build the template message, then display it.",
+                "blocks": [
+                  "console.log(message);",
+                  "const message = `Hi, ${name}!`;",
+                  "const name = \"Asha\";"
+                ],
+                "answer": [
+                  "const name = \"Asha\";",
+                  "const message = `Hi, ${name}!`;",
+                  "console.log(message);"
+                ],
+                "explanation": "Declare name before evaluating the template, then display the completed message."
+              },
+              {
+                "id": "js-15-q5",
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "const score = 4;\nconsole.log(`Next score: ${score + 1}`);",
+                "options": [
+                  "Next score: 41",
+                  "Next score: 5",
+                  "Next score: score + 1",
+                  "Next score: 4"
+                ],
+                "answer": 1,
+                "explanation": "The expression is calculated first: 4 + 1 becomes 5 inside the message."
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "practice": {
+      "id": "mistakes-practice",
+      "xp": 10
+    }
+  }
+}

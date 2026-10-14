@@ -1,0 +1,11 @@
+import { useEffect,useState } from 'react';
+import { motion } from 'framer-motion';
+import CodeEditor from './CodeEditor.jsx';
+import Icon from './Icon.jsx';
+export default function QuestionBody({question,answer,onAnswer,disabled}) {
+  const [blocks,setBlocks]=useState([]);
+  useEffect(()=>{setBlocks([]);},[question.id]);
+  const parts=question.prompt.split('\n\n');
+  if(question.type==='code') return <><h1 className="question-prompt">{parts[0]}</h1><CodeEditor question={question} disabled={disabled} onPassChange={onAnswer}/></>;
+  return <><h1 className="question-prompt">{parts[0]}</h1>{(question.code||parts.slice(1).join('\n\n'))&&<pre className="code-block"><code>{question.code||parts.slice(1).join('\n\n')}</code></pre>}{question.type==='reorder'?<div className="reorder"><p className="question-instruction">Tap the blocks in the right order. Tap a placed block to undo.</p><div className="ordered-blocks" aria-label="Your code order">{blocks.length?blocks.map((blockIndex,position)=><motion.button layout key={blockIndex} className="code-chip" disabled={disabled} aria-label={`Remove line ${position+1}: ${question.blocks[blockIndex]}`} onClick={()=>{const next=blocks.filter(i=>i!==blockIndex);setBlocks(next);onAnswer(next.map(i=>question.blocks[i]));}}><span>{position+1}</span><code>{question.blocks[blockIndex]}</code><Icon name="close" size={16}/></motion.button>):<span className="empty-code">Your code goes here…</span>}</div><div className="block-bank">{question.blocks.map((block,index)=><button className="code-chip" disabled={disabled||blocks.includes(index)} key={index} onClick={()=>{const next=[...blocks,index];setBlocks(next);onAnswer(next.map(i=>question.blocks[i]));}}><Icon name="code" size={17}/><code>{block}</code></button>)}</div></div>:<div className="answer-options" role="group" aria-label={question.type==='predict'?'Choose the output':'Choose your answer'}>{question.options.map((option,index)=>{const value=question.type==='fill'?option:index;return <motion.button whileTap={{scale:.99}} key={index} className={`answer-option ${answer===value?'selected':''}`} disabled={disabled} aria-pressed={answer===value} onClick={()=>onAnswer(value)}><span className="answer-key">{String.fromCharCode(65+index)}</span><code>{option}</code>{answer===value&&<Icon name="check" size={19}/>}</motion.button>;})}</div>}</>;
+}

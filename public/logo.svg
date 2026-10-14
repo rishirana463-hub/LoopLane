@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <title>Looplane</title>
+  <rect width="512" height="512" rx="118" fill="#faf8f3"/>
+  <ellipse cx="256" cy="256" rx="160" ry="104" transform="rotate(-35 256 256)" stroke="#6845db" stroke-width="32"/>
+  <path d="m232 226-34 30 34 30m48-60 34 30-34 30" stroke="#6845db" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="383" cy="194" r="34" fill="#faf8f3"/>
+  <circle cx="383" cy="194" r="26" fill="#eb765e"/>
+</svg>
