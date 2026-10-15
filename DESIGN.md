@@ -206,10 +206,10 @@ Use soft, sturdy forms: small fields and chips, rounded rectangular actions, bro
 - **Buttons:** cyan filled primary, outlined cyan secondary, and quiet text variants. Primary actions are at least (52px) high; result Continue is (56px). Hover brightens the fill; press translates the primary control downward (3px). Disabled actions use a muted slate treatment.
 - **Cards and unit banners:** supporting progress cards have transparent dark interiors, rounded outlines, and (20px) padding. Unit banners use colored fills with matching dark text and lower edges; locked banners retain text and lock icons.
 - **Course selection:** use a labeled native select in the header, at least (44px) high, with a dark inset surface and a tactile lower edge. The mobile control fits beside the shared stats at (360px). Unit metadata includes its difficulty; lesson examples sit in an optional details panel using existing code styles.
-- **Inputs and code:** account fields are dark inset surfaces with (16px) text and at least (52px) height. Coding areas remain monospace, bordered, scrollable, and resizable where implemented. Reorder chips preserve their outlined, raised form.
+- **Inputs and code:** account fields are dark inset surfaces with (16px) text and at least (52px) height. Coding areas remain monospace, bordered, scrollable, and resizable where implemented. Reorder chips preserve their outlined, raised form. Interactive outlines share a slate border token with at least 3:1 contrast against their default surfaces; scrollable code examples accept keyboard focus.
 - **Navigation:** desktop uses labeled rail buttons; mobile uses icon-and-label targets with a minimum (60px) height. The active destination has a violet-tinted fill and outline. Preserve `aria-current` and meaningful labels for icon actions.
 - **Lesson path:** current nodes are violet with a ring and “Start here” marker; completed nodes take their unit color and a check; locked nodes are subdued and show a lock. Retain lesson titles, question counts, and state labels. Enabled nodes compress on tap (scale 0.94).
-- **Answer tiles and feedback:** large outlined answer buttons gain cyan fill and border when selected. Correct and incorrect feedback use distinct surface colors, icons, and text in a fixed footer; the action remains full width on mobile.
+- **Answer tiles and feedback:** large outlined answer buttons gain cyan fill and border when selected. Correct and incorrect feedback use distinct surface colors, icons, and text in a reserved footer row; the action remains full width on mobile.
 - **Results:** Leo celebrates a perfect lesson; Dr. Maya welcomes other completions. The companion sits above a cyan heading and two outlined stats with filled label bands. Show actual earned XP and accuracy; show bonus and level-up messages only when earned.
 - **Focus and motion:** default keyboard focus is a cyan outline (3px) offset (4px); lesson nodes use a white focus outline. Primary transitions last (0.15s). Continue, goal choices, Run code, and reorder blocks use (0.16s) ease-out transitions and move down (2px) on press. Hover styling applies to hover-capable pointers and preserves selected goals. Honor global `MotionConfig reducedMotion="user"` and the CSS reduced-motion rule that removes animations and transitions.
 
@@ -220,7 +220,7 @@ Use soft, sturdy forms: small fields and chips, rounded rectangular actions, bro
 - **Do** keep every screen dark and use Looplane's branding and the supplied companion designs. Transparent assets live in `public/characters/`; names and short captions use the shared `LearningCompanion` component. Keep companions clear of lesson controls at 360px.
 - **Do** retain lower-edge depth, visible states, keyboard focus, and at least 44px interactive targets.
 - **Do** preserve the 12px text floor and explicit accessible units for streak, XP, and hearts.
-- **Do** check compact layouts at 360px width and honor safe areas and reduced motion.
+- **Do** check compact layouts at 360px width and honor safe areas and reduced motion. Dialog heights account for their outer gutters; lesson content scrolls above its feedback and action row.
 - **Do** display actual learning progress and earned results.
 
 ### Don't:
