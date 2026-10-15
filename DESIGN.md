@@ -1,6 +1,6 @@
 ---
 name: Looplane
-description: A colorful night-time coding journey with tactile controls and an original robot.
+description: A colorful night-time coding journey with tactile controls and four learning companions.
 colors:
   canvas: "#19172e"
   surface: "#25213c"
@@ -135,7 +135,7 @@ components:
 
 **Creative North Star: "A colorful night-time coding journey"**
 
-Looplane is a compact, playful learning app. Blue charcoal fills every screen; rounded off-white type, colorful state cues, and an original violet robot make short coding sessions feel welcoming. The user's six dark learning-game references establish the visual direction; Looplane keeps its own identity.
+Looplane is a compact, playful learning app. Midnight plum fills every screen; rounded off-white type, colorful state cues, and Aria, Leo, Yuki, and Dr. Maya make short coding sessions feel welcoming. The user's dark learning-game and character references establish the visual direction; Looplane keeps its own identity.
 
 Raised controls make choices feel tangible. Progress, lesson states, and immediate feedback supply the visual hierarchy. Implement screens directly in React and CSS, with the same dark world extending through onboarding, Account, results, and ancillary pages.
 
@@ -143,7 +143,7 @@ Raised controls make choices feel tangible. Progress, lesson states, and immedia
 
 - Dark midnight plum canvas with cyan actions and violet, pink, and amber accents.
 - Heavy rounded lettering, outlined containers, and pronounced lower edges.
-- A winding lesson path and an original coding robot.
+- A winding lesson path with Aria, Leo, Yuki, and Dr. Maya cycling beside the units.
 - Compact mobile layouts, readable labels, and clear interactive states.
 
 ## Colors
@@ -193,7 +193,7 @@ Use the frontmatter spacing scale for recurring gaps and padding. Keep the journ
 
 ## Elevation & Depth
 
-Depth comes from tonal layers, outlines, and darker bottom borders rather than drop shadows. Primary actions have a lower edge (5px); secondary actions and code chips use (4px); answer tiles use (5px); unit banners use (6px); lesson nodes use (7px) mobile and (8px) desktop. The current lesson gains an outer ring, and the robot supplies illustrated dimensionality.
+Depth comes from tonal layers, outlines, and darker bottom borders rather than drop shadows. Primary actions have a lower edge (5px); secondary actions and code chips use (4px); answer tiles use (5px); unit banners use (6px); lesson nodes use (7px) mobile and (8px) desktop. The current lesson gains an outer ring, and the companions supply illustrated dimensionality.
 
 **The Tactile Edge Rule.** Preserve the darker lower edge when adding controls to these families; do not replace it with a diffuse shadow.
 
@@ -210,14 +210,14 @@ Use soft, sturdy forms: small fields and chips, rounded rectangular actions, bro
 - **Navigation:** desktop uses labeled rail buttons; mobile uses icon-and-label targets with a minimum (60px) height. The active destination has a violet-tinted fill and outline. Preserve `aria-current` and meaningful labels for icon actions.
 - **Lesson path:** current nodes are violet with a ring and “Start here” marker; completed nodes take their unit color and a check; locked nodes are subdued and show a lock. Retain lesson titles, question counts, and state labels. Enabled nodes compress on tap (scale 0.94).
 - **Answer tiles and feedback:** large outlined answer buttons gain cyan fill and border when selected. Correct and incorrect feedback use distinct surface colors, icons, and text in a fixed footer; the action remains full width on mobile.
-- **Results:** the original robot sits above a cyan heading and two outlined stats with filled label bands. Show actual earned XP and accuracy; show bonus and level-up messages only when earned.
+- **Results:** Leo celebrates a perfect lesson; Dr. Maya welcomes other completions. The companion sits above a cyan heading and two outlined stats with filled label bands. Show actual earned XP and accuracy; show bonus and level-up messages only when earned.
 - **Focus and motion:** default keyboard focus is a cyan outline (3px) offset (4px); lesson nodes use a white focus outline. Primary transitions last (0.15s). Continue, goal choices, Run code, and reorder blocks use (0.16s) ease-out transitions and move down (2px) on press. Hover styling applies to hover-capable pointers and preserves selected goals. Honor global `MotionConfig reducedMotion="user"` and the CSS reduced-motion rule that removes animations and transitions.
 
 ## Do's and Don'ts
 
 ### Do:
 
-- **Do** keep every screen dark and use the original Looplane robot and branding.
+- **Do** keep every screen dark and use Looplane's branding and the supplied companion designs. Transparent assets live in `public/characters/`; names and short captions use the shared `LearningCompanion` component. Keep companions clear of lesson controls at 360px.
 - **Do** retain lower-edge depth, visible states, keyboard focus, and at least 44px interactive targets.
 - **Do** preserve the 12px text floor and explicit accessible units for streak, XP, and hearts.
 - **Do** check compact layouts at 360px width and honor safe areas and reduced motion.

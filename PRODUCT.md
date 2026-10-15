@@ -33,7 +33,7 @@ Production public-page traffic uses aggregate Vercel Web Analytics. Browser Do N
 
 ## Brand Commitments
 
-Looplane uses original branding and a coding robot, with a midnight-plum canvas (`#19172e`) and cyan/violet accents. No Duolingo branding, owl, or green brand palette. The user's six October 15 references establish a dark, colorful learning-game direction across every screen, including Account and onboarding. Name suggestions are under consideration; the current Looplane name remains until the user chooses a replacement.
+Looplane uses original branding and four learning companions from the user's character reference: Aria, Leo, Yuki, and Dr. Maya. The midnight-plum canvas (`#19172e`) and cyan/violet accents remain. No Duolingo branding, owl, or green brand palette. The user's six October 15 references establish a dark, colorful learning-game direction across every screen, including Account and onboarding. Name suggestions are under consideration; the current Looplane name remains until the user chooses a replacement.
 
 ## Evidence on Hand
 

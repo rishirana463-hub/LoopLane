@@ -1,14 +1,15 @@
 import { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import Icon from './Icon.jsx';
+import LearningCompanion from './LearningCompanion.jsx';
 import './result.css';
 export default function Result({result,onHome,onNext}) {
   const {xpEarned,perfect,leveledUp,levelAfter,lesson,wrong}=result;
   const heading = useRef(null);
   useEffect(() => { heading.current?.focus(); }, []);
   return <main className="result-screen lesson-result">
-    <motion.div className="result-character" aria-hidden="true" initial={{scale:.8,rotate:-8}} animate={{scale:1,rotate:0}} transition={{type:'spring',bounce:.3}}>
-      <img src="/robot-celebrate.png" alt="" width="320" height="320"/>
+    <motion.div className="result-character" initial={{scale:.8,rotate:-8}} animate={{scale:1,rotate:0}} transition={{type:'spring',bounce:.3}}>
+      <LearningCompanion character={perfect ? 'leo' : 'dr-maya'} variant="result"/>
     </motion.div>
     <h1 ref={heading} tabIndex={-1}>{perfect?'Perfect!':'Lesson complete!'}</h1>
     <p>{perfect?'Every answer correct. Nicely done.':`${lesson.title} complete. Keep building.`}</p>

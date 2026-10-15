@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import { getDailyXP, getLevel, getLessonStatus, buyFreeze } from '../lib/progress.js';
 import { getCourseMistakes, getNextLesson } from '../lib/curriculum.js';
 import Icon from './Icon.jsx';
+import LearningCompanion from './LearningCompanion.jsx';
 
 export default function Home({ course, progress, onStart, onPractice, onAccount, updateProgress, install }) {
   const lessons = course.units.flatMap(u => u.lessons), level = getLevel(progress.totalXP);
@@ -37,7 +38,7 @@ export default function Home({ course, progress, onStart, onPractice, onAccount,
                   </div>
                 </div>;
               })}
-              {unitIndex === 0 && <div className="path-companion" aria-hidden="true"><img src="/robot-celebrate.png" alt="" width="140" height="140"/><span>Let’s build<br/>something.</span></div>}
+              <LearningCompanion character={['aria', 'leo', 'yuki', 'dr-maya'][unitIndex % 4]}/>
             </div>
           </section>;
         })}

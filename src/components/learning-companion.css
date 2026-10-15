@@ -1,0 +1,79 @@
+.learning-companion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  pointer-events: none;
+}
+
+.learning-companion > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  object-fit: contain;
+}
+
+.learning-companion > figcaption {
+  display: grid;
+  flex-shrink: 0;
+  gap: 2px;
+  margin-top: 8px;
+  text-align: center;
+  font-size: 12px;
+  line-height: 1.4;
+  color: #d4c0ee;
+}
+
+.learning-companion figcaption strong { font-weight: 900; }
+.learning-companion figcaption span { font-weight: 750; }
+
+.learning-companion--path {
+  position: absolute;
+  top: 208px;
+  left: 0;
+  width: 112px;
+}
+
+.learning-companion--path > img { height: 160px; }
+
+.onboarding .learning-companion--onboarding {
+  width: 160px;
+  margin: 24px auto 16px;
+}
+
+.onboarding .learning-companion--onboarding > img { height: 172px; }
+
+.onboarding .learning-companion--onboarding[data-character="yuki"] {
+  width: 104px;
+  margin: 16px auto 12px;
+}
+
+.onboarding .learning-companion--onboarding[data-character="yuki"] > img { height: 108px; }
+
+.lesson-result .result-character .learning-companion--result {
+  width: 100%;
+  height: 100%;
+}
+
+.lesson-result .result-character .learning-companion--result > img {
+  flex: 1 1 0;
+  width: 100%;
+  min-height: 0;
+  height: 0;
+  object-fit: contain;
+}
+
+.learning-companion--result > figcaption {
+  margin-top: 12px;
+  font-size: 14px;
+}
+
+@media (max-width: 700px) {
+  .learning-companion--path { top: 144px; width: 88px; }
+  .learning-companion--path > img { height: 116px; }
+  .onboarding .learning-companion--onboarding { margin: 20px auto 16px; }
+  .onboarding .learning-companion--onboarding > img { height: 148px; }
+  .onboarding .learning-companion--onboarding[data-character="yuki"] { margin: 8px auto; }
+  .onboarding .learning-companion--onboarding[data-character="yuki"] > img { height: 92px; }
+}

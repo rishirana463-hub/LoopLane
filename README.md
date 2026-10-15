@@ -20,7 +20,7 @@ The curriculum includes **4 languages, 26 units, 125 lessons, and 627 questions*
 - **Practice and recovery:** five hearts with timed regeneration, perfect-run bonuses, mistake review, and streak freezes.
 - **Local-first learning:** guest progress is saved on the device; optional Supabase accounts add email/Google sign-in and cloud sync with retry behavior.
 - **Offline support:** installable PWA with cached app files, curriculum, and feedback sounds after an initial online load.
-- **Original interface:** a responsive midnight-plum design (`#19172e`), custom coding mascot, keyboard focus states, and reduced-motion support.
+- **Original interface:** a responsive midnight-plum design (`#19172e`), learning companions Aria, Leo, Yuki, and Dr. Maya, keyboard focus states, and reduced-motion support.
 - **Sharing previews:** Open Graph and Twitter metadata with an original 1200×630 preview image and accurate curriculum details.
 - **Question feedback:** “Report a problem” opens an editable email draft with the lesson and question identifiers; you review it before sending.
 - **Privacy-aware traffic counts:** Vercel Web Analytics' free tier provides aggregate production page views. The integration honors Do Not Track and Global Privacy Control, removes URL query strings and fragments, and sends no learner code, answers, account details, or progress.
