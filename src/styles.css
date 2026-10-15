@@ -208,6 +208,8 @@ progress::-moz-progress-bar{background:var(--cyan);border-radius:20px}
 .answer-key,.answer-option>svg,.code-chip>svg{flex-shrink:0}
 .answer-option code,.code-chip code{min-width:0}
 .code-block:focus-visible{outline:3px solid var(--cyan);outline-offset:4px}
+.question-type:focus-visible{outline:3px solid var(--cyan);outline-offset:4px}
 .modal,.onboarding{scroll-padding-block:24px}
+.modal-backdrop,.onboarding-backdrop,.modal,.onboarding{overscroll-behavior:contain}
 .lesson-top{width:100%}
 .modal h2{padding-right:44px}

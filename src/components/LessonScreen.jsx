@@ -37,7 +37,7 @@ export default function LessonScreen({lesson,progress,updateProgress,onComplete,
     </div>
     <div className="lesson-content">
       <div className="question-meta"><span>{lesson.title}</span><span>{index+1} / {lesson.questions.length}</span></div>
-      {lesson.concept&&<details className="lesson-concept"><summary>Concept &amp; example</summary><p>{lesson.concept}</p>{lesson.examples?.map((example,i)=><pre className="code-block" tabIndex={0} role="region" aria-label="Code example" key={i}><code>{example}</code></pre>)}</details>}
+      {lesson.concept&&<details className="lesson-concept"><summary>Concept &amp; example</summary><p>{lesson.concept}</p>{lesson.examples?.map((example,i)=><pre className="code-block" translate="no" tabIndex={0} role="region" aria-label="Code example" key={i}><code>{example}</code></pre>)}</details>}
       <div className="question-type" id="question-heading" tabIndex={-1}>{question.type==='predict'?'Predict the output':question.type==='fill'?'Fill in the gap':question.type==='reorder'?'Put the code in order':question.type==='code'?'Write the code':'Choose your answer'}</div>
       <AnimatePresence mode="wait"><motion.div key={`${question.id}:${index}`} initial={{opacity:0,x:20}} animate={{opacity:1,x:0}} exit={{opacity:0,x:-15}} transition={{duration:.18}}><QuestionBody question={question} answer={answer} onAnswer={setAnswer} disabled={!!feedback}/></motion.div></AnimatePresence>
       <QuestionReport lesson={lesson} question={question} questionNumber={index+1}/>

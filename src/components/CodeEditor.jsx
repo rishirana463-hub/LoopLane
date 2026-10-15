@@ -1,5 +1,4 @@
 import { useEffect, useId, useRef, useState } from 'react';
-import { runCode } from '../lib/codeRunner.js';
 
 function display(value) {
   if (value === undefined) return 'undefined';
@@ -43,13 +42,16 @@ export default function CodeEditor({ question, onPassChange, disabled = false })
 
   async function run() {
     controller.current?.abort();
-    controller.current = new AbortController();
+    const runController = new AbortController();
+    controller.current = runController;
     const number = ++runNumber.current;
     setRunning(true);
     setFeedback(null);
     onPass.current(false);
     try {
-      const result = await runCode({ code, functionName: question.functionName, tests: question.tests, signal: controller.current.signal });
+      const { runCode } = await import('../lib/codeRunner.js');
+      if (runController.signal.aborted || number !== runNumber.current) return;
+      const result = await runCode({ code, functionName: question.functionName, tests: question.tests, signal: runController.signal });
       if (number !== runNumber.current || result.cancelled) return;
       setFeedback(result);
       onPass.current(result.passed);
@@ -68,7 +70,10 @@ export default function CodeEditor({ question, onPassChange, disabled = false })
       </div>
       <textarea
         id={editorId}
+        name="solution"
         className="code-textarea"
+        translate="no"
+        autoComplete="off"
         value={code}
         onChange={event => changeCode(event.target.value)}
         disabled={disabled}
@@ -97,15 +102,15 @@ export default function CodeEditor({ question, onPassChange, disabled = false })
               {feedback.results.map((result, index) => (
                 <li className={`test-result ${result.passed ? 'test-pass' : 'test-fail'}`} key={index}>
                   <strong>{result.passed ? '✓ Passed' : '✕ Try again'} · Test {index + 1}</strong>
-                  <code>{question.functionName}({question.tests[index].args.map(display).join(', ')})</code>
-                  <span>Expected: <code>{display(result.expected)}</code></span>
-                  {result.error ? <span className="editor-error">{result.error}</span> : <span>Actual: <code>{display(result.actual)}</code></span>}
+                  <code translate="no">{question.functionName}({question.tests[index].args.map(display).join(', ')})</code>
+                  <span>Expected: <code translate="no">{display(result.expected)}</code></span>
+                  {result.error ? <span className="editor-error">{result.error}</span> : <span>Actual: <code translate="no">{display(result.actual)}</code></span>}
                 </li>
               ))}
             </ul>
           </div>
         )}
-        {feedback?.logs?.length > 0 && <div className="console-output"><p>Console output</p><pre>{feedback.logs.join('\n')}</pre></div>}
+        {feedback?.logs?.length > 0 && <div className="console-output"><p>Console output</p><pre translate="no">{feedback.logs.join('\n')}</pre></div>}
       </div>
     </div>
   );
