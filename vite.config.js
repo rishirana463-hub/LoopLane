@@ -60,8 +60,8 @@ export default defineConfig({
         start_url: '/',
         scope: '/',
         display: 'standalone',
-        theme_color: '#131f24',
-        background_color: '#131f24',
+        theme_color: '#19172e',
+        background_color: '#19172e',
         icons: [
           { src: '/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
           { src: '/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
@@ -71,7 +71,7 @@ export default defineConfig({
         globPatterns: ['**/*.{js,css,html,svg,png,ico,json,woff,woff2,wav}'],
         maximumFileSizeToCacheInBytes: 5 * 1024 * 1024,
         navigateFallback: '/index.html',
-        navigateFallbackDenylist: [/^\/(?:api|auth|rest|functions|storage)(?:\/|$)/],
+        navigateFallbackDenylist: [/^\/(?:api|auth|rest|functions|storage|_vercel)(?:\/|$)/],
         cleanupOutdatedCaches: true,
         // Only build assets are precached. API calls, Supabase responses,
         // and learner code receive no runtime cache route.

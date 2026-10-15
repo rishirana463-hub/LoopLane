@@ -56,7 +56,7 @@
               {
                 "id": "js-1-q4",
                 "type": "reorder",
-                "prompt": "Put the lines in the right order to print 5.",
+                "prompt": "Declare a, then b, then print their sum, 5.",
                 "blocks": [
                   "let a = 2;",
                   "let b = 3;",
@@ -230,7 +230,7 @@
               {
                 "id": "js-3-q5",
                 "type": "reorder",
-                "prompt": "Put the lines in order to print the total cost.",
+                "prompt": "Declare price, then qty, then print the total cost.",
                 "blocks": [
                   "let price = 10;",
                   "let qty = 3;",
@@ -320,7 +320,7 @@
               {
                 "id": "js-4-q5",
                 "type": "reorder",
-                "prompt": "Arrange the lines into a working if statement.",
+                "prompt": "Declare temp, then put console.log inside the if block.",
                 "blocks": [
                   "let temp = 30;",
                   "if (temp > 25) {",
@@ -403,7 +403,7 @@
               {
                 "id": "js-5-q5",
                 "type": "reorder",
-                "prompt": "Build a function that doubles a number and call it.",
+                "prompt": "Define double first, then call it with 4 and print the result.",
                 "blocks": [
                   "function double(n) {",
                   "  return n * 2;",
@@ -416,7 +416,7 @@
                   "}",
                   "console.log(double(4));"
                 ],
-                "explanation": "Define the function first, then call it. This prints 8."
+                "explanation": "This order defines double before the call, which prints 8."
               },
               {
                 "id": "js-5-q6",
@@ -844,7 +844,7 @@
             "title": "Array Length",
             "xp": 15,
             "minutes": 4,
-            "concept": "An array’s length property counts its items. For a nonempty array, its last index is length - 1. Read length without parentheses.",
+            "concept": "An array’s length property counts indexed slots, including empty slots. For the dense arrays here, that equals the item count. For a nonempty array, the last slot index is length - 1. Read length without parentheses.",
             "examples": [
               "const names = [\"Asha\", \"Lin\", \"Sam\"];\nconsole.log(names.length);\nconsole.log(names[names.length - 1]);"
             ],
@@ -852,7 +852,7 @@
               {
                 "id": "js-10-q1",
                 "type": "mcq",
-                "prompt": "What does an array’s length property tell you?",
+                "prompt": "With no empty slots, what does an array’s length property tell you?",
                 "options": [
                   "Its number of items",
                   "Its last item",
@@ -860,7 +860,7 @@
                   "Its largest number"
                 ],
                 "answer": 0,
-                "explanation": "length counts the items in the array."
+                "explanation": "With no empty slots, length equals the number of items."
               },
               {
                 "id": "js-10-q2",
@@ -1100,7 +1100,7 @@
             "title": "Map",
             "xp": 20,
             "minutes": 4,
-            "concept": "map() makes a new array by transforming each item. In n => n * 2, n is the current item and n * 2 is the returned result. The original array stays unchanged.",
+            "concept": "map() makes a new array by transforming each item. In n => n * 2, n is the current item and n * 2 is the returned result. This callback leaves the original array unchanged.",
             "examples": [
               "const numbers = [1, 2, 3];\nconst doubled = numbers.map(n => n * 2);\nconsole.log(doubled[0]);"
             ],
@@ -1182,7 +1182,7 @@
             "title": "Filter",
             "xp": 20,
             "minutes": 4,
-            "concept": "filter() creates a new array containing the items that pass a test. In n => n > 2, each item is kept only when n > 2 is true. The original array stays unchanged.",
+            "concept": "filter() creates a new array containing items whose test result is truthy (treated as true). In n => n > 2, each item is kept only when n > 2 is true. This callback leaves the original array unchanged.",
             "examples": [
               "const numbers = [1, 2, 3, 4];\nconst big = numbers.filter(n => n > 2);\nconsole.log(big[0]);"
             ],
@@ -1192,13 +1192,13 @@
                 "type": "mcq",
                 "prompt": "What does filter() keep in its new array?",
                 "options": [
-                  "Items whose test returns true",
+                  "Items whose test result is truthy (treated as true)",
                   "Every item doubled",
                   "Only the first item",
                   "Only the last item"
                 ],
                 "answer": 0,
-                "explanation": "filter() keeps the original items that pass the condition."
+                "explanation": "filter() keeps items whose test returns a value treated as true."
               },
               {
                 "id": "js-14-q2",
@@ -1636,7 +1636,7 @@
                   "*="
                 ],
                 "answer": "+=",
-                "explanation": "Increasing left raises its value in an ascending array.",
+                "explanation": "Moving left forward does not decrease its selected value in a sorted array.",
                 "id": "js-dsa-two-pointers-q2"
               },
               {

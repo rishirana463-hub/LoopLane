@@ -2,8 +2,8 @@
 name: Looplane
 description: A colorful night-time coding journey with tactile controls and an original robot.
 colors:
-  canvas: "#131f24"
-  surface: "#1b2b33"
+  canvas: "#19172e"
+  surface: "#25213c"
   ink: "#eff5f7"
   muted: "#a5b6bf"
   line: "#34454e"
@@ -141,7 +141,7 @@ Raised controls make choices feel tangible. Progress, lesson states, and immedia
 
 **Key Characteristics:**
 
-- Dark charcoal canvas with cyan actions and violet, pink, and amber accents.
+- Dark midnight plum canvas with cyan actions and violet, pink, and amber accents.
 - Heavy rounded lettering, outlined containers, and pronounced lower edges.
 - A winding lesson path and an original coding robot.
 - Compact mobile layouts, readable labels, and clear interactive states.
@@ -165,11 +165,11 @@ The frontmatter is the normative core palette; state and unit variants are prese
 
 ### Neutral
 
-- **Blue Charcoal** (`canvas`): the universal page background.
+- **Midnight Plum** (`canvas`): the universal page background.
 - **Inset Charcoal** (`surface`): code and supporting surface depth.
 - **Off-White** (`ink`), **Mist Blue** (`muted`), and **Slate Outline** (`line`): primary copy, supporting copy, and structural edges.
 
-**The One Dark World Rule.** Carry the charcoal canvas and dark controls into every route, dialog, and onboarding step.
+**The One Dark World Rule.** Carry the midnight plum canvas and dark controls into every route, dialog, and onboarding step.
 
 ## Typography
 

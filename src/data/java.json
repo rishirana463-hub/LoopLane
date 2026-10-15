@@ -1119,7 +1119,7 @@
                   "-="
                 ],
                 "answer": "+=",
-                "explanation": "Increasing left raises its value in an ascending array.",
+                "explanation": "Moving left forward does not decrease its selected value in a sorted array.",
                 "id": "java-dsa-two-pointers-q2"
               },
               {

@@ -37,6 +37,23 @@ const originalQuestionHashes = {
   "js-5-q5": "288bd11f8a9d2e065bfbec4cf4703cc78ba54e3d780376062c4d4d2c7d02a1f4"
 };
 const convertedIds = ['js-1-q5', 'js-2-q4', 'js-4-q2', 'js-5-q3'];
+// Keep the uploaded baseline hashes. Only these reviewed wording fields may
+// differ; answer keys, blocks, options, IDs, and every other field stay checked.
+const wordingCorrections = {
+  'js-1-q4': {
+    prompt: ['Put the lines in the right order to print 5.', 'Declare a, then b, then print their sum, 5.'],
+  },
+  'js-3-q5': {
+    prompt: ['Put the lines in order to print the total cost.', 'Declare price, then qty, then print the total cost.'],
+  },
+  'js-4-q5': {
+    prompt: ['Arrange the lines into a working if statement.', 'Declare temp, then put console.log inside the if block.'],
+  },
+  'js-5-q5': {
+    prompt: ['Build a function that doubles a number and call it.', 'Define double first, then call it with 4 and print the result.'],
+    explanation: ['Define the function first, then call it. This prints 8.', 'This order defines double before the call, which prints 8.'],
+  },
+};
 function canonical(value) {
   if (Array.isArray(value)) return value.map(canonical);
   if (value && typeof value === 'object') return Object.fromEntries(Object.keys(value).sort().map(key => [key, canonical(value[key])]));
@@ -61,7 +78,7 @@ test('the original JavaScript path retains its four units, fifteen lessons, and 
   assert.equal(new Set(allIds).size, allIds.length);
 });
 
-test('all twenty-five uploaded questions remain unchanged except four requested predict conversions', () => {
+test('uploaded questions retain their original fields except requested predict conversions and four reviewed reorder clarifications', () => {
   assert.deepEqual(lessons.slice(0,5).map(({id,title,xp}) => ({id,title,xp})), [
     {id:'js-1',title:'Variables',xp:10}, {id:'js-2',title:'Data Types',xp:10}, {id:'js-3',title:'Operators',xp:10},
     {id:'js-4',title:'Conditionals',xp:15}, {id:'js-5',title:'Functions',xp:15}
@@ -76,9 +93,42 @@ test('all twenty-five uploaded questions remain unchanged except four requested 
       actual.prompt += '\n\n' + actual.code;
       delete actual.code;
     }
+    for (const [field, [original, corrected]] of Object.entries(wordingCorrections[id] || {})) {
+      assert.equal(actual[field], corrected, `${id} corrected ${field}`);
+      actual[field] = original;
+    }
     assert.equal(hash(actual), expectedHash, id + ' original content changed');
   }
   assert.deepEqual(lessons.slice(0,5).flatMap(lesson => lesson.questions).filter(q => q.type === 'predict').map(q => q.id), convertedIds);
+});
+
+test('JavaScript concept wording distinguishes dense arrays, callback effects, and truthy filter results', () => {
+  const lengthLesson = lessons.find(lesson => lesson.id === 'js-10');
+  const lengthQuestion = questions.find(question => question.id === 'js-10-q1');
+  assert.match(lengthLesson.concept, /including empty slots/);
+  assert.match(lengthQuestion.prompt, /With no empty slots/);
+  assert.equal(lengthQuestion.options[lengthQuestion.answer], 'Its number of items');
+  assert.equal(runTrustedSnippet('const values = [1,,3]; console.log(values.length); console.log(Object.keys(values).length);'), '3\n2');
+
+  for (const id of ['js-13', 'js-14']) {
+    assert.match(lessons.find(lesson => lesson.id === id).concept, /This callback leaves the original array unchanged/);
+  }
+  // A caller-supplied callback can mutate its input, so the lesson promises
+  // non-mutation only for its shown callback rather than for every callback.
+  assert.equal(runTrustedSnippet('const values = [1,2]; values.map((value, index, input) => { input[index] = value * 2; return value; }); console.log(values.join(","));'), '2,4');
+  const filterQuestion = questions.find(question => question.id === 'js-14-q1');
+  assert.equal(filterQuestion.options[filterQuestion.answer], 'Items whose test result is truthy (treated as true)');
+  assert.equal(runTrustedSnippet('console.log([0,1,2].filter(value => value).join(","));'), '1,2');
+});
+
+test('two-pointer explanations permit equal neighboring values in every language', () => {
+  for (const [file, prefix] of [['lessons', 'js'], ['python', 'py'], ['java', 'java'], ['cpp', 'cpp']]) {
+    const course = JSON.parse(readFileSync(new URL(`../src/data/${file}.json`, import.meta.url), 'utf8')).course;
+    const question = course.units.flatMap(unit => unit.lessons).flatMap(lesson => lesson.questions).find(item => item.id === `${prefix}-dsa-two-pointers-q2`);
+    assert.equal(question.explanation, 'Moving left forward does not decrease its selected value in a sorted array.', question.id);
+    assert.equal(question.answer, '+=', question.id);
+  }
+  assert.equal(runTrustedSnippet('const values = [1,1,8]; let left = 0; const before = values[left]; left += 1; console.log(before + "," + values[left]);'), '1,1');
 });
 
 test('every exercise has a valid answer shape and explanation', () => {

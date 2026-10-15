@@ -20,7 +20,10 @@ The curriculum includes **4 languages, 26 units, 125 lessons, and 627 questions*
 - **Practice and recovery:** five hearts with timed regeneration, perfect-run bonuses, mistake review, and streak freezes.
 - **Local-first learning:** guest progress is saved on the device; optional Supabase accounts add email/Google sign-in and cloud sync with retry behavior.
 - **Offline support:** installable PWA with cached app files, curriculum, and feedback sounds after an initial online load.
-- **Original interface:** a responsive dark design, custom coding mascot, keyboard focus states, and reduced-motion support.
+- **Original interface:** a responsive midnight-plum design (`#19172e`), custom coding mascot, keyboard focus states, and reduced-motion support.
+- **Sharing previews:** Open Graph and Twitter metadata with an original 1200×630 preview image and accurate curriculum details.
+- **Question feedback:** “Report a problem” opens an editable email draft with the lesson and question identifiers; you review it before sending.
+- **Privacy-aware traffic counts:** Vercel Web Analytics' free tier provides aggregate production page views. The integration honors Do Not Track and Global Privacy Control, removes URL query strings and fragments, and sends no learner code, answers, account details, or progress.
 
 ## Curriculum
 
@@ -55,6 +58,7 @@ The new languages use guided code reading, output prediction, fill-in-the-blank,
 | Optional authentication and database | Supabase |
 | Offline support | vite-plugin-pwa / Workbox |
 | Hosting | Vercel |
+| Aggregate page-view analytics | Vercel Web Analytics |
 | Tests | Node.js test runner |
 
 ## Getting started
@@ -140,7 +144,7 @@ vercel.json            SPA routing configuration
 
 ## Testing
 
-Automated tests cover progress rules, streak boundaries, independent language unlocking, selection persistence, curriculum schemas and answers, code-runner lifecycle, sandbox policy and timeouts, and feedback audio. Python and Java curriculum snippets were also executed locally during authoring; C++ received manual review because a compiler was unavailable.
+Automated tests cover progress rules, streak boundaries, independent language unlocking, selection persistence, curriculum schemas and answers, code-runner lifecycle, sandbox policy and timeouts, feedback audio, sharing metadata, question-report drafts, and analytics privacy filtering. Python and Java curriculum snippets were also executed locally during authoring. C++ has not been compiler-verified; independent educational content review remains important.
 
 ```bash
 npm test
@@ -161,6 +165,8 @@ Import the repository into Vercel and use:
 
 Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY only if accounts and cloud sync are required. Configure the corresponding production Auth URLs in Supabase. The included vercel.json rewrites application routes to index.html so direct links and refreshes work.
 
+Enable Web Analytics in the Vercel project dashboard to view aggregate traffic. Analytics runs only on the configured production hostname and public page views; it does not track lesson actions. If deploying under another hostname, update the production hostname in src/lib/analytics.js and the canonical/share URLs in index.html.
+
 ## Contributing
 
 Open an issue to discuss a proposed change, or submit a focused pull request. Keep lesson content in the JSON curriculum, preserve the browser-only code runner, and run the tests and production build before submitting.
@@ -168,3 +174,5 @@ Open an issue to discuss a proposed change, or submit a focused pull request. Ke
 ## Support
 
 For support or account-deletion requests, contact **[rishirana463@gmail.com](mailto:rishirana463@gmail.com)**. See the [privacy policy](https://looplane-jogger.vercel.app/privacy) for details about local and synced progress.
+
+Use **Report a problem** below any question to prepare an email with its context. Looplane never sends this report automatically.
