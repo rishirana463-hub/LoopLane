@@ -50,6 +50,7 @@ export function createProgress(now = Date.now()) {
     mistakes: {},
     dailyXP: {},
     dailyGoal: 20,
+    activeCourseId: 'javascript-basics',
     muted: false,
     freezes: 1,
     onboarded: false,
@@ -70,6 +71,7 @@ export function normalizeProgress(raw, now = Date.now()) {
   result.freezeThroughDate = validDate(raw.freezeThroughDate) ? raw.freezeThroughDate : null;
   result.streak = result.lastCompletedDate ? bound(raw.streak, 0, 1000000) : 0;
   result.dailyGoal = bound(raw.dailyGoal, 10, 500, 20);
+  result.activeCourseId = validID(raw.activeCourseId) ? raw.activeCourseId : result.activeCourseId;
   result.muted = typeof raw.muted === 'boolean' ? raw.muted : false;
   result.freezes = bound(raw.freezes, 0, 1, 1);
   result.onboarded = typeof raw.onboarded === 'boolean' ? raw.onboarded : false;
@@ -243,6 +245,9 @@ export function mergeProgress(local, remote, now = Date.now()) {
   const left = refreshProgress(local, currentTime);
   const right = refreshProgress(remote, currentTime);
   const progress = normalizeProgress(left, currentTime);
+  // Course selection is a device preference; a remote snapshot must not move
+  // the learner to another language while progress is being synchronized.
+  progress.activeCourseId = left.activeCourseId;
   progress.totalXP = Math.max(left.totalXP, right.totalXP);
   progress.streak = Math.max(left.streak, right.streak);
   progress.lastCompletedDate = latestDate(left.lastCompletedDate, right.lastCompletedDate);

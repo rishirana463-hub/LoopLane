@@ -1,36 +1,48 @@
 # LoopLane
 
-A mobile-first JavaScript learning app with bite-sized lessons, instant feedback, and progress that stays with you offline.
+A mobile-first coding app with JavaScript, Python, Java, and C++ paths, beginner-to-expert DSA lessons, and offline progress.
 
 **[Open the live app](https://looplane-jogger.vercel.app/)** · **[Privacy policy](https://looplane-jogger.vercel.app/privacy)**
 
-![LoopLane dashboard with a JavaScript learning path and progress panels](docs/screenshots/home-desktop.jpg)
+![LoopLane dashboard with the Python learning path, language selector, and shared progress panels](docs/screenshots/home-desktop.jpg)
 
 ## Overview
 
-LoopLane turns JavaScript fundamentals into short, interactive practice sessions. Follow a sequential learning path, answer questions, write small functions, and revisit mistakes. Start as a guest or connect an account to sync progress across devices.
+LoopLane turns programming fundamentals and data structures and algorithms into short, interactive practice sessions. Choose a language, follow its sequential path, and revisit mistakes. Start as a guest or connect an account to sync progress across devices.
 
-The app includes **4 units, 15 lessons, and 77 questions**, including two coding exercises.
+The curriculum includes **4 languages, 26 units, 125 lessons, and 627 questions**, including two JavaScript coding exercises.
 
 ## Features
 
 - **Interactive lessons:** multiple choice, fill-in-the-blank, code reordering, output prediction, and in-browser coding exercises.
-- **Learning progress:** sequential lesson unlocking, XP, levels, local-calendar-day streaks, and daily goals of 10, 20, or 30 XP.
+- **Language paths:** switch between JavaScript, Python, Java, and C++; each has independent lesson prerequisites and scoped mistake practice.
+- **Learning progress:** shared XP, levels, hearts, local-calendar-day streaks, and daily goals of 10, 20, or 30 XP. Your selected language is saved.
 - **Practice and recovery:** five hearts with timed regeneration, perfect-run bonuses, mistake review, and streak freezes.
 - **Local-first learning:** guest progress is saved on the device; optional Supabase accounts add email/Google sign-in and cloud sync with retry behavior.
 - **Offline support:** installable PWA with cached app files, curriculum, and feedback sounds after an initial online load.
-- **Original interface:** a responsive lavender design, custom coding mascot, keyboard focus states, and reduced-motion support.
+- **Original interface:** a responsive dark design, custom coding mascot, keyboard focus states, and reduced-motion support.
 
 ## Curriculum
 
-| Unit | Lessons | Topics |
-| --- | ---: | --- |
-| Basics | 3 | Variables, data types, operators |
-| Logic | 2 | Conditionals, functions |
-| Loops & Arrays | 5 | For loops, while loops, indexing, push/pop, array length |
-| Objects & Methods | 5 | Objects, properties, map, filter, template literals |
+| Language | Units | Lessons | Questions | Source |
+| --- | ---: | ---: | ---: | --- |
+| JavaScript | 8 | 35 | 177 | [lessons.json](src/data/lessons.json) |
+| Python | 6 | 30 | 150 | [python.json](src/data/python.json) |
+| Java | 6 | 30 | 150 | [java.json](src/data/java.json) |
+| C++ | 6 | 30 | 150 | [cpp.json](src/data/cpp.json) |
 
-Most lessons contain five questions. The Functions lesson contains seven, including two coding exercises. Curriculum content lives in [src/data/lessons.json](src/data/lessons.json).
+Each path starts with language-specific foundations, then advances through these DSA units with examples in that language:
+
+| Difficulty | Unit | Topics |
+| --- | --- | --- |
+| Intermediate | Complexity & Search | Big O, linear and binary search, two pointers, sliding windows |
+| Advanced | Data Structures | Stacks, queues, linked lists, trees, hash maps |
+| Advanced | Algorithms | Merge sort, BFS, DFS, heaps, greedy algorithms |
+| Expert | Expert DSA | Memoization, tabulation, Dijkstra, disjoint sets, tries |
+
+Every added lesson contains five questions and a concept/example reference. The original JavaScript Functions lesson retains seven questions, including two coding exercises. Completing a lesson unlocks the next lesson in that language. XP levels remain shared and increase every 50 XP.
+
+The new languages use guided code reading, output prediction, fill-in-the-blank, and reorder exercises. **Executable learner-code exercises are JavaScript-only.** Python examples target Python 3, Java examples Java 17, and C++ examples C++17. All four courses are included in the offline cache.
 
 ## Tech stack
 
@@ -112,8 +124,9 @@ Learner code is not sent to Supabase or executed on an application server.
 ```text
 src/
   components/          Reusable screens and UI components
-  data/lessons.json    Curriculum source
+  data/*.json         Language curricula (course → units → lessons → questions)
   lib/
+    curriculum.js      Course catalog and language-scoped helpers
     progress.js        Pure game and progress rules
     useProgress.js     Local persistence and account sync
     codeRunner.js      Isolated browser code runner
@@ -127,7 +140,7 @@ vercel.json            SPA routing configuration
 
 ## Testing
 
-The project includes **33 automated tests** covering progress rules, streak boundaries, lesson unlocking, curriculum answers, code-runner lifecycle, sandbox policy and timeouts, and feedback audio.
+Automated tests cover progress rules, streak boundaries, independent language unlocking, selection persistence, curriculum schemas and answers, code-runner lifecycle, sandbox policy and timeouts, and feedback audio. Python and Java curriculum snippets were also executed locally during authoring; C++ received manual review because a compiler was unavailable.
 
 ```bash
 npm test

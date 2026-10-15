@@ -7,6 +7,8 @@ import vm from 'node:vm';
 const data = JSON.parse(readFileSync(new URL('../src/data/lessons.json', import.meta.url), 'utf8'));
 const lessons = data.course.units.flatMap(unit => unit.lessons);
 const questions = lessons.flatMap(lesson => lesson.questions);
+const originalUnits = data.course.units.slice(0, 4);
+const originalLessons = originalUnits.flatMap(unit => unit.lessons);
 const originalQuestionHashes = {
   "js-1-q1": "c8344e3a7c13d9d7523adf46343a9cba5b996c3873760d3edc4b98d6abb7f0be",
   "js-1-q2": "0d91e418bb7361c6c1cd2255983b1d3a6faad92b2896716eed4cf34e381ee772",
@@ -47,14 +49,14 @@ function runTrustedSnippet(code) {
   return output.join('\n');
 }
 
-test('curriculum has the requested four units, fifteen lessons, and seventy-seven questions', () => {
+test('the original JavaScript path retains its four units, fifteen lessons, and seventy-seven questions', () => {
   assert.equal(data.course.id, 'javascript-basics');
   assert.equal(data.course.title, 'JavaScript Basics');
-  assert.deepEqual(data.course.units.map(unit => unit.title), ['Basics', 'Logic', 'Loops & Arrays', 'Objects & Methods']);
-  assert.deepEqual(data.course.units.map(unit => unit.lessons.length), [3, 2, 5, 5]);
-  assert.equal(lessons.length, 15);
-  assert.equal(questions.length, 77);
-  assert.deepEqual(lessons.map(lesson => lesson.questions.length), [5,5,5,5,7,5,5,5,5,5,5,5,5,5,5]);
+  assert.deepEqual(originalUnits.map(unit => unit.title), ['Basics', 'Logic', 'Loops & Arrays', 'Objects & Methods']);
+  assert.deepEqual(originalUnits.map(unit => unit.lessons.length), [3, 2, 5, 5]);
+  assert.equal(originalLessons.length, 15);
+  assert.equal(originalLessons.flatMap(lesson => lesson.questions).length, 77);
+  assert.deepEqual(originalLessons.map(lesson => lesson.questions.length), [5,5,5,5,7,5,5,5,5,5,5,5,5,5,5]);
   const allIds = [data.course.id, ...data.course.units.map(unit => unit.id), ...lessons.map(lesson => lesson.id), ...questions.map(question => question.id)];
   assert.equal(new Set(allIds).size, allIds.length);
 });
@@ -100,7 +102,7 @@ test('every exercise has a valid answer shape and explanation', () => {
 });
 
 test('new lessons include all four curated exercise types and concise explanations', () => {
-  for (const unit of data.course.units.slice(2)) {
+  for (const unit of originalUnits.slice(2)) {
     const types = new Set(unit.lessons.flatMap(lesson => lesson.questions).map(q => q.type));
     for (const type of ['mcq','fill','reorder','predict']) assert.ok(types.has(type), unit.id + ' missing ' + type);
   }
@@ -120,7 +122,7 @@ test('new authored predict answers execute to the stated output', () => {
 test('new authored fill, reorder, and teaching examples execute correctly', () => {
   const fillOutputs = {'js-6-q2':'0\n1\n2','js-7-q2':'3','js-8-q2':'toast','js-9-q2':'blue','js-10-q2':'2','js-11-q2':'10','js-12-q2':'10','js-13-q2':'4','js-14-q2':'2','js-15-q2':'Hi, Asha!'};
   const reorderOutputs = {'js-6-q4':'0\n1','js-7-q4':'1\n2\n3','js-8-q4':'5','js-9-q4':'2','js-10-q4':'Sam','js-11-q4':'7','js-12-q4':'2','js-13-q4':'3','js-14-q4':'2','js-15-q4':'Hi, Asha!'};
-  for (const lesson of lessons.slice(5)) {
+  for (const lesson of originalLessons.slice(5)) {
     for (const q of lesson.questions) {
       if (q.type === 'fill') assert.equal(runTrustedSnippet(q.code.replace('___', q.answer)), fillOutputs[q.id], q.id);
       if (q.type === 'reorder') assert.equal(runTrustedSnippet(q.answer.join('\n')), reorderOutputs[q.id], q.id);

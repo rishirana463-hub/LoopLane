@@ -1,17 +1,62 @@
 import { motion } from 'framer-motion';
-import { getDailyXP,getLevel,getLessonStatus,buyFreeze } from '../lib/progress.js';
+import { getDailyXP, getLevel, getLessonStatus, buyFreeze } from '../lib/progress.js';
+import { getCourseMistakes, getNextLesson } from '../lib/curriculum.js';
 import Icon from './Icon.jsx';
-export default function Home({course,progress,onStart,onPractice,onAccount,updateProgress,install}) {
-  const lessons=course.units.flatMap(u=>u.lessons), level=getLevel(progress.totalXP);
-  const next=lessons.find(l=>getLessonStatus(progress,course,l.id)==='current');
-  const count=lessons.filter(l=>progress.completed[l.id]).length;
-  const daily=getDailyXP(progress), mistakes=Object.keys(progress.mistakes).length;
-  return <div className="dashboard"><div className="journey"><section className="hero"><div className="hero-copy"><div className="eyebrow"><span className="tiny-dot"/> A LITTLE EVERY DAY</div><h1>A little code.<br/><em>A big leap.</em></h1><p>Your next “aha!” moment is a few minutes away.</p><button className="button hero-button" onClick={()=>onStart(next||lessons[0])}>{count ? 'Continue learning' : 'Start learning'}<Icon name="arrow" size={19}/></button><span className="hero-meta">{count} of {lessons.length} lessons complete · At your pace</span></div><div className="hero-art" aria-hidden="true"><div className="orbit orbit-one"/><div className="orbit orbit-two"/><span className="floating-tag tag-one">&lt;/&gt;</span><span className="floating-tag tag-two">{ }</span><div className="code-buddy"><div className="buddy-antenna"/><div className="buddy-screen"><i/><i/><b/></div><div className="buddy-leg left"/><div className="buddy-leg right"/></div><span className="art-star star-one">✦</span><span className="art-star star-two">✦</span><span className="art-caption">one step closer.</span></div></section><div className="section-title"><div><span className="eyebrow">YOUR LEARNING PATH</span><h2>Let’s connect the dots.</h2></div><span className="course-pill"><span className="tiny-dot"/> Beginner friendly</span></div><div className="course-path">{course.units.map((unit,unitIndex)=> {
-    const unitDone=unit.lessons.filter(l=>progress.completed[l.id]).length;
-    const locked=getLessonStatus(progress,course,unit.lessons[0].id)==='locked';
-    return <section className={`unit unit-${unitIndex+1}`} key={unit.id}><div className={`unit-banner ${locked?'unit-locked':''}`}><span className="unit-number">{String(unitIndex+1).padStart(2,'0')}</span><div><span className="unit-kicker">UNIT {unitIndex+1} {locked?'· LOCKED':''}</span><h3>{unit.title}</h3><p>{unit.description}</p></div><span className="unit-count">{unitDone}/{unit.lessons.length}</span></div><div className="lesson-path">{unit.lessons.map((lesson,index)=>{
-      const status=getLessonStatus(progress,course,lesson.id);
-      return <div className={`path-row row-${index%4} ${status}`} key={lesson.id}><motion.button whileTap={status==='locked'?undefined:{scale:.94}} className={`lesson-node ${status}`} disabled={status==='locked'} aria-label={`${lesson.title}, ${status}, ${lesson.xp} XP`} onClick={()=>onStart(lesson)}>{status==='done'?<Icon name="check" size={30}/>:status==='locked'?<Icon name="lock" size={24}/>:<Icon name={unitIndex===0?'code':unitIndex===1?'bolt':unitIndex===2?'refresh':'book'} size={30}/>}</motion.button><div className="node-copy">{status==='current'&&<span className="start-label">YOU ARE HERE</span>}<strong>{lesson.title}</strong><span>{status==='done'?'Completed · Play again':`${lesson.questions.length} questions · ${lesson.minutes||3} min`}</span></div>{status==='current'&&<span className="node-spark" aria-hidden="true">✦</span>}</div>;
-    })}</div></section>;
-  })}</div><div className="path-end"><Icon name="star"/><strong>Every expert started with one line.</strong><p>Keep showing up. You’ve got this.</p></div></div><aside className="right-rail"><section className="card daily-card"><div className="card-heading"><h2>Daily goal</h2><Icon name="target"/></div><div className="goal-ring" style={{'--goal':`${Math.min(100,daily/progress.dailyGoal*100)}%`}} role="img" aria-label={`${daily} of ${progress.dailyGoal} XP daily goal`}><div><Icon name="bolt" size={27}/><strong>{daily}<span> / {progress.dailyGoal}</span></strong><small>XP TODAY</small></div></div><h3>{daily>=progress.dailyGoal?'Goal? Crushed it.':'Small steps add up.'}</h3><p>{daily>=progress.dailyGoal?'You made time for your future self.':'A few minutes today. A little more confidence tomorrow.'}</p><div className="goal-options" role="group" aria-label="Daily XP goal">{[10,20,30].map(goal=><button key={goal} aria-pressed={progress.dailyGoal===goal} onClick={()=>updateProgress(p=>({...p,dailyGoal:goal}))}>{goal} XP</button>)}</div></section><section className="card level-card"><div className="level-icon"><Icon name="trophy" size={28}/></div><div><span className="eyebrow">GROWING STRONGER</span><h3>Level {level.level}</h3></div><progress max="50" value={level.progressXP} aria-label="XP progress to next level"/><small>{50-level.progressXP} XP to level {level.level+1}</small></section><section className="card practice-card"><span className="mini-illustration"><Icon name="refresh" size={28}/></span><h3>Make mistakes.<br/>Make progress.</h3><p>{mistakes?`${mistakes} question${mistakes===1?'':'s'} ready for another try.`:'Missed questions will appear here. Get each right twice to clear it.'}</p><button className="button secondary" onClick={onPractice} disabled={!mistakes}>Practice mistakes<Icon name="arrow" size={18}/></button></section><section className="freeze-card"><Icon name="snow" size={28}/><div><strong>Streak freeze</strong><p>{progress.freezes?'1 ready · a missed day is covered':'Protect one missed day for 50 XP.'}</p></div>{!progress.freezes&&<button className="text-button" disabled={progress.totalXP<50} onClick={()=>updateProgress(buyFreeze)}>Buy · 50 XP</button>}</section><div className="rail-settings"><button className="text-button" onClick={()=>updateProgress(p=>({...p,muted:!p.muted}))}><Icon name={progress.muted?'mute':'sound'} size={18}/>{progress.muted?'Sound off':'Sound on'}</button>{install.canInstall&&<button className="text-button" onClick={install.install}><Icon name="download" size={18}/>Install app</button>}<button className="text-button" onClick={onAccount}><Icon name="cloud" size={18}/>Save across devices</button></div><p className="rail-footer">MADE FOR YOUR NEXT AHA.<br/><a href="/privacy">Privacy</a> · <span>Looplane © {new Date().getFullYear()}</span></p></aside></div>;
+
+export default function Home({ course, progress, onStart, onPractice, onAccount, updateProgress, install }) {
+  const lessons = course.units.flatMap(u => u.lessons), level = getLevel(progress.totalXP);
+  const next = getNextLesson(progress, course);
+  const count = lessons.filter(l => progress.completed[l.id]).length;
+  const daily = getDailyXP(progress), mistakes = getCourseMistakes(progress, course).length;
+
+  return <div className="dashboard">
+    <div className="journey">
+      <div className="path-heading">
+        <div><h1>{course.language} path</h1><p>{count} of {lessons.length} lessons complete</p></div>
+        <button className="continue-button" onClick={() => onStart(next || lessons[0])}>{next ? 'Continue' : 'Review'}<Icon name="arrow" size={18}/></button>
+      </div>
+      <div className="course-path">
+        {course.units.map((unit, unitIndex) => {
+          const unitDone = unit.lessons.filter(l => progress.completed[l.id]).length;
+          const locked = getLessonStatus(progress, course, unit.lessons[0].id) === 'locked';
+          return <section className={`unit unit-${unitIndex % 4 + 1}`} key={unit.id} aria-labelledby={`unit-title-${unit.id}`}>
+            <div className={`unit-banner ${locked ? 'unit-locked' : ''}`}>
+              <div className="unit-heading"><span className="unit-kicker">Unit {unitIndex + 1} · {unit.level} · {locked ? 'Locked' : `${unitDone}/${unit.lessons.length} complete`}</span><h2 id={`unit-title-${unit.id}`}>{unit.title}</h2><p>{unit.description}</p></div>
+              <Icon name={locked ? 'lock' : 'book'} size={30}/>
+            </div>
+            <div className="lesson-path">
+              {unit.lessons.map((lesson, index) => {
+                const status = getLessonStatus(progress, course, lesson.id);
+                return <div className={`path-row row-${index % 4} ${status}`} key={lesson.id}>
+                  <div className="node-cluster">
+                    {status === 'current' && <span className="start-label">Start here</span>}
+                    <motion.button whileTap={status === 'locked' ? undefined : { scale: .94 }} className={`lesson-node ${status}`} disabled={status === 'locked'} aria-label={`${lesson.title}, ${status}, ${lesson.xp} XP`} onClick={() => onStart(lesson)}>
+                      <Icon name={status === 'done' ? 'check' : status === 'locked' ? 'lock' : index === unit.lessons.length - 1 ? 'star' : 'code'} size={32}/>
+                    </motion.button>
+                    <div className="node-copy"><strong>{lesson.title}</strong><span>{lesson.questions.length} questions · {status === 'done' ? 'Completed' : status === 'locked' ? 'Locked' : 'Ready'}</span></div>
+                  </div>
+                </div>;
+              })}
+              {unitIndex === 0 && <div className="path-companion" aria-hidden="true"><img src="/robot-celebrate.png" alt="" width="140" height="140"/><span>Let’s build<br/>something.</span></div>}
+            </div>
+          </section>;
+        })}
+      </div>
+      <div className="path-end"><Icon name="code" size={32}/><strong>One lesson closer.</strong><p>Your next idea starts here.</p></div>
+    </div>
+    <aside className="right-rail" aria-label="Learning progress">
+      <section className="card daily-card">
+        <div className="card-heading"><h2>Daily goal</h2><Icon name="target"/></div>
+        <div className="daily-total"><Icon name="bolt" size={30}/><strong>{daily}<span> / {progress.dailyGoal} XP</span></strong></div>
+        <progress max={progress.dailyGoal} value={Math.min(daily, progress.dailyGoal)} aria-label={`${daily} of ${progress.dailyGoal} XP daily goal`}/>
+        <p>{daily >= progress.dailyGoal ? 'Daily goal complete. Nice work!' : 'A little practice goes a long way.'}</p>
+        <div className="goal-options" role="group" aria-label="Daily XP goal">{[10, 20, 30].map(goal => <button key={goal} aria-pressed={progress.dailyGoal === goal} onClick={() => updateProgress(p => ({ ...p, dailyGoal: goal }))}>{goal} XP</button>)}</div>
+      </section>
+      <section className="card level-card"><div className="card-heading"><h2>Level {level.level}</h2><Icon name="trophy"/></div><progress max="50" value={level.progressXP} aria-label="XP progress to next level"/><p>{50 - level.progressXP} XP to level {level.level + 1}</p></section>
+      <section className="card practice-card"><div className="card-heading"><h2>Sharpen your skills</h2><Icon name="refresh"/></div><p>{mistakes ? `${mistakes} question${mistakes === 1 ? '' : 's'} ready to review.` : 'Missed questions land here. Get each right twice to clear it.'}</p><button className="button secondary" onClick={onPractice} disabled={!mistakes}>Review mistakes<Icon name="arrow" size={18}/></button></section>
+      <section className="freeze-card"><Icon name="snow" size={28}/><div><strong>Streak freeze</strong><p>{progress.freezes ? '1 ready · a missed day is covered' : 'Protect one missed day for 50 XP.'}</p></div>{!progress.freezes && <button className="text-button" disabled={progress.totalXP < 50} onClick={() => updateProgress(buyFreeze)}>Buy · 50 XP</button>}</section>
+      <div className="rail-settings"><button className="text-button" onClick={() => updateProgress(p => ({ ...p, muted: !p.muted }))}><Icon name={progress.muted ? 'mute' : 'sound'} size={18}/>{progress.muted ? 'Sound off' : 'Sound on'}</button>{install.canInstall && <button className="text-button" onClick={install.install}><Icon name="download" size={18}/>Install app</button>}<button className="text-button" onClick={onAccount}><Icon name="cloud" size={18}/>Save across devices</button></div>
+      <p className="rail-footer"><a href="/privacy">Privacy</a><span>Looplane © {new Date().getFullYear()}</span></p>
+    </aside>
+  </div>;
 }

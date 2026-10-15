@@ -28,5 +28,24 @@ export default function LessonScreen({lesson,progress,updateProgress,onComplete,
     if(index===lesson.questions.length-1){onComplete(lesson,wrong);return;}
     setIndex(i=>i+1);setAnswer(null);setFeedback(null);
   }
-  return <div className="lesson-screen"><div className="lesson-top"><button className="icon-button" aria-label="Exit lesson" onClick={()=>setExit(true)}><Icon name="close"/></button><progress max={lesson.questions.length} value={index+(feedback?1:0)} aria-label={`Question ${index+1} of ${lesson.questions.length}`}/><span className="lesson-hearts"><Icon name="heart"/>{progress.hearts}</span></div><div className="lesson-content"><div className="question-meta"><span className="eyebrow">{lesson.title}</span><span>{index+1} / {lesson.questions.length}</span></div><div className="question-type" id="question-heading" tabIndex={-1}>{question.type==='predict'?'READ THE CODE':question.type==='fill'?'FILL THE GAP':question.type==='reorder'?'PUT IT TOGETHER':question.type==='code'?'YOUR TURN TO CODE':'QUICK QUESTION'}</div><AnimatePresence mode="wait"><motion.div key={`${question.id}:${index}`} initial={{opacity:0,x:20}} animate={{opacity:1,x:0}} exit={{opacity:0,x:-15}} transition={{duration:.18}}><QuestionBody question={question} answer={answer} onAnswer={setAnswer} disabled={!!feedback}/></motion.div></AnimatePresence></div><div className={`lesson-footer ${feedback?(feedback.correct?'correct':'wrong'):''}`}><div className="lesson-footer-inner">{feedback?<motion.div className="feedback" role="status" initial={{y:10,opacity:0}} animate={{y:0,opacity:1}}><span className="feedback-icon"><Icon name={feedback.correct?'check':'close'}/></span><div><strong>{feedback.correct?'That’s it!':'A useful little mistake.'}</strong><p>{feedback.explanation}</p></div></motion.div>:<p className="check-hint">{question.type==='code'?'Run your code and pass every test.':'Take your time. You’re here to learn.'}</p>}<button className="button check-button" disabled={!feedback&&!isReady} onClick={feedback?next:check}>{feedback?(index===lesson.questions.length-1?'See results':'Continue'):'Check'}<Icon name="arrow" size={19}/></button></div></div>{exit&&<Modal title="Leave this lesson?" onClose={closeExit}><h2>Take a breather?</h2><p>Leaving this lesson won’t earn XP. Your completed lessons are saved.</p><button className="button" onClick={closeExit}>Keep learning</button><button className="button secondary" onClick={onExit}>Leave lesson</button></Modal>}</div>;
+  return <div className="lesson-screen">
+    <div className="lesson-top">
+      <button className="icon-button" aria-label="Exit lesson" onClick={()=>setExit(true)}><Icon name="close"/></button>
+      <progress max={lesson.questions.length} value={index+(feedback?1:0)} aria-label={`Question ${index+1} of ${lesson.questions.length}`}/>
+      <span className="lesson-hearts" aria-label={`${progress.hearts} hearts remaining`}><Icon name="heart"/>{progress.hearts}</span>
+    </div>
+    <div className="lesson-content">
+      <div className="question-meta"><span>{lesson.title}</span><span>{index+1} / {lesson.questions.length}</span></div>
+      {lesson.concept&&<details className="lesson-concept"><summary>Concept &amp; example</summary><p>{lesson.concept}</p>{lesson.examples?.map((example,i)=><pre className="code-block" key={i}><code>{example}</code></pre>)}</details>}
+      <div className="question-type" id="question-heading" tabIndex={-1}>{question.type==='predict'?'Predict the output':question.type==='fill'?'Fill in the gap':question.type==='reorder'?'Put the code in order':question.type==='code'?'Write the code':'Choose your answer'}</div>
+      <AnimatePresence mode="wait"><motion.div key={`${question.id}:${index}`} initial={{opacity:0,x:20}} animate={{opacity:1,x:0}} exit={{opacity:0,x:-15}} transition={{duration:.18}}><QuestionBody question={question} answer={answer} onAnswer={setAnswer} disabled={!!feedback}/></motion.div></AnimatePresence>
+    </div>
+    <div className={`lesson-footer ${feedback?(feedback.correct?'correct':'wrong'):''}`}>
+      <div className="lesson-footer-inner">
+        {feedback?<motion.div className="feedback" role="status" initial={{y:10,opacity:0}} animate={{y:0,opacity:1}}><span className="feedback-icon"><Icon name={feedback.correct?'check':'close'}/></span><div><strong>{feedback.correct?'Correct!':'Not quite.'}</strong><p>{feedback.explanation}</p></div></motion.div>:<p className="check-hint">{question.type==='code'?'Run your code and pass every test.':'Choose your answer, then check it.'}</p>}
+        <button className="button check-button" disabled={!feedback&&!isReady} onClick={feedback?next:check}>{feedback?(index===lesson.questions.length-1?'See results':'Continue'):'Check answer'}<Icon name="arrow" size={19}/></button>
+      </div>
+    </div>
+    {exit&&<Modal title="Leave this lesson?" onClose={closeExit}><h2>Leave this lesson?</h2><p>You won’t earn XP for this lesson. Completed lessons stay saved.</p><button className="button" onClick={closeExit}>Keep learning</button><button className="button secondary" onClick={onExit}>Leave lesson</button></Modal>}
+  </div>;
 }

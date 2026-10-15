@@ -1,25 +1,31 @@
-import { readFile } from 'node:fs/promises';
+import { readFile, readdir } from 'node:fs/promises';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { VitePWA } from 'vite-plugin-pwa';
 
-const lessonSource = new URL('./src/data/lessons.json', import.meta.url);
+const lessonDirectory = new URL('./src/data/', import.meta.url);
 
 // Emit the same curriculum used by React, rather than maintaining a public copy.
 function lessonJSON() {
   return {
     name: 'looplane-lesson-json',
     async generateBundle() {
-      const source = await readFile(lessonSource, 'utf8');
-      JSON.parse(source);
-      this.emitFile({ type: 'asset', fileName: 'data/lessons.json', source });
+      const files = (await readdir(lessonDirectory)).filter(name => name.endsWith('.json'));
+      for (const name of files) {
+        const source = await readFile(new URL(name, lessonDirectory), 'utf8');
+        JSON.parse(source);
+        this.emitFile({ type: 'asset', fileName: `data/${name}`, source });
+      }
     },
     configureServer(server) {
       server.middlewares.use(async (request, response, next) => {
-        if (request.url?.split('?')[0] !== '/data/lessons.json') return next();
+        const match = request.url?.split('?')[0].match(/^\/data\/([a-z0-9_-]+\.json)$/i);
+        if (!match) return next();
         try {
-          const source = await readFile(lessonSource, 'utf8');
+          const files = await readdir(lessonDirectory);
+          if (!files.includes(match[1])) return next();
+          const source = await readFile(new URL(match[1], lessonDirectory), 'utf8');
           response.setHeader('Content-Type', 'application/json; charset=utf-8');
           response.end(source);
         } catch (error) {
@@ -45,7 +51,7 @@ export default defineConfig({
     VitePWA({
       registerType: 'prompt',
       injectRegister: false,
-      includeAssets: ['logo.svg'],
+      includeAssets: ['logo.svg', 'fonts/nunito-variable.ttf'],
       manifest: {
         id: '/',
         name: 'Looplane — learn to code',
@@ -54,8 +60,8 @@ export default defineConfig({
         start_url: '/',
         scope: '/',
         display: 'standalone',
-        theme_color: '#6845db',
-        background_color: '#faf8f3',
+        theme_color: '#131f24',
+        background_color: '#131f24',
         icons: [
           { src: '/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
           { src: '/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },

@@ -251,7 +251,8 @@
               "console.log(5 === \"5\");"
             ]
           }
-        ]
+        ],
+        "level": "Beginner"
       },
       {
         "id": "logic",
@@ -498,7 +499,8 @@
               "function add(a, b) {\n  return a + b;\n}\nconsole.log(add(2, 3));"
             ]
           }
-        ]
+        ],
+        "level": "Beginner"
       },
       {
         "id": "loops-arrays",
@@ -919,7 +921,8 @@
               }
             ]
           }
-        ]
+        ],
+        "level": "Intermediate"
       },
       {
         "id": "objects-methods",
@@ -1338,12 +1341,1726 @@
               }
             ]
           }
+        ],
+        "level": "Intermediate"
+      },
+      {
+        "id": "js-dsa-complexity-search",
+        "title": "Complexity & Search",
+        "description": "Bound growth, find values, and maintain shrinking search spaces.",
+        "level": "Intermediate",
+        "lessons": [
+          {
+            "id": "js-dsa-big-o",
+            "title": "Big O",
+            "xp": 20,
+            "minutes": 5,
+            "level": "Intermediate",
+            "concept": "Big O describes an upper bound on growth as input size increases. Ignore fixed factors, but count dependent loops carefully: two separate linear scans stay linear; two full nested scans are quadratic. These lessons use the usual RAM model with constant-time arithmetic on small integers. Examples use JavaScript.",
+            "examples": [
+              "let count = 0;\nfor (let i = 0; i < 3; i++) {\n  for (let j = 0; j < 3; j++) count++;\n}\nconsole.log(count);",
+              "const values = [];\nlet count = 0;\nfor (const value of values) count++;\nconsole.log(count);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What does O(n) describe?",
+                "options": [
+                  "An upper bound proportional to input size",
+                  "Exactly n milliseconds",
+                  "A fixed number of operations",
+                  "An algorithm that always beats O(log n)"
+                ],
+                "answer": 0,
+                "explanation": "Big O measures growth, not exact running time.",
+                "id": "js-dsa-big-o-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Visit every valid array index exactly once, from first to last.",
+                "code": "for (let i = 0; i ___ values.length; i++) { /* visit */ }",
+                "options": [
+                  "<",
+                  "<=",
+                  ">"
+                ],
+                "answer": "<",
+                "explanation": "The last valid index is length minus one.",
+                "id": "js-dsa-big-o-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "let count = 0;\nfor (let i = 0; i < 3; i++) {\n  for (let j = 0; j < 3; j++) count++;\n}\nconsole.log(count);",
+                "options": [
+                  "3",
+                  "6",
+                  "27",
+                  "9"
+                ],
+                "answer": 3,
+                "explanation": "Each of three outer iterations performs three inner increments.",
+                "id": "js-dsa-big-o-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Initialize the empty input and counter, perform the scan, then print 0.",
+                "blocks": [
+                  "for (const value of values) count++;",
+                  "console.log(count);",
+                  "const values = [];\nlet count = 0;"
+                ],
+                "answer": [
+                  "const values = [];\nlet count = 0;",
+                  "for (const value of values) count++;",
+                  "console.log(count);"
+                ],
+                "explanation": "An empty collection skips the loop and leaves count zero.",
+                "id": "js-dsa-big-o-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "One n-element scan is followed by a separate n-element scan. What is the tight growth bound?",
+                "options": [
+                  "O(log n)",
+                  "O(1)",
+                  "O(n)",
+                  "O(n²)"
+                ],
+                "answer": 2,
+                "explanation": "Adding two linear costs remains linear.",
+                "id": "js-dsa-big-o-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-linear-search",
+            "title": "Linear Search",
+            "xp": 20,
+            "minutes": 5,
+            "level": "Intermediate",
+            "concept": "Linear search inspects elements in order and works without sorting. Return the first matching index, or a sentinel such as -1 when no match exists. Before each step, every earlier element has already been ruled out. Worst-case work grows with the collection size. Examples use JavaScript.",
+            "examples": [
+              "const values = [8, 4, 6, 6];\nlet found = -1;\nfor (let i = 0; i < values.length; i++) {\n  if (values[i] === 6) { found = i; break; }\n}\nconsole.log(found);",
+              "const values = [];\nlet found = -1;\nfor (let i = 0; i < values.length; i++) {\n  if (values[i] === 9) { found = i; break; }\n}\nconsole.log(found);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which input can linear search handle directly?",
+                "options": [
+                  "Only a sorted array",
+                  "Only a binary tree",
+                  "Only unique values",
+                  "An unsorted array"
+                ],
+                "answer": 3,
+                "explanation": "Linear search needs no ordering assumption.",
+                "id": "js-dsa-linear-search-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the condition that identifies a matching element.",
+                "code": "if (values[i] ___ target) { return i; }",
+                "options": [
+                  "!==",
+                  "<",
+                  "==="
+                ],
+                "answer": "===",
+                "explanation": "Equality identifies the target; earlier indices have already been checked.",
+                "id": "js-dsa-linear-search-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const values = [8, 4, 6, 6];\nlet found = -1;\nfor (let i = 0; i < values.length; i++) {\n  if (values[i] === 6) { found = i; break; }\n}\nconsole.log(found);",
+                "options": [
+                  "6",
+                  "-1",
+                  "2",
+                  "3"
+                ],
+                "answer": 2,
+                "explanation": "The first 6 is at zero-based index 2.",
+                "id": "js-dsa-linear-search-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Initialize an empty search with -1, scan for 9, then print the not-found result.",
+                "blocks": [
+                  "for (let i = 0; i < values.length; i++) {\n  if (values[i] === 9) { found = i; break; }\n}",
+                  "console.log(found);",
+                  "const values = [];\nlet found = -1;"
+                ],
+                "answer": [
+                  "const values = [];\nlet found = -1;",
+                  "for (let i = 0; i < values.length; i++) {\n  if (values[i] === 9) { found = i; break; }\n}",
+                  "console.log(found);"
+                ],
+                "explanation": "No element is visited, so the not-found sentinel survives.",
+                "id": "js-dsa-linear-search-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "The target is absent from n elements. How many equality checks does this linear search need?",
+                "options": [
+                  "n²",
+                  "n",
+                  "1",
+                  "log₂ n"
+                ],
+                "answer": 1,
+                "explanation": "An absent target requires inspecting every element.",
+                "id": "js-dsa-linear-search-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-binary-search",
+            "title": "Binary Search",
+            "xp": 20,
+            "minutes": 5,
+            "level": "Intermediate",
+            "concept": "Binary search repeatedly halves an ordered candidate interval. In an ascending array, compare the middle value and discard the half that cannot contain the target. This lesson uses inclusive bounds [left, right]; moving past mid guarantees progress. Sorting first has its own cost. Examples use JavaScript.",
+            "examples": [
+              "const a = [1, 3, 5, 7, 9];\nlet left = 0, right = a.length - 1, found = -1;\nwhile (left <= right) {\n  const mid = left + Math.floor((right - left) / 2);\n  if (a[mid] === 7) { found = mid; break; }\n  if (a[mid] < 7) left = mid + 1; else right = mid - 1;\n}\nconsole.log(found);",
+              "const a = [7];\nlet left = 0, right = a.length - 1;\nconst mid = left + Math.floor((right - left) / 2);\nconsole.log(left <= right && a[mid] === 7 ? mid : -1);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What must hold for ordinary binary search on an array?",
+                "options": [
+                  "The length is even",
+                  "Every value is unique",
+                  "The array is sorted in the comparison order",
+                  "All values are positive"
+                ],
+                "answer": 2,
+                "explanation": "Ordering lets one comparison eliminate an entire half.",
+                "id": "js-dsa-binary-search-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "With inclusive bounds, keep searching while at least one candidate remains.",
+                "code": "while (left ___ right) { /* inspect middle */ }",
+                "options": [
+                  ">",
+                  "<=",
+                  "<"
+                ],
+                "answer": "<=",
+                "explanation": "left equal to right still represents one unchecked element.",
+                "id": "js-dsa-binary-search-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const a = [1, 3, 5, 7, 9];\nlet left = 0, right = a.length - 1, found = -1;\nwhile (left <= right) {\n  const mid = left + Math.floor((right - left) / 2);\n  if (a[mid] === 7) { found = mid; break; }\n  if (a[mid] < 7) left = mid + 1; else right = mid - 1;\n}\nconsole.log(found);",
+                "options": [
+                  "-1",
+                  "3",
+                  "2",
+                  "4"
+                ],
+                "answer": 1,
+                "explanation": "After discarding values below 7, the algorithm finds index 3.",
+                "id": "js-dsa-binary-search-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the one-candidate boundary check so it prints 0.",
+                "blocks": [
+                  "let left = 0, right = a.length - 1;",
+                  "const mid = left + Math.floor((right - left) / 2);",
+                  "console.log(left <= right && a[mid] === 7 ? mid : -1);",
+                  "const a = [7];"
+                ],
+                "answer": [
+                  "const a = [7];",
+                  "let left = 0, right = a.length - 1;",
+                  "const mid = left + Math.floor((right - left) / 2);",
+                  "console.log(left <= right && a[mid] === 7 ? mid : -1);"
+                ],
+                "explanation": "The inclusive loop condition preserves the singleton candidate.",
+                "id": "js-dsa-binary-search-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "For one lookup in an unsorted array, what is the cost of comparison-sorting before binary search?",
+                "options": [
+                  "O(n log n) overall",
+                  "O(log n) overall",
+                  "O(1) overall",
+                  "Sorting is unnecessary for binary search"
+                ],
+                "answer": 0,
+                "explanation": "The sorting cost dominates the subsequent logarithmic lookup.",
+                "id": "js-dsa-binary-search-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-two-pointers",
+            "title": "Two Pointers",
+            "xp": 20,
+            "minutes": 5,
+            "level": "Intermediate",
+            "concept": "For pair sums in an ascending array, start at both ends. A sum below the target means the left value is too small for any remaining partner at or below right; move left forward. A sum above the target moves right backward. Keep left < right to avoid using one element twice. Examples use JavaScript.",
+            "examples": [
+              "const a = [1, 2, 4, 8];\nlet left = 0, right = a.length - 1;\nwhile (left < right) {\n  const sum = a[left] + a[right];\n  if (sum === 10) break;\n  if (sum < 10) left++; else right--;\n}\nconsole.log(a[left] + \",\" + a[right]);",
+              "const a = [5];\nconst left = 0, right = a.length - 1;\nconst found = left < right && a[left] + a[right] === 10;\nconsole.log(found ? 1 : 0);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which input supports the opposite-end pair-sum technique directly?",
+                "options": [
+                  "Only arrays of length two",
+                  "Values sorted in ascending order",
+                  "Any unsorted values without preparation",
+                  "Only strings"
+                ],
+                "answer": 1,
+                "explanation": "Sorted values justify discarding candidates after each comparison.",
+                "id": "js-dsa-two-pointers-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "A pair sum is too small. Move the left pointer toward larger values.",
+                "code": "left ___ 1;",
+                "options": [
+                  "+=",
+                  "-=",
+                  "*="
+                ],
+                "answer": "+=",
+                "explanation": "Increasing left raises its value in an ascending array.",
+                "id": "js-dsa-two-pointers-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const a = [1, 2, 4, 8];\nlet left = 0, right = a.length - 1;\nwhile (left < right) {\n  const sum = a[left] + a[right];\n  if (sum === 10) break;\n  if (sum < 10) left++; else right--;\n}\nconsole.log(a[left] + \",\" + a[right]);",
+                "options": [
+                  "2,8",
+                  "1,8",
+                  "4,8",
+                  "2,4"
+                ],
+                "answer": 0,
+                "explanation": "The first sum is 9; moving left finds 2 + 8.",
+                "id": "js-dsa-two-pointers-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the guard that rejects using the sole element twice.",
+                "blocks": [
+                  "const left = 0, right = a.length - 1;",
+                  "const found = left < right && a[left] + a[right] === 10;",
+                  "console.log(found ? 1 : 0);",
+                  "const a = [5];"
+                ],
+                "answer": [
+                  "const a = [5];",
+                  "const left = 0, right = a.length - 1;",
+                  "const found = left < right && a[left] + a[right] === 10;",
+                  "console.log(found ? 1 : 0);"
+                ],
+                "explanation": "Distinct indices require left strictly less than right.",
+                "id": "js-dsa-two-pointers-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "In an already sorted n-element array, why does the pair-sum scan take O(n) time?",
+                "options": [
+                  "Both pointers restart after every comparison",
+                  "Every pair is tested",
+                  "The sum operation sorts the array",
+                  "Each move shrinks the interval by one"
+                ],
+                "answer": 3,
+                "explanation": "Each pointer moves in one direction, and the interval only shrinks.",
+                "id": "js-dsa-two-pointers-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-sliding-window",
+            "title": "Sliding Window",
+            "xp": 20,
+            "minutes": 5,
+            "level": "Intermediate",
+            "concept": "A fixed-size sliding window reuses a running aggregate across adjacent subarrays. For a window of k values, subtract the outgoing value and add the incoming value. Initialize from a real window so all-negative inputs work. Require 1 <= k <= n. Variable windows need additional monotonicity assumptions. Examples use JavaScript.",
+            "examples": [
+              "const a = [2, 1, 5, 1];\nlet sum = a[0] + a[1], best = sum;\nfor (let i = 2; i < a.length; i++) {\n  sum += a[i] - a[i - 2];\n  best = Math.max(best, sum);\n}\nconsole.log(best);",
+              "const a = [-2, -3];\nconst sum = a[0] + a[1];\nconst best = sum;\nconsole.log(best);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What does a fixed-size sliding window avoid?",
+                "options": [
+                  "Recomputing every overlapping sum from scratch",
+                  "Reading the input",
+                  "Checking the window size",
+                  "Storing any running value"
+                ],
+                "answer": 0,
+                "explanation": "Adjacent windows share all but two values.",
+                "id": "js-dsa-sliding-window-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Remove the outgoing value before adding the incoming value.",
+                "code": "sum = sum ___ outgoing + incoming;",
+                "options": [
+                  "+",
+                  "*",
+                  "-"
+                ],
+                "answer": "-",
+                "explanation": "Subtracting outgoing preserves exactly the current window sum.",
+                "id": "js-dsa-sliding-window-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const a = [2, 1, 5, 1];\nlet sum = a[0] + a[1], best = sum;\nfor (let i = 2; i < a.length; i++) {\n  sum += a[i] - a[i - 2];\n  best = Math.max(best, sum);\n}\nconsole.log(best);",
+                "options": [
+                  "3",
+                  "7",
+                  "9",
+                  "6"
+                ],
+                "answer": 3,
+                "explanation": "The two-element sums are 3, 6, and 6.",
+                "id": "js-dsa-sliding-window-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order initialization for an all-negative length-two window; print -5.",
+                "blocks": [
+                  "const sum = a[0] + a[1];",
+                  "const best = sum;",
+                  "console.log(best);",
+                  "const a = [-2, -3];"
+                ],
+                "answer": [
+                  "const a = [-2, -3];",
+                  "const sum = a[0] + a[1];",
+                  "const best = sum;",
+                  "console.log(best);"
+                ],
+                "explanation": "Initializing best to zero would invent a nonexistent window.",
+                "id": "js-dsa-sliding-window-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Why can the usual shrink-when-sum-exceeds-target window fail when negative values are allowed?",
+                "options": [
+                  "Every window must have length one",
+                  "Subarrays become sorted automatically",
+                  "Removing a negative value can increase the sum",
+                  "Negative values cannot be added"
+                ],
+                "answer": 2,
+                "explanation": "Negative values break the monotonicity that justifies that shrinking rule.",
+                "id": "js-dsa-sliding-window-q5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "js-dsa-data-structures",
+        "title": "Data Structures",
+        "description": "Choose and reason about stacks, queues, links, trees, and key lookup.",
+        "level": "Advanced",
+        "lessons": [
+          {
+            "id": "js-dsa-stacks",
+            "title": "Stacks",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "A stack removes the newest item first: last in, first out. Push and pop at the same end. This matches nested parentheses, undo history, and explicit DFS worklists. Check for an empty stack before accessing its top. Dynamic-array stacks usually offer amortized constant-time push, not a guarantee for every resizing operation. Examples use JavaScript.",
+            "examples": [
+              "const stack = [];\nstack.push(1); stack.push(2); stack.push(3);\nstack.pop();\nconsole.log(stack[stack.length - 1]);",
+              "const stack = [];\nconst value = stack.length ? stack.pop() : -1;\nconsole.log(value);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which item does a stack remove first?",
+                "options": [
+                  "The oldest item",
+                  "The smallest item",
+                  "A random item",
+                  "The most recently pushed item"
+                ],
+                "answer": 3,
+                "explanation": "Stacks follow last in, first out.",
+                "id": "js-dsa-stacks-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the operation that removes the top stack item.",
+                "code": "const value = stack.___();",
+                "options": [
+                  "sort",
+                  "pop",
+                  "shift"
+                ],
+                "answer": "pop",
+                "explanation": "Pop removes the most recently added stack item.",
+                "id": "js-dsa-stacks-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const stack = [];\nstack.push(1); stack.push(2); stack.push(3);\nstack.pop();\nconsole.log(stack[stack.length - 1]);",
+                "options": [
+                  "3",
+                  "0",
+                  "2",
+                  "1"
+                ],
+                "answer": 2,
+                "explanation": "Removing 3 exposes 2 as the new top.",
+                "id": "js-dsa-stacks-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order a safe empty-stack read; print -1 instead of popping.",
+                "blocks": [
+                  "const value = stack.length ? stack.pop() : -1;",
+                  "console.log(value);",
+                  "const stack = [];"
+                ],
+                "answer": [
+                  "const stack = [];",
+                  "const value = stack.length ? stack.pop() : -1;",
+                  "console.log(value);"
+                ],
+                "explanation": "The emptiness guard prevents invalid top access.",
+                "id": "js-dsa-stacks-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "While validating parentheses, a closing bracket arrives with an empty stack. What should happen?",
+                "options": [
+                  "Ignore every remaining character",
+                  "Reject immediately: it has no opening partner",
+                  "Push the closing bracket as a valid opener",
+                  "Declare the expression valid"
+                ],
+                "answer": 1,
+                "explanation": "A closing bracket cannot match an opening bracket that never appeared.",
+                "id": "js-dsa-stacks-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-queues",
+            "title": "Queues",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "A queue serves the oldest item first: first in, first out. Use a deque, circular buffer, or an array with a moving head index. In JavaScript, repeated Array.shift() may move remaining items, so do not assume it is constant time. A growing head-index array also needs eventual compaction or bounded-buffer management to reclaim consumed storage. Examples use JavaScript.",
+            "examples": [
+              "const queue = [4, 7, 9];\nlet head = 0;\nhead++;\nconsole.log(queue[head]);",
+              "const queue = [];\nconst head = 0;\nconst value = head < queue.length ? queue[head] : -1;\nconsole.log(value);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which item leaves a FIFO queue first?",
+                "options": [
+                  "The largest item",
+                  "The item with the shortest name",
+                  "The earliest enqueued item",
+                  "The latest enqueued item"
+                ],
+                "answer": 2,
+                "explanation": "FIFO preserves arrival order.",
+                "id": "js-dsa-queues-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Read the next FIFO item using the intended queue operation.",
+                "code": "const value = queue[head___];",
+                "options": [
+                  "++",
+                  "--",
+                  " ** 2"
+                ],
+                "answer": "++",
+                "explanation": "Advance the head or remove from the front to preserve FIFO order.",
+                "id": "js-dsa-queues-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const queue = [4, 7, 9];\nlet head = 0;\nhead++;\nconsole.log(queue[head]);",
+                "options": [
+                  "3",
+                  "7",
+                  "4",
+                  "9"
+                ],
+                "answer": 1,
+                "explanation": "After removing 4, the oldest remaining item is 7.",
+                "id": "js-dsa-queues-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order a safe empty-queue read that prints -1.",
+                "blocks": [
+                  "const value = head < queue.length ? queue[head] : -1;",
+                  "console.log(value);",
+                  "const queue = [];\nconst head = 0;"
+                ],
+                "answer": [
+                  "const queue = [];\nconst head = 0;",
+                  "const value = head < queue.length ? queue[head] : -1;",
+                  "console.log(value);"
+                ],
+                "explanation": "Check for queued items before accessing the front.",
+                "id": "js-dsa-queues-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Why use a head-index queue instead of repeated Array.shift() in JavaScript graph traversal?",
+                "options": [
+                  "It avoids repeatedly moving the remaining array elements",
+                  "It makes every graph traversal O(1)",
+                  "It sorts neighbors automatically",
+                  "It eliminates the need for visited state"
+                ],
+                "answer": 0,
+                "explanation": "A moving head avoids the repeated front-removal cost.",
+                "id": "js-dsa-queues-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-linked-lists",
+            "title": "Linked Lists",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "A singly linked list stores each value with a link to its successor. To remove a node when its predecessor is known, redirect the predecessor link. Searching for that predecessor can still take linear time. Reversal must save the next link before overwriting it, and every traversal must account for an empty head. Examples use JavaScript.",
+            "examples": [
+              "const third = { value: 3, next: null };\nconst head = { value: 1, next: { value: 2, next: third } };\nhead.next = head.next.next;\nconsole.log(head.next.value);",
+              "const current = { value: 4, next: null };\nconst previous = null;\nconst saved = current.next;\ncurrent.next = previous;\nconsole.log(saved === null ? current.value : -1);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What connects adjacent nodes in a singly linked list?",
+                "options": [
+                  "A global array index only",
+                  "A next reference or pointer",
+                  "Their equal values",
+                  "Their sorted indices"
+                ],
+                "answer": 1,
+                "explanation": "Each node stores a link to its successor.",
+                "id": "js-dsa-linked-lists-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Skip the node after current without losing the remaining chain.",
+                "code": "current.next = current.next.___;",
+                "options": [
+                  "value",
+                  "length",
+                  "next"
+                ],
+                "answer": "next",
+                "explanation": "Linking to the successor’s successor bypasses exactly one node.",
+                "id": "js-dsa-linked-lists-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const third = { value: 3, next: null };\nconst head = { value: 1, next: { value: 2, next: third } };\nhead.next = head.next.next;\nconsole.log(head.next.value);",
+                "options": [
+                  "3",
+                  "2",
+                  "1",
+                  "0"
+                ],
+                "answer": 0,
+                "explanation": "Redirecting the first link bypasses the node containing 2.",
+                "id": "js-dsa-linked-lists-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Save the next link, then rewire the one node, then print its value. Initialize the node first.",
+                "blocks": [
+                  "const saved = current.next;",
+                  "current.next = previous;",
+                  "console.log(saved === null ? current.value : -1);",
+                  "const current = { value: 4, next: null };\nconst previous = null;"
+                ],
+                "answer": [
+                  "const current = { value: 4, next: null };\nconst previous = null;",
+                  "const saved = current.next;",
+                  "current.next = previous;",
+                  "console.log(saved === null ? current.value : -1);"
+                ],
+                "explanation": "Saving next first preserves access to the unprocessed chain.",
+                "id": "js-dsa-linked-lists-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "What is the worst-case time to find and delete a value in a singly linked list of n nodes?",
+                "options": [
+                  "O(1), because every deletion is constant time",
+                  "O(log n), without additional structure",
+                  "O(n²), for a single traversal",
+                  "O(n), because finding the node may scan the list"
+                ],
+                "answer": 3,
+                "explanation": "Known-predecessor rewiring is constant time; finding that predecessor may be linear.",
+                "id": "js-dsa-linked-lists-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-trees",
+            "title": "Binary Trees",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "A binary tree gives each node up to two children. Define height here as the number of nodes on the longest root-to-leaf path, with an empty tree having height zero. A binary search tree adds an ordering invariant, but it is not automatically balanced. Shape determines whether search is logarithmic or linear. Examples use JavaScript.",
+            "examples": [
+              "const root = { left: { left: { left: null, right: null }, right: null }, right: null };\nfunction height(node) {\n  return node === null ? 0 : 1 + Math.max(height(node.left), height(node.right));\n}\nconsole.log(height(root));",
+              "function height(node) {\n  if (node === null) return 0;\n  return 1 + Math.max(height(node.left), height(node.right));\n}\nconst root = null;\nconst result = height(root);\nconsole.log(result);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "How many children can a binary-tree node have?",
+                "options": [
+                  "At most two",
+                  "Exactly two",
+                  "Any number",
+                  "At most one"
+                ],
+                "answer": 0,
+                "explanation": "A binary tree permits zero, one, or two children per node.",
+                "id": "js-dsa-trees-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "An empty subtree has height zero. Add one for the current node.",
+                "code": "return ___ + Math.max(height(node.left), height(node.right));",
+                "options": [
+                  "2",
+                  "1",
+                  "0"
+                ],
+                "answer": "1",
+                "explanation": "The current node contributes one to the longer child path.",
+                "id": "js-dsa-trees-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const root = { left: { left: { left: null, right: null }, right: null }, right: null };\nfunction height(node) {\n  return node === null ? 0 : 1 + Math.max(height(node.left), height(node.right));\n}\nconsole.log(height(root));",
+                "options": [
+                  "2",
+                  "1",
+                  "0",
+                  "3"
+                ],
+                "answer": 3,
+                "explanation": "There are three nodes on the longest root-to-leaf path.",
+                "id": "js-dsa-trees-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the empty-tree base case before its height is used.",
+                "blocks": [
+                  "const result = height(root);",
+                  "console.log(result);",
+                  "function height(node) {\n  if (node === null) return 0;\n  return 1 + Math.max(height(node.left), height(node.right));\n}\nconst root = null;"
+                ],
+                "answer": [
+                  "function height(node) {\n  if (node === null) return 0;\n  return 1 + Math.max(height(node.left), height(node.right));\n}\nconst root = null;",
+                  "const result = height(root);",
+                  "console.log(result);"
+                ],
+                "explanation": "The null base case stops recursion before any child access.",
+                "id": "js-dsa-trees-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Insert sorted distinct keys into an ordinary unbalanced BST. What can happen to search time?",
+                "options": [
+                  "It becomes O(1) because keys are sorted",
+                  "The tree automatically becomes a heap",
+                  "It becomes O(n) as the tree degenerates into a chain",
+                  "It stays O(log n) for every insertion order"
+                ],
+                "answer": 2,
+                "explanation": "A BST ordering invariant alone does not guarantee balanced height.",
+                "id": "js-dsa-trees-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-hash-maps",
+            "title": "Hash Maps",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "A hash table maps keys to buckets using a hash function. Good distribution and controlled load support expected constant-time basic operations; collisions, resizing, and adversarial inputs prevent a blanket worst-case O(1) claim. JavaScript Map promises average sublinear access rather than a specific implementation. Distinguish a missing key from a stored zero. Examples use JavaScript.",
+            "examples": [
+              "const counts = new Map();\nfor (const value of [2, 2, 3]) {\n  counts.set(value, (counts.get(value) ?? 0) + 1);\n}\nconsole.log(counts.get(2));",
+              "const counts = new Map();\nconst value = counts.get(9) ?? 0;\nconsole.log(value);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What is a collision in a hash table?",
+                "options": [
+                  "Two keys must have equal values",
+                  "A key is deleted",
+                  "The table is sorted",
+                  "Different keys map to the same bucket"
+                ],
+                "answer": 3,
+                "explanation": "Collisions require a strategy to keep distinct keys distinguishable.",
+                "id": "js-dsa-hash-maps-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Treat a missing frequency as zero before adding one.",
+                "code": "counts.set(value, (counts.get(value) ?? ___) + 1);",
+                "options": [
+                  "0",
+                  "1",
+                  "-1"
+                ],
+                "answer": "0",
+                "explanation": "A first occurrence must produce a count of one.",
+                "id": "js-dsa-hash-maps-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const counts = new Map();\nfor (const value of [2, 2, 3]) {\n  counts.set(value, (counts.get(value) ?? 0) + 1);\n}\nconsole.log(counts.get(2));",
+                "options": [
+                  "3",
+                  "0",
+                  "2",
+                  "1"
+                ],
+                "answer": 2,
+                "explanation": "The key 2 occurs twice.",
+                "id": "js-dsa-hash-maps-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order a missing-key read that prints zero without raising an error.",
+                "blocks": [
+                  "const value = counts.get(9) ?? 0;",
+                  "console.log(value);",
+                  "const counts = new Map();"
+                ],
+                "answer": [
+                  "const counts = new Map();",
+                  "const value = counts.get(9) ?? 0;",
+                  "console.log(value);"
+                ],
+                "explanation": "An explicit default handles absence without assuming the key exists.",
+                "id": "js-dsa-hash-maps-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "A hash table uses linear collision chains. If all n keys share one bucket, how long can lookup take?",
+                "options": [
+                  "O(n²) for a single chain scan",
+                  "O(n) in the worst case",
+                  "O(1) in every case",
+                  "O(log n) without changing the chains"
+                ],
+                "answer": 1,
+                "explanation": "Expected constant-time lookup depends on hash distribution; one long chain can require linear work.",
+                "id": "js-dsa-hash-maps-q5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "js-dsa-algorithms",
+        "title": "Algorithms",
+        "description": "Combine sorting, graph traversal, priority structures, and justified greedy choices.",
+        "level": "Advanced",
+        "lessons": [
+          {
+            "id": "js-dsa-merge-sort",
+            "title": "Merge Sort",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "Merge sort divides an array, sorts each half, and merges ordered runs. The merge invariant keeps the output sorted while both pointers mark the smallest unused value in each run. Taking the left item on equal keys preserves stability. Standard array merge sort uses O(n log n) time and O(n) auxiliary storage. Examples use JavaScript.",
+            "examples": [
+              "const left = [1, 4], right = [2, 3], out = [];\nlet i = 0, j = 0;\nwhile (i < left.length && j < right.length) {\n  out.push(left[i] <= right[j] ? left[i++] : right[j++]);\n}\nwhile (i < left.length) out.push(left[i++]);\nwhile (j < right.length) out.push(right[j++]);\nconsole.log(out.join(\",\"));",
+              "const left = [4, 8];\nlet i = 0;\nconst out = [];\nwhile (i < left.length) out.push(left[i++]);\nconsole.log(out.join(\",\"));"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which operation combines merge sort’s recursively sorted halves?",
+                "options": [
+                  "Selecting random elements",
+                  "Reversing both halves",
+                  "Merging the smallest remaining front values",
+                  "Concatenating without comparisons"
+                ],
+                "answer": 2,
+                "explanation": "Comparing the run fronts preserves sorted output.",
+                "id": "js-dsa-merge-sort-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "To keep equal keys in original order, choose the left run on ties.",
+                "code": "if (left[i] ___ right[j]) { /* take left[i] */ }",
+                "options": [
+                  "<",
+                  ">",
+                  "<="
+                ],
+                "answer": "<=",
+                "explanation": "Left-first ties preserve the original order of equal keys.",
+                "id": "js-dsa-merge-sort-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const left = [1, 4], right = [2, 3], out = [];\nlet i = 0, j = 0;\nwhile (i < left.length && j < right.length) {\n  out.push(left[i] <= right[j] ? left[i++] : right[j++]);\n}\nwhile (i < left.length) out.push(left[i++]);\nwhile (j < right.length) out.push(right[j++]);\nconsole.log(out.join(\",\"));",
+                "options": [
+                  "1,2,4,3",
+                  "1,2,3,4",
+                  "1,4,2,3",
+                  "4,3,2,1"
+                ],
+                "answer": 1,
+                "explanation": "The merge repeatedly takes the smallest unused run front.",
+                "id": "js-dsa-merge-sort-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "The right run is empty. Order the remaining-left copy to print 4,8.",
+                "blocks": [
+                  "while (i < left.length) out.push(left[i++]);",
+                  "console.log(out.join(\",\"));",
+                  "const left = [4, 8];\nlet i = 0;\nconst out = [];"
+                ],
+                "answer": [
+                  "const left = [4, 8];\nlet i = 0;\nconst out = [];",
+                  "while (i < left.length) out.push(left[i++]);",
+                  "console.log(out.join(\",\"));"
+                ],
+                "explanation": "When one run ends, copy the other run’s remaining values.",
+                "id": "js-dsa-merge-sort-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "There are log₂ n merge levels with O(n) total work per level. What follows?",
+                "options": [
+                  "O(n log n) time",
+                  "O(log n) time",
+                  "O(n² log n) time",
+                  "O(1) time"
+                ],
+                "answer": 0,
+                "explanation": "Multiply the number of levels by the work per level.",
+                "id": "js-dsa-merge-sort-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-bfs",
+            "title": "Breadth-First Search",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "BFS explores a graph in distance layers using a FIFO queue. Mark a vertex when enqueuing it so cycles do not repeatedly schedule the same vertex. In an unweighted graph, first discovery gives the minimum number of edges from the source. With adjacency lists and efficient queues, time is O(V + E). Examples use JavaScript.",
+            "examples": [
+              "const graph = [[1, 2], [3], [3], []];\nconst dist = [0, -1, -1, -1], queue = [0];\nfor (let head = 0; head < queue.length; head++) {\n  const u = queue[head];\n  for (const v of graph[u]) if (dist[v] === -1) {\n    dist[v] = dist[u] + 1; queue.push(v);\n  }\n}\nconsole.log(dist[3]);",
+              "const graph = [[0]], seen = new Set(), queue = [];\nseen.add(0);\nqueue.push(0);\nfor (const v of graph[queue[0]]) {\n  if (!seen.has(v)) { seen.add(v); queue.push(v); }\n}\nconsole.log(queue.length);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which worklist makes BFS explore distance layers?",
+                "options": [
+                  "A recursion-only call stack",
+                  "A FIFO queue",
+                  "A LIFO stack",
+                  "An unsorted set with arbitrary removal"
+                ],
+                "answer": 1,
+                "explanation": "FIFO processes earlier discoveries before the next layer.",
+                "id": "js-dsa-bfs-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Set an unseen neighbor’s distance when it enters the queue.",
+                "code": "distance[v] = distance[u] + ___;",
+                "options": [
+                  "2",
+                  "1",
+                  "0"
+                ],
+                "answer": "1",
+                "explanation": "Traversing one unweighted edge adds one to the distance.",
+                "id": "js-dsa-bfs-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const graph = [[1, 2], [3], [3], []];\nconst dist = [0, -1, -1, -1], queue = [0];\nfor (let head = 0; head < queue.length; head++) {\n  const u = queue[head];\n  for (const v of graph[u]) if (dist[v] === -1) {\n    dist[v] = dist[u] + 1; queue.push(v);\n  }\n}\nconsole.log(dist[3]);",
+                "options": [
+                  "2",
+                  "1",
+                  "3",
+                  "-1"
+                ],
+                "answer": 0,
+                "explanation": "Vertex 3 is reached through 1 or 2 in two edges.",
+                "id": "js-dsa-bfs-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order discovery of a source with a self-loop: mark it before enqueuing.",
+                "blocks": [
+                  "queue.push(0);",
+                  "for (const v of graph[queue[0]]) {\n  if (!seen.has(v)) { seen.add(v); queue.push(v); }\n}\nconsole.log(queue.length);",
+                  "const graph = [[0]], seen = new Set(), queue = [];\nseen.add(0);"
+                ],
+                "answer": [
+                  "const graph = [[0]], seen = new Set(), queue = [];\nseen.add(0);",
+                  "queue.push(0);",
+                  "for (const v of graph[queue[0]]) {\n  if (!seen.has(v)) { seen.add(v); queue.push(v); }\n}\nconsole.log(queue.length);"
+                ],
+                "explanation": "Marking on discovery prevents the self-loop from adding the source again.",
+                "id": "js-dsa-bfs-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Edges have different positive weights. Does ordinary BFS guarantee the smallest total weight?",
+                "options": [
+                  "Yes, for every positive weight",
+                  "Yes, if the source has two neighbors",
+                  "Only if vertices are numbered consecutively",
+                  "No; its layers minimize edge count, not arbitrary weight"
+                ],
+                "answer": 3,
+                "explanation": "Use an appropriate weighted shortest-path algorithm when edge costs differ.",
+                "id": "js-dsa-bfs-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-dfs",
+            "title": "Depth-First Search",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "DFS follows one branch before backtracking. Use recursion or an explicit stack, and mark vertices before exploring their neighbors. Neighbor order determines a particular traversal order. On a graph with cycles, visited state is essential. Deep recursion may exceed the language’s call-stack limits even when the algorithm is correct. Examples use JavaScript.",
+            "examples": [
+              "const graph = [[1, 2], [3], [], []];\nconst seen = new Set(), order = [];\nfunction dfs(u) {\n  seen.add(u); order.push(u);\n  for (const v of graph[u]) if (!seen.has(v)) dfs(v);\n}\ndfs(0);\nconsole.log(order.join(\",\"));",
+              "const graph = [];\nconst pending = [];\nif (graph.length > 0) pending.push(0);\nconsole.log(pending.length);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What characterizes depth-first search?",
+                "options": [
+                  "Explore a branch before backtracking",
+                  "Always visit the nearest layer first",
+                  "Always choose the smallest edge weight",
+                  "Never revisit a call frame"
+                ],
+                "answer": 0,
+                "explanation": "DFS postpones siblings while it explores the current branch.",
+                "id": "js-dsa-dfs-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Mark a vertex before recursive calls to prevent cycling back into it.",
+                "code": "seen.___(u);",
+                "options": [
+                  "add",
+                  "delete",
+                  "clear"
+                ],
+                "answer": "add",
+                "explanation": "Early marking stops back edges from starting duplicate traversals.",
+                "id": "js-dsa-dfs-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const graph = [[1, 2], [3], [], []];\nconst seen = new Set(), order = [];\nfunction dfs(u) {\n  seen.add(u); order.push(u);\n  for (const v of graph[u]) if (!seen.has(v)) dfs(v);\n}\ndfs(0);\nconsole.log(order.join(\",\"));",
+                "options": [
+                  "0,1,2,3",
+                  "3,1,0,2",
+                  "0,2,1,3",
+                  "0,1,3,2"
+                ],
+                "answer": 3,
+                "explanation": "DFS explores 1 and its child 3 before returning to 2.",
+                "id": "js-dsa-dfs-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Initialize the empty graph and stack, apply the source-exists guard, then print the stack size.",
+                "blocks": [
+                  "if (graph.length > 0) pending.push(0);",
+                  "console.log(pending.length);",
+                  "const graph = [];\nconst pending = [];"
+                ],
+                "answer": [
+                  "const graph = [];\nconst pending = [];",
+                  "if (graph.length > 0) pending.push(0);",
+                  "console.log(pending.length);"
+                ],
+                "explanation": "An empty graph has no source vertex to schedule.",
+                "id": "js-dsa-dfs-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "To detect cycles in a directed graph, why distinguish active recursion-stack vertices from finished vertices?",
+                "options": [
+                  "Finished vertices cannot have outgoing edges",
+                  "Visited state removes all edges",
+                  "An edge to an active vertex proves a directed cycle",
+                  "Every edge to any visited vertex proves a directed cycle"
+                ],
+                "answer": 2,
+                "explanation": "An active vertex is an ancestor on the current path; a finished vertex need not be.",
+                "id": "js-dsa-dfs-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-heaps",
+            "title": "Binary Heaps",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "A binary min-heap keeps each parent no greater than its children. The root is the minimum, but the entire array is not sorted. Inserting or removing the root usually needs O(log n) repair; peek is O(1). Building a heap bottom-up is O(n). Standard C++ priority_queue is a max-heap unless its comparator is changed. Examples use JavaScript.",
+            "examples": [
+              "const heap = [7, 2, 5];\nlet smallest = 0;\nif (heap[1] < heap[smallest]) smallest = 1;\nif (heap[2] < heap[smallest]) smallest = 2;\n[heap[0], heap[smallest]] = [heap[smallest], heap[0]];\nconsole.log(heap[0]);",
+              "const heap = [];\nconst minimum = heap.length ? heap[0] : -1;\nconsole.log(minimum);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which property defines a min-heap?",
+                "options": [
+                  "Every child is smaller than its parent",
+                  "The array is fully sorted",
+                  "Only the leaves have values",
+                  "Every parent is no greater than its children"
+                ],
+                "answer": 3,
+                "explanation": "The local parent-child rule places a minimum at the root.",
+                "id": "js-dsa-heaps-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "For zero-based heap indexing, find the left child of index i.",
+                "code": "const left = 2 * i + ___;",
+                "options": [
+                  "0",
+                  "2",
+                  "1"
+                ],
+                "answer": "1",
+                "explanation": "Zero-based children are at indices 2i + 1 and 2i + 2.",
+                "id": "js-dsa-heaps-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const heap = [7, 2, 5];\nlet smallest = 0;\nif (heap[1] < heap[smallest]) smallest = 1;\nif (heap[2] < heap[smallest]) smallest = 2;\n[heap[0], heap[smallest]] = [heap[smallest], heap[0]];\nconsole.log(heap[0]);",
+                "options": [
+                  "5",
+                  "0",
+                  "2",
+                  "7"
+                ],
+                "answer": 2,
+                "explanation": "The min-heap root contains the smallest inserted value.",
+                "id": "js-dsa-heaps-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order a safe read of an empty min-heap; print -1.",
+                "blocks": [
+                  "const minimum = heap.length ? heap[0] : -1;",
+                  "console.log(minimum);",
+                  "const heap = [];"
+                ],
+                "answer": [
+                  "const heap = [];",
+                  "const minimum = heap.length ? heap[0] : -1;",
+                  "console.log(minimum);"
+                ],
+                "explanation": "Peek is only valid after confirming the heap has an item.",
+                "id": "js-dsa-heaps-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Maintain the largest k values in a min-heap while scanning n values, with 1 <= k <= n. What is the standard time bound?",
+                "options": [
+                  "O(k) total",
+                  "O(n log(k + 1))",
+                  "O(log n) total",
+                  "O(n²) necessarily"
+                ],
+                "answer": 1,
+                "explanation": "Each candidate needs at most one logarithmic heap update on at most k entries.",
+                "id": "js-dsa-heaps-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-greedy",
+            "title": "Greedy Algorithms",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "Greedy algorithms commit to a locally preferred choice. They need a correctness argument, such as an exchange argument, rather than intuition alone. For maximizing the number of non-overlapping nonempty half-open intervals [start, end), with start < end, choosing earliest finish time is safe. Greedy largest-coin change is not optimal for arbitrary denominations. Examples use JavaScript.",
+            "examples": [
+              "const intervals = [[0, 3], [1, 2], [2, 4]];\nintervals.sort((a, b) => a[1] - b[1]);\nlet end = -Infinity, count = 0;\nfor (const [start, finish] of intervals) {\n  if (start >= end) { count++; end = finish; }\n}\nconsole.log(count);",
+              "const coins = [4, 3, 1];\nlet remaining = 6, used = 0;\nfor (const coin of coins) {\n  while (remaining >= coin) { remaining -= coin; used++; }\n}\nconsole.log(used);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What must justify a greedy choice?",
+                "options": [
+                  "The choice uses the largest number",
+                  "The input has fewer than ten elements",
+                  "A proof that the choice preserves some optimal solution",
+                  "The choice looks attractive on one example"
+                ],
+                "answer": 2,
+                "explanation": "A local preference is safe only when a correctness argument supports it.",
+                "id": "js-dsa-greedy-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Half-open intervals may touch endpoints. Accept the next interval if it starts after or at the previous end.",
+                "code": "if (start ___ lastEnd) { /* accept */ }",
+                "options": [
+                  "<",
+                  ">=",
+                  ">"
+                ],
+                "answer": ">=",
+                "explanation": "Half-open intervals ending and starting at the same point do not overlap.",
+                "id": "js-dsa-greedy-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const intervals = [[0, 3], [1, 2], [2, 4]];\nintervals.sort((a, b) => a[1] - b[1]);\nlet end = -Infinity, count = 0;\nfor (const [start, finish] of intervals) {\n  if (start >= end) { count++; end = finish; }\n}\nconsole.log(count);",
+                "options": [
+                  "0",
+                  "2",
+                  "1",
+                  "3"
+                ],
+                "answer": 1,
+                "explanation": "Earliest-finish selection accepts [1,2) and then [2,4).",
+                "id": "js-dsa-greedy-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order a largest-coin greedy trace for coins 4,3,1 and amount 6; it uses three coins.",
+                "blocks": [
+                  "for (const coin of coins) {\n  while (remaining >= coin) { remaining -= coin; used++; }\n}",
+                  "console.log(used);",
+                  "const coins = [4, 3, 1];\nlet remaining = 6, used = 0;"
+                ],
+                "answer": [
+                  "const coins = [4, 3, 1];\nlet remaining = 6, used = 0;",
+                  "for (const coin of coins) {\n  while (remaining >= coin) { remaining -= coin; used++; }\n}",
+                  "console.log(used);"
+                ],
+                "explanation": "Greedy takes 4 + 1 + 1; the optimal solution is 3 + 3.",
+                "id": "js-dsa-greedy-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Coins are 1, 3, and 4; the amount is 6. What defeats largest-coin-first greedy?",
+                "options": [
+                  "Two 3-coins beat 4 + 1 + 1",
+                  "Coin 1 cannot make the amount",
+                  "Greedy always uses one coin",
+                  "Sorting coins ascending proves optimality"
+                ],
+                "answer": 0,
+                "explanation": "This counterexample shows arbitrary coin systems need a different algorithm.",
+                "id": "js-dsa-greedy-q5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "js-dsa-expert-dsa",
+        "title": "Expert DSA",
+        "description": "Reason about DP dependencies, weighted paths, connectivity, and shared prefixes.",
+        "level": "Expert",
+        "lessons": [
+          {
+            "id": "js-dsa-memoization",
+            "title": "Memoization",
+            "xp": 30,
+            "minutes": 5,
+            "level": "Expert",
+            "concept": "Memoization caches results of overlapping subproblems in a top-down recurrence. The cache key must include every input that affects the result. Store results before returning, and distinguish absence from a cached zero. For the recurrence ways(n) = ways(n-1) + ways(n-2), with ways(0)=ways(1)=1, caching reduces repeated work to O(n) states. Examples use JavaScript.",
+            "examples": [
+              "const memo = new Map([[0, 1], [1, 1]]);\nfunction ways(n) {\n  if (memo.has(n)) return memo.get(n);\n  const result = ways(n - 1) + ways(n - 2);\n  memo.set(n, result); return result;\n}\nconsole.log(ways(5));",
+              "const memo = new Map([[\"zero\", 0]]);\nconst exists = memo.has(\"zero\");\nconst result = exists ? memo.get(\"zero\") : -1;\nconsole.log(result);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What does memoization reuse?",
+                "options": [
+                  "A random base case",
+                  "The result of a previously solved identical state",
+                  "Any result with a similar-looking name",
+                  "Only the last recursive call"
+                ],
+                "answer": 1,
+                "explanation": "Identical subproblems can share their computed result.",
+                "id": "js-dsa-memoization-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "A zero result is valid. Test cache membership rather than truthiness.",
+                "code": "if (memo.___(key)) return memo.get(key);",
+                "options": [
+                  "has",
+                  "get",
+                  "delete"
+                ],
+                "answer": "has",
+                "explanation": "Membership checks preserve valid cached results such as zero.",
+                "id": "js-dsa-memoization-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const memo = new Map([[0, 1], [1, 1]]);\nfunction ways(n) {\n  if (memo.has(n)) return memo.get(n);\n  const result = ways(n - 1) + ways(n - 2);\n  memo.set(n, result); return result;\n}\nconsole.log(ways(5));",
+                "options": [
+                  "8",
+                  "5",
+                  "13",
+                  "16"
+                ],
+                "answer": 0,
+                "explanation": "The cached recurrence produces 1, 1, 2, 3, 5, 8.",
+                "id": "js-dsa-memoization-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order a cache read that recognizes zero as an existing result.",
+                "blocks": [
+                  "const exists = memo.has(\"zero\");",
+                  "const result = exists ? memo.get(\"zero\") : -1;",
+                  "console.log(result);",
+                  "const memo = new Map([[\"zero\", 0]]);"
+                ],
+                "answer": [
+                  "const memo = new Map([[\"zero\", 0]]);",
+                  "const exists = memo.has(\"zero\");",
+                  "const result = exists ? memo.get(\"zero\") : -1;",
+                  "console.log(result);"
+                ],
+                "explanation": "A cached zero is a computed answer, not a missing state.",
+                "id": "js-dsa-memoization-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "A path-count function depends on both vertex and remaining steps. What must its memoization key include?",
+                "options": [
+                  "Only vertex",
+                  "Only remaining steps",
+                  "Neither; one global cached result is enough",
+                  "Both vertex and remaining steps"
+                ],
+                "answer": 3,
+                "explanation": "Different remaining budgets at the same vertex can have different answers.",
+                "id": "js-dsa-memoization-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-tabulation",
+            "title": "Tabulation & 0/1 Knapsack",
+            "xp": 30,
+            "minutes": 5,
+            "level": "Expert",
+            "concept": "Tabulation fills a DP table in dependency order. In one-dimensional 0/1 knapsack, dp[c] stores the best value within capacity c using processed items. Traverse capacities downward for each item so dp[c-weight] still excludes that item. Forward traversal would allow reusing the same item. These examples use nonnegative values and positive integer weights. Examples use JavaScript.",
+            "examples": [
+              "const dp = Array(5).fill(0);\nconst weight = 2, value = 3;\nfor (let c = 4; c >= weight; c--) {\n  dp[c] = Math.max(dp[c], dp[c - weight] + value);\n}\nconsole.log(dp[4]);",
+              "const capacity = 0;\nconst dp = Array(capacity + 1).fill(0);\nconst result = dp[capacity];\nconsole.log(result);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What distinguishes tabulation from recursive memoization?",
+                "options": [
+                  "It fills states iteratively in dependency order",
+                  "It never stores results",
+                  "It requires every state to be independent",
+                  "It always uses exponential time"
+                ],
+                "answer": 0,
+                "explanation": "Tabulation explicitly schedules state evaluation instead of relying on recursive calls.",
+                "id": "js-dsa-tabulation-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Process capacities downward so each 0/1 item is used at most once.",
+                "code": "for (let c = capacity; c >= weight; c___) { /* update dp[c] */ }",
+                "options": [
+                  "++",
+                  " *= 2",
+                  "--"
+                ],
+                "answer": "--",
+                "explanation": "Descending capacities prevent reading a state already updated by the current item.",
+                "id": "js-dsa-tabulation-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const dp = Array(5).fill(0);\nconst weight = 2, value = 3;\nfor (let c = 4; c >= weight; c--) {\n  dp[c] = Math.max(dp[c], dp[c - weight] + value);\n}\nconsole.log(dp[4]);",
+                "options": [
+                  "6",
+                  "0",
+                  "4",
+                  "3"
+                ],
+                "answer": 3,
+                "explanation": "Only one weight-2 item exists, so capacity 4 still yields value 3.",
+                "id": "js-dsa-tabulation-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the zero-capacity base case. It must remain 0.",
+                "blocks": [
+                  "const dp = Array(capacity + 1).fill(0);",
+                  "const result = dp[capacity];",
+                  "console.log(result);",
+                  "const capacity = 0;"
+                ],
+                "answer": [
+                  "const capacity = 0;",
+                  "const dp = Array(capacity + 1).fill(0);",
+                  "const result = dp[capacity];",
+                  "console.log(result);"
+                ],
+                "explanation": "With positive item weights, zero capacity cannot hold any item.",
+                "id": "js-dsa-tabulation-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Why is O(nW) knapsack DP called pseudo-polynomial when weights and capacity are binary-encoded?",
+                "options": [
+                  "All table entries are floating-point numbers",
+                  "The algorithm cannot return exact values",
+                  "W can be exponential in the number of bits used to encode it",
+                  "nW is always exponential in n"
+                ],
+                "answer": 2,
+                "explanation": "Running time depends on the numeric capacity, not merely its encoded bit length.",
+                "id": "js-dsa-tabulation-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-dijkstra",
+            "title": "Dijkstra’s Algorithm",
+            "xp": 30,
+            "minutes": 5,
+            "level": "Expert",
+            "concept": "Dijkstra solves single-source shortest paths when every edge weight is nonnegative. Finalize the unvisited vertex with the smallest tentative distance, then relax its outgoing edges. Negative edges invalidate the finalization argument. The tiny examples use a dense O(V²) implementation; a suitable indexed binary heap gives O((V + E) log V). Infinity denotes an unreachable vertex. Examples use JavaScript.",
+            "examples": [
+              "const INF = Infinity;\nconst graph = [[0, 4, 1], [INF, 0, INF], [INF, 2, 0]];\nconst dist = [0, INF, INF], used = [false, false, false];\nfor (let step = 0; step < 3; step++) {\n  let u = -1;\n  for (let v = 0; v < 3; v++) if (!used[v] && (u === -1 || dist[v] < dist[u])) u = v;\n  if (u === -1 || dist[u] === INF) break;\n  used[u] = true;\n  for (let v = 0; v < 3; v++) dist[v] = Math.min(dist[v], dist[u] + graph[u][v]);\n}\nconsole.log(dist[1]);",
+              "const dist = [0, Infinity];\nconst unreachable = dist[1] === Infinity;\nconst result = unreachable ? -1 : dist[1];\nconsole.log(result);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which condition supports Dijkstra’s usual finalization proof?",
+                "options": [
+                  "Every edge weight is negative",
+                  "The graph must be a tree",
+                  "Vertices must have consecutive labels",
+                  "Every edge weight is nonnegative"
+                ],
+                "answer": 3,
+                "explanation": "Nonnegative edges prevent a later detour from improving a finalized distance.",
+                "id": "js-dsa-dijkstra-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Relax an edge only when the candidate distance improves the current best.",
+                "code": "if (dist[u] + weight ___ dist[v]) { dist[v] = dist[u] + weight; }",
+                "options": [
+                  "==",
+                  "<",
+                  ">"
+                ],
+                "answer": "<",
+                "explanation": "Relaxation keeps the smallest discovered distance to each vertex.",
+                "id": "js-dsa-dijkstra-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const INF = Infinity;\nconst graph = [[0, 4, 1], [INF, 0, INF], [INF, 2, 0]];\nconst dist = [0, INF, INF], used = [false, false, false];\nfor (let step = 0; step < 3; step++) {\n  let u = -1;\n  for (let v = 0; v < 3; v++) if (!used[v] && (u === -1 || dist[v] < dist[u])) u = v;\n  if (u === -1 || dist[u] === INF) break;\n  used[u] = true;\n  for (let v = 0; v < 3; v++) dist[v] = Math.min(dist[v], dist[u] + graph[u][v]);\n}\nconsole.log(dist[1]);",
+                "options": [
+                  "1",
+                  "2",
+                  "3",
+                  "4"
+                ],
+                "answer": 2,
+                "explanation": "The path 0 → 2 → 1 costs 1 + 2, improving the direct cost 4.",
+                "id": "js-dsa-dijkstra-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order an unreachable-distance guard so no infinity is mistaken for a finite path.",
+                "blocks": [
+                  "const unreachable = dist[1] === Infinity;",
+                  "const result = unreachable ? -1 : dist[1];",
+                  "console.log(result);",
+                  "const dist = [0, Infinity];"
+                ],
+                "answer": [
+                  "const dist = [0, Infinity];",
+                  "const unreachable = dist[1] === Infinity;",
+                  "const result = unreachable ? -1 : dist[1];",
+                  "console.log(result);"
+                ],
+                "explanation": "An untouched infinite distance means the vertex is unreachable.",
+                "id": "js-dsa-dijkstra-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Edges are S→A=2, S→B=5, B→A=-4. Why can finalizing A at 2 fail?",
+                "options": [
+                  "There must be a negative cycle",
+                  "The later path through B has cost 1",
+                  "A has no incoming edges",
+                  "Dijkstra requires all edge weights to equal 1"
+                ],
+                "answer": 1,
+                "explanation": "A negative edge can improve a distance after its vertex was finalized.",
+                "id": "js-dsa-dijkstra-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-disjoint-sets",
+            "title": "Disjoint Sets",
+            "xp": 30,
+            "minutes": 5,
+            "level": "Expert",
+            "concept": "Disjoint-set union maintains components using parent forests. Find follows parent links to a representative; union links representatives, not arbitrary interior nodes. Path compression shortens find paths. Combining compression with union by rank or size gives amortized O(α(n)) operations, not a universal worst-case O(1) guarantee. DSU supports merging connectivity, but ordinary DSU does not support arbitrary edge deletions. Examples use JavaScript.",
+            "examples": [
+              "const parent = [0, 0, 1, 2];\nfunction find(x) {\n  if (parent[x] !== x) parent[x] = find(parent[x]);\n  return parent[x];\n}\nconst root = find(3);\nconsole.log(root + \",\" + parent[3]);",
+              "const parent = [0, 0];\nconst rootA = parent[0], rootB = parent[1];\nlet components = 1;\nif (rootA !== rootB) { parent[rootB] = rootA; components--; }\nconsole.log(components);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What does find(x) return in a disjoint-set forest?",
+                "options": [
+                  "The smallest key automatically",
+                  "The number of graph edges",
+                  "A representative of x’s component",
+                  "Every member of x’s component"
+                ],
+                "answer": 2,
+                "explanation": "Following parent links reaches the component’s representative root.",
+                "id": "js-dsa-disjoint-sets-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Compress a path by storing the representative returned by recursive find.",
+                "code": "parent[x] = ___(parent[x]);",
+                "options": [
+                  "find",
+                  "abs",
+                  "size"
+                ],
+                "answer": "find",
+                "explanation": "The assignment redirects x straight to its representative.",
+                "id": "js-dsa-disjoint-sets-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const parent = [0, 0, 1, 2];\nfunction find(x) {\n  if (parent[x] !== x) parent[x] = find(parent[x]);\n  return parent[x];\n}\nconst root = find(3);\nconsole.log(root + \",\" + parent[3]);",
+                "options": [
+                  "2,0",
+                  "0,0",
+                  "0,2",
+                  "3,3"
+                ],
+                "answer": 1,
+                "explanation": "Full path compression rewrites parent[3] to the root 0.",
+                "id": "js-dsa-disjoint-sets-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Initialize the forest and component count, apply the same-component union guard, then print the unchanged count 1.",
+                "blocks": [
+                  "const rootA = parent[0], rootB = parent[1];\nlet components = 1;",
+                  "if (rootA !== rootB) { parent[rootB] = rootA; components--; }",
+                  "console.log(components);",
+                  "const parent = [0, 0];"
+                ],
+                "answer": [
+                  "const parent = [0, 0];",
+                  "const rootA = parent[0], rootB = parent[1];\nlet components = 1;",
+                  "if (rootA !== rootB) { parent[rootB] = rootA; components--; }",
+                  "console.log(components);"
+                ],
+                "explanation": "Union changes the component count only when the representatives differ.",
+                "id": "js-dsa-disjoint-sets-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Which combination gives DSU its amortized O(α(n)) operation bound?",
+                "options": [
+                  "Path compression plus union by rank or size",
+                  "Arbitrary linking alone",
+                  "Only checking whether indices are equal",
+                  "Sorting the parent array after each find"
+                ],
+                "answer": 0,
+                "explanation": "The near-constant amortized bound relies on both forest-balancing and path-compression heuristics.",
+                "id": "js-dsa-disjoint-sets-q5"
+              }
+            ]
+          },
+          {
+            "id": "js-dsa-tries",
+            "title": "Tries & Prefix Search",
+            "xp": 30,
+            "minutes": 5,
+            "level": "Expert",
+            "concept": "A trie shares character paths among words with common prefixes. A terminal flag distinguishes a complete word from a mere prefix. Searching a word of length L takes O(L) when each child lookup is constant time, for example a fixed alphabet array; map-backed child lookup depends on the map. Deleting a word must preserve branches and terminal flags needed by other words. Examples use JavaScript.",
+            "examples": [
+              "const root = { children: new Map(), terminal: false };\nfor (const word of [\"cat\", \"car\"]) {\n  let node = root;\n  for (const ch of word) {\n    if (!node.children.has(ch)) node.children.set(ch, { children: new Map(), terminal: false });\n    node = node.children.get(ch);\n  }\n  node.terminal = true;\n}\nconsole.log(root.children.get(\"c\").children.get(\"a\").children.size);",
+              "const root = { terminal: false };\nconst word = \"\";\nconst node = root;\nif (word.length === 0) node.terminal = true;\nconsole.log(root.terminal ? 1 : 0);"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What does a trie path naturally represent?",
+                "options": [
+                  "A hash bucket index only",
+                  "A sequence of characters forming a prefix",
+                  "A sorted list of all stored values",
+                  "A shortest path through a weighted graph"
+                ],
+                "answer": 1,
+                "explanation": "Words with common prefixes share their initial character path.",
+                "id": "js-dsa-tries-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "After following every character, exact-word search must check the terminal flag.",
+                "code": "return node.___;",
+                "options": [
+                  "children.size",
+                  "depth",
+                  "terminal"
+                ],
+                "answer": "terminal",
+                "explanation": "A path can exist without marking the end of a stored word.",
+                "id": "js-dsa-tries-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "const root = { children: new Map(), terminal: false };\nfor (const word of [\"cat\", \"car\"]) {\n  let node = root;\n  for (const ch of word) {\n    if (!node.children.has(ch)) node.children.set(ch, { children: new Map(), terminal: false });\n    node = node.children.get(ch);\n  }\n  node.terminal = true;\n}\nconsole.log(root.children.get(\"c\").children.get(\"a\").children.size);",
+                "options": [
+                  "2",
+                  "1",
+                  "3",
+                  "0"
+                ],
+                "answer": 0,
+                "explanation": "The shared prefix ca branches to t and r.",
+                "id": "js-dsa-tries-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the empty-word insertion: it marks the root terminal.",
+                "blocks": [
+                  "const word = \"\";\nconst node = root;",
+                  "if (word.length === 0) node.terminal = true;",
+                  "console.log(root.terminal ? 1 : 0);",
+                  "const root = { terminal: false };"
+                ],
+                "answer": [
+                  "const root = { terminal: false };",
+                  "const word = \"\";\nconst node = root;",
+                  "if (word.length === 0) node.terminal = true;",
+                  "console.log(root.terminal ? 1 : 0);"
+                ],
+                "explanation": "An empty word ends at the root without traversing any character.",
+                "id": "js-dsa-tries-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "A trie contains car and cart. To delete car while preserving cart, what is essential?",
+                "options": [
+                  "Delete the entire c branch",
+                  "Delete every node shared by both words",
+                  "Mark cart as absent too",
+                  "Clear car’s terminal flag but keep the branch to t"
+                ],
+                "answer": 3,
+                "explanation": "A shared prefix remains necessary for the longer stored word.",
+                "id": "js-dsa-tries-q5"
+              }
+            ]
+          }
         ]
       }
     ],
     "practice": {
       "id": "mistakes-practice",
       "xp": 10
-    }
+    },
+    "language": "JavaScript",
+    "badge": "JS",
+    "order": 0
   }
 }

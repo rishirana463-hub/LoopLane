@@ -1,0 +1,2542 @@
+{
+  "course": {
+    "id": "python",
+    "title": "Python",
+    "language": "Python",
+    "badge": "PY",
+    "order": 1,
+    "description": "Build Python foundations, then grow toward advanced algorithms.",
+    "practice": {
+      "id": "python-practice",
+      "xp": 10
+    },
+    "units": [
+      {
+        "id": "py-foundations",
+        "title": "Foundations",
+        "level": "Beginner",
+        "description": "Name values, make decisions, and repeat steps.",
+        "lessons": [
+          {
+            "id": "py-variables",
+            "title": "Variables",
+            "xp": 10,
+            "minutes": 4,
+            "concept": "Assign a value with =. A variable is a name you can use again or give a new value.",
+            "examples": [
+              "score = 2\nprint(score)",
+              "score = 2\nscore = score + 3\nprint(score)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which line creates a variable named score?",
+                "options": [
+                  "score = 3",
+                  "let score = 3",
+                  "3 = score"
+                ],
+                "answer": 0,
+                "explanation": "Python assigns values with =, without a declaration keyword.",
+                "id": "py-variables-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the assignment.",
+                "code": "name ___ 'Mina'\nprint(name)",
+                "options": [
+                  "=",
+                  "==",
+                  ":"
+                ],
+                "answer": "=",
+                "explanation": "A single equals sign assigns the string to name.",
+                "id": "py-variables-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "score = 4\nprint(score)",
+                "options": [
+                  "4",
+                  "score",
+                  "0"
+                ],
+                "answer": 0,
+                "explanation": "Reading score gives its assigned value, 4.",
+                "id": "py-variables-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the lines to create a score, increase it, then print it.",
+                "blocks": [
+                  "score = score + 3",
+                  "print(score)",
+                  "score = 2"
+                ],
+                "answer": [
+                  "score = 2",
+                  "score = score + 3",
+                  "print(score)"
+                ],
+                "explanation": "Create the variable before updating it, then print the updated value.",
+                "id": "py-variables-q4"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "score = 2\nbackup = score\nscore = 9\nprint(backup)",
+                "options": [
+                  "9",
+                  "2",
+                  "11"
+                ],
+                "answer": 1,
+                "explanation": "Reassigning score does not change the integer already assigned to backup.",
+                "id": "py-variables-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-types",
+            "title": "Value Types",
+            "xp": 10,
+            "minutes": 4,
+            "concept": "Python values have types. Integers hold whole numbers, floats hold decimals, strings hold text, and booleans are True or False.",
+            "examples": [
+              "age = 12\nprint(type(age).__name__)",
+              "ready = True\nprint(ready)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which value is a string?",
+                "options": [
+                  "42",
+                  "'42'",
+                  "True"
+                ],
+                "answer": 1,
+                "explanation": "Quotes make '42' text rather than an integer.",
+                "id": "py-types-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the code with a boolean value.",
+                "code": "ready = ___\nprint(ready)",
+                "options": [
+                  "True",
+                  "true",
+                  "'True'"
+                ],
+                "answer": "True",
+                "explanation": "Python boolean names start with a capital letter.",
+                "id": "py-types-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "print(type(3.5).__name__)",
+                "options": [
+                  "int",
+                  "float",
+                  "str"
+                ],
+                "answer": 1,
+                "explanation": "A decimal literal such as 3.5 has type float.",
+                "id": "py-types-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the lines to convert text to an integer and print it.",
+                "blocks": [
+                  "number = int(text)",
+                  "print(number)",
+                  "text = '7'"
+                ],
+                "answer": [
+                  "text = '7'",
+                  "number = int(text)",
+                  "print(number)"
+                ],
+                "explanation": "int converts the numeric string before number is printed.",
+                "id": "py-types-q4"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "print(int('4') + 2)",
+                "options": [
+                  "42",
+                  "6",
+                  "TypeError"
+                ],
+                "answer": 1,
+                "explanation": "int('4') becomes the integer 4, so addition gives 6.",
+                "id": "py-types-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-operators",
+            "title": "Operators",
+            "xp": 10,
+            "minutes": 4,
+            "concept": "Use +, -, * and / for arithmetic. // divides downward to a whole number; % gives the remainder.",
+            "examples": [
+              "print(7 // 2)",
+              "print(7 % 2)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which operator multiplies two numbers?",
+                "options": [
+                  "*",
+                  "x",
+                  "**"
+                ],
+                "answer": 0,
+                "explanation": "A single * multiplies; ** raises a number to a power.",
+                "id": "py-operators-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the expression to get the remainder.",
+                "code": "print(8 ___ 3)",
+                "options": [
+                  "%",
+                  "/",
+                  "//"
+                ],
+                "answer": "%",
+                "explanation": "% gives what remains after whole-number division.",
+                "id": "py-operators-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "print(7 // 2)",
+                "options": [
+                  "3.5",
+                  "3",
+                  "4"
+                ],
+                "answer": 1,
+                "explanation": "For these positive values, // gives the whole-number quotient, 3.",
+                "id": "py-operators-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the lines to calculate a total from a price.",
+                "blocks": [
+                  "total = price * 3",
+                  "print(total)",
+                  "price = 4"
+                ],
+                "answer": [
+                  "price = 4",
+                  "total = price * 3",
+                  "print(total)"
+                ],
+                "explanation": "Define price before using it to calculate total.",
+                "id": "py-operators-q4"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "print(2 + 3 * 4)",
+                "options": [
+                  "20",
+                  "14",
+                  "24"
+                ],
+                "answer": 1,
+                "explanation": "Multiplication happens before addition: 3 × 4, then + 2.",
+                "id": "py-operators-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-conditionals",
+            "title": "Conditionals",
+            "xp": 10,
+            "minutes": 4,
+            "concept": "if runs an indented block when its condition is true. elif checks another condition; else handles the remaining case.",
+            "examples": [
+              "score = 8\nif score >= 5:\n    print('pass')\nelse:\n    print('try again')",
+              "age = 12\nif age < 13:\n    print('junior')\nelif age < 18:\n    print('teen')\nelse:\n    print('adult')"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which keyword starts a conditional?",
+                "options": [
+                  "when",
+                  "if",
+                  "check"
+                ],
+                "answer": 1,
+                "explanation": "if runs a block only when its condition is true.",
+                "id": "py-conditionals-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the comparison for equal values.",
+                "code": "score = 5\nif score ___ 5:\n    print('match')",
+                "options": [
+                  "==",
+                  "=",
+                  "!="
+                ],
+                "answer": "==",
+                "explanation": "== compares values; = assigns a value.",
+                "id": "py-conditionals-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "score = 3\nif score >= 5:\n    print('pass')\nelse:\n    print('practice')",
+                "options": [
+                  "pass",
+                  "practice",
+                  "3"
+                ],
+                "answer": 1,
+                "explanation": "3 is below 5, so the else block runs.",
+                "id": "py-conditionals-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the blocks to print yes when ready is true.",
+                "blocks": [
+                  "if ready:",
+                  "    print('yes')",
+                  "ready = True"
+                ],
+                "answer": [
+                  "ready = True",
+                  "if ready:",
+                  "    print('yes')"
+                ],
+                "explanation": "Assign ready before checking it; the print belongs inside the indented block.",
+                "id": "py-conditionals-q4"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "score = 8\nif score >= 9:\n    print('gold')\nelif score >= 7:\n    print('silver')\nelse:\n    print('bronze')",
+                "options": [
+                  "gold",
+                  "silver",
+                  "bronze"
+                ],
+                "answer": 1,
+                "explanation": "The first condition fails; 8 meets the elif condition.",
+                "id": "py-conditionals-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-loops",
+            "title": "For Loops",
+            "xp": 15,
+            "minutes": 4,
+            "concept": "A for loop visits each value in an iterable. range(stop) produces integers from 0 up to, but not including, stop.",
+            "examples": [
+              "for i in range(3):\n    print(i)",
+              "total = 0\nfor n in range(1, 4):\n    total = total + n\nprint(total)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which values does range(3) provide?",
+                "options": [
+                  "0, 1, 2",
+                  "1, 2, 3",
+                  "0, 1, 2, 3"
+                ],
+                "answer": 0,
+                "explanation": "range(3) starts at 0 and excludes 3.",
+                "id": "py-loops-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the loop keyword.",
+                "code": "___ n in range(2):\n    print(n)",
+                "options": [
+                  "for",
+                  "repeat",
+                  "each"
+                ],
+                "answer": "for",
+                "explanation": "for visits each value provided by range.",
+                "id": "py-loops-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "total = 0\nfor n in range(3):\n    total = total + n\nprint(total)",
+                "options": [
+                  "3",
+                  "6",
+                  "2"
+                ],
+                "answer": 0,
+                "explanation": "The loop adds 0, 1, and 2, giving 3.",
+                "id": "py-loops-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the blocks to count three loop iterations, then print the final count.",
+                "blocks": [
+                  "for n in range(3):\n    count = count + 1",
+                  "print(count)",
+                  "count = 0"
+                ],
+                "answer": [
+                  "count = 0",
+                  "for n in range(3):\n    count = count + 1",
+                  "print(count)"
+                ],
+                "explanation": "Initialize count, update it during the loop, then print the final value.",
+                "id": "py-loops-q4"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "total = 0\nfor n in range(1, 6, 2):\n    total = total + n\nprint(total)",
+                "options": [
+                  "6",
+                  "9",
+                  "15"
+                ],
+                "answer": 1,
+                "explanation": "The step of 2 visits 1, 3, and 5, whose sum is 9.",
+                "id": "py-loops-q5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "py-functions-collections",
+        "title": "Functions & Collections",
+        "level": "Beginner",
+        "description": "Reuse code and organize values into useful structures.",
+        "lessons": [
+          {
+            "id": "py-functions",
+            "title": "Functions",
+            "xp": 15,
+            "minutes": 4,
+            "concept": "def names a reusable block. Parameters receive inputs, and return sends a result back to the caller.",
+            "examples": [
+              "def double(n):\n    return n * 2\n\nprint(double(3))",
+              "def greet(name):\n    return 'Hi ' + name\n\nprint(greet('Mina'))"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which keyword defines a function?",
+                "options": [
+                  "function",
+                  "def",
+                  "method"
+                ],
+                "answer": 1,
+                "explanation": "def starts a Python function definition.",
+                "id": "py-functions-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the function so it sends back the sum.",
+                "code": "def add(a, b):\n    ___ a + b\n\nprint(add(2, 3))",
+                "options": [
+                  "return",
+                  "yielding",
+                  "send"
+                ],
+                "answer": "return",
+                "explanation": "return sends a value back to the function caller.",
+                "id": "py-functions-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "def double(n):\n    return n * 2\n\nprint(double(4))",
+                "options": [
+                  "4",
+                  "8",
+                  "2"
+                ],
+                "answer": 1,
+                "explanation": "The parameter n receives 4; the function returns 4 × 2.",
+                "id": "py-functions-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the blocks to define, call, then print a function result.",
+                "blocks": [
+                  "result = add_one(4)",
+                  "print(result)",
+                  "def add_one(n):\n    return n + 1"
+                ],
+                "answer": [
+                  "def add_one(n):\n    return n + 1",
+                  "result = add_one(4)",
+                  "print(result)"
+                ],
+                "explanation": "Define the function before calling it, then print the returned value.",
+                "id": "py-functions-q4"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "def add_one(n):\n    return n + 1\n\nprint(add_one(add_one(3)))",
+                "options": [
+                  "4",
+                  "5",
+                  "6"
+                ],
+                "answer": 1,
+                "explanation": "The inner call returns 4; the outer call adds one more.",
+                "id": "py-functions-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-strings",
+            "title": "Strings",
+            "xp": 10,
+            "minutes": 4,
+            "concept": "Strings hold text. Indexing starts at 0, len counts characters, and a slice includes its start but excludes its stop.",
+            "examples": [
+              "word = 'code'\nprint(word[0])",
+              "word = 'python'\nprint(word[1:4])"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which expression counts characters in word?",
+                "options": [
+                  "len(word)",
+                  "word.size()",
+                  "length(word)"
+                ],
+                "answer": 0,
+                "explanation": "len returns the number of characters in this string.",
+                "id": "py-strings-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the index to select the first character.",
+                "code": "word = 'code'\nprint(word[___])",
+                "options": [
+                  "0",
+                  "1",
+                  "4"
+                ],
+                "answer": "0",
+                "explanation": "Python string indexing starts at 0.",
+                "id": "py-strings-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "word = 'code'\nprint(len(word))",
+                "options": [
+                  "3",
+                  "4",
+                  "5"
+                ],
+                "answer": 1,
+                "explanation": "The string contains four characters.",
+                "id": "py-strings-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the lines to create text, make it uppercase, then print it.",
+                "blocks": [
+                  "upper = word.upper()",
+                  "print(upper)",
+                  "word = 'code'"
+                ],
+                "answer": [
+                  "word = 'code'",
+                  "upper = word.upper()",
+                  "print(upper)"
+                ],
+                "explanation": "upper() returns uppercase text, which is saved before printing.",
+                "id": "py-strings-q4"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "word = 'python'\nprint(word[1:4])",
+                "options": [
+                  "yth",
+                  "ytho",
+                  "pyt"
+                ],
+                "answer": 0,
+                "explanation": "The slice selects indexes 1, 2, and 3; index 4 is excluded.",
+                "id": "py-strings-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-lists",
+            "title": "Lists",
+            "xp": 15,
+            "minutes": 4,
+            "concept": "A list stores an ordered sequence. Use indexes starting at 0, append to add an item, and len to count items.",
+            "examples": [
+              "numbers = [2, 4, 6]\nprint(numbers[1])",
+              "numbers = [2, 4]\nnumbers.append(6)\nprint(len(numbers))"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which expression creates a list?",
+                "options": [
+                  "[2, 4, 6]",
+                  "{2, 4, 6}",
+                  "(2, 4, 6)"
+                ],
+                "answer": 0,
+                "explanation": "Square brackets create a list.",
+                "id": "py-lists-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the method to add 6 at the end.",
+                "code": "numbers = [2, 4]\nnumbers.___(6)\nprint(numbers)",
+                "options": [
+                  "append",
+                  "push",
+                  "addLast"
+                ],
+                "answer": "append",
+                "explanation": "append adds one item to the end of a Python list.",
+                "id": "py-lists-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "numbers = [3, 5, 7]\nprint(numbers[1])",
+                "options": [
+                  "3",
+                  "5",
+                  "7"
+                ],
+                "answer": 1,
+                "explanation": "Index 1 selects the second item, 5.",
+                "id": "py-lists-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the lines to create a list, append an item, then print its length.",
+                "blocks": [
+                  "numbers.append(6)",
+                  "print(len(numbers))",
+                  "numbers = [2, 4]"
+                ],
+                "answer": [
+                  "numbers = [2, 4]",
+                  "numbers.append(6)",
+                  "print(len(numbers))"
+                ],
+                "explanation": "The list must exist before append; its updated length is printed last.",
+                "id": "py-lists-q4"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "numbers = [2, 4, 6]\nnumbers[0] = 9\nprint(numbers[0] + numbers[-1])",
+                "options": [
+                  "11",
+                  "15",
+                  "8"
+                ],
+                "answer": 1,
+                "explanation": "Index 0 is now 9; index -1 selects the last item, 6.",
+                "id": "py-lists-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dictionaries",
+            "title": "Dictionaries",
+            "xp": 15,
+            "minutes": 4,
+            "concept": "A dictionary connects unique keys to values. Read or update a value by key; get can provide a fallback for missing keys.",
+            "examples": [
+              "scores = {'Mina': 3}\nprint(scores['Mina'])",
+              "scores = {'Mina': 3}\nprint(scores.get('Kai', 0))"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What does a dictionary store?",
+                "options": [
+                  "Only sorted numbers",
+                  "Key-value pairs",
+                  "Only characters"
+                ],
+                "answer": 1,
+                "explanation": "Each dictionary key is associated with a value.",
+                "id": "py-dictionaries-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the key to read Mina's score.",
+                "code": "scores = {'Mina': 3}\nprint(scores[___])",
+                "options": [
+                  "'Mina'",
+                  "0",
+                  "'score'"
+                ],
+                "answer": "'Mina'",
+                "explanation": "Dictionary lookup uses a key, here the string 'Mina'.",
+                "id": "py-dictionaries-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "scores = {'Mina': 3}\nprint(scores.get('Kai', 0))",
+                "options": [
+                  "3",
+                  "0",
+                  "KeyError"
+                ],
+                "answer": 1,
+                "explanation": "Kai is absent, so get returns the supplied fallback, 0.",
+                "id": "py-dictionaries-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the lines to create scores, update Mina's score, then read it.",
+                "blocks": [
+                  "scores['Mina'] = 5",
+                  "print(scores['Mina'])",
+                  "scores = {'Mina': 3}"
+                ],
+                "answer": [
+                  "scores = {'Mina': 3}",
+                  "scores['Mina'] = 5",
+                  "print(scores['Mina'])"
+                ],
+                "explanation": "Assigning an existing key replaces its associated value.",
+                "id": "py-dictionaries-q4"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "scores = {'Mina': 3}\nscores['Mina'] = 8\nscores['Kai'] = 2\nprint(len(scores))",
+                "options": [
+                  "1",
+                  "2",
+                  "3"
+                ],
+                "answer": 1,
+                "explanation": "Updating Mina keeps one key; adding Kai creates the second key.",
+                "id": "py-dictionaries-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-sets",
+            "title": "Sets",
+            "xp": 15,
+            "minutes": 4,
+            "concept": "A set stores unique values. add inserts a value, in tests membership, and len counts unique members; iteration order is not guaranteed.",
+            "examples": [
+              "values = {2, 2, 5}\nprint(len(values))",
+              "values = set()\nvalues.add(3)\nprint(3 in values)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What does a set automatically remove?",
+                "options": [
+                  "Duplicate values",
+                  "All numbers",
+                  "All strings"
+                ],
+                "answer": 0,
+                "explanation": "A set contains each distinct value only once.",
+                "id": "py-sets-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the code to create an empty set.",
+                "code": "values = ___\nprint(len(values))",
+                "options": [
+                  "set()",
+                  "{}",
+                  "[]"
+                ],
+                "answer": "set()",
+                "explanation": "set() creates an empty set; {} creates an empty dictionary.",
+                "id": "py-sets-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "values = {2, 2, 5}\nprint(len(values))",
+                "options": [
+                  "3",
+                  "2",
+                  "1"
+                ],
+                "answer": 1,
+                "explanation": "Only the distinct values 2 and 5 remain.",
+                "id": "py-sets-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the lines to create a set, add 7, then check membership.",
+                "blocks": [
+                  "values.add(7)",
+                  "print(7 in values)",
+                  "values = set()"
+                ],
+                "answer": [
+                  "values = set()",
+                  "values.add(7)",
+                  "print(7 in values)"
+                ],
+                "explanation": "Add 7 before checking whether the set contains it.",
+                "id": "py-sets-q4"
+              },
+              {
+                "type": "predict",
+                "prompt": "What is the output?",
+                "code": "values = {1, 2}\nvalues.add(2)\nvalues.add(3)\nprint(len(values))",
+                "options": [
+                  "4",
+                  "3",
+                  "2"
+                ],
+                "answer": 1,
+                "explanation": "Adding 2 changes nothing; adding 3 gives three distinct members.",
+                "id": "py-sets-q5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "py-dsa-complexity-search",
+        "title": "Complexity & Search",
+        "description": "Bound growth, find values, and maintain shrinking search spaces.",
+        "level": "Intermediate",
+        "lessons": [
+          {
+            "id": "py-dsa-big-o",
+            "title": "Big O",
+            "xp": 20,
+            "minutes": 5,
+            "level": "Intermediate",
+            "concept": "Big O describes an upper bound on growth as input size increases. Ignore fixed factors, but count dependent loops carefully: two separate linear scans stay linear; two full nested scans are quadratic. These lessons use the usual RAM model with constant-time arithmetic on small integers. Examples use Python 3.",
+            "examples": [
+              "count = 0\nfor i in range(3):\n    for j in range(3):\n        count += 1\nprint(count)",
+              "values = []\ncount = 0\nfor value in values:\n    count += 1\nprint(count)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What does O(n) describe?",
+                "options": [
+                  "Exactly n milliseconds",
+                  "A fixed number of operations",
+                  "An algorithm that always beats O(log n)",
+                  "An upper bound proportional to input size"
+                ],
+                "answer": 3,
+                "explanation": "Big O measures growth, not exact running time.",
+                "id": "py-dsa-big-o-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Visit every valid array index exactly once, from first to last.",
+                "code": "for i in range(___):\n    pass  # visit values[i]",
+                "options": [
+                  "len(values) + 1",
+                  "-1",
+                  "len(values)"
+                ],
+                "answer": "len(values)",
+                "explanation": "The last valid index is length minus one.",
+                "id": "py-dsa-big-o-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "count = 0\nfor i in range(3):\n    for j in range(3):\n        count += 1\nprint(count)",
+                "options": [
+                  "6",
+                  "27",
+                  "9",
+                  "3"
+                ],
+                "answer": 2,
+                "explanation": "Each of three outer iterations performs three inner increments.",
+                "id": "py-dsa-big-o-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Initialize the empty input and counter, perform the scan, then print 0.",
+                "blocks": [
+                  "for value in values:\n    count += 1",
+                  "print(count)",
+                  "values = []\ncount = 0"
+                ],
+                "answer": [
+                  "values = []\ncount = 0",
+                  "for value in values:\n    count += 1",
+                  "print(count)"
+                ],
+                "explanation": "An empty collection skips the loop and leaves count zero.",
+                "id": "py-dsa-big-o-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "One n-element scan is followed by a separate n-element scan. What is the tight growth bound?",
+                "options": [
+                  "O(1)",
+                  "O(n)",
+                  "O(n²)",
+                  "O(log n)"
+                ],
+                "answer": 1,
+                "explanation": "Adding two linear costs remains linear.",
+                "id": "py-dsa-big-o-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-linear-search",
+            "title": "Linear Search",
+            "xp": 20,
+            "minutes": 5,
+            "level": "Intermediate",
+            "concept": "Linear search inspects elements in order and works without sorting. Return the first matching index, or a sentinel such as -1 when no match exists. Before each step, every earlier element has already been ruled out. Worst-case work grows with the collection size. Examples use Python 3.",
+            "examples": [
+              "values = [8, 4, 6, 6]\nfound = -1\nfor i, value in enumerate(values):\n    if value == 6:\n        found = i\n        break\nprint(found)",
+              "values = []\nfound = -1\nfor i, value in enumerate(values):\n    if value == 9:\n        found = i\n        break\nprint(found)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which input can linear search handle directly?",
+                "options": [
+                  "Only a binary tree",
+                  "Only unique values",
+                  "An unsorted array",
+                  "Only a sorted array"
+                ],
+                "answer": 2,
+                "explanation": "Linear search needs no ordering assumption.",
+                "id": "py-dsa-linear-search-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the condition that identifies a matching element.",
+                "code": "if values[i] ___ target:\n    return i",
+                "options": [
+                  "<",
+                  "==",
+                  "!="
+                ],
+                "answer": "==",
+                "explanation": "Equality identifies the target; earlier indices have already been checked.",
+                "id": "py-dsa-linear-search-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "values = [8, 4, 6, 6]\nfound = -1\nfor i, value in enumerate(values):\n    if value == 6:\n        found = i\n        break\nprint(found)",
+                "options": [
+                  "-1",
+                  "2",
+                  "3",
+                  "6"
+                ],
+                "answer": 1,
+                "explanation": "The first 6 is at zero-based index 2.",
+                "id": "py-dsa-linear-search-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Initialize an empty search with -1, scan for 9, then print the not-found result.",
+                "blocks": [
+                  "for i, value in enumerate(values):\n    if value == 9:\n        found = i\n        break",
+                  "print(found)",
+                  "values = []\nfound = -1"
+                ],
+                "answer": [
+                  "values = []\nfound = -1",
+                  "for i, value in enumerate(values):\n    if value == 9:\n        found = i\n        break",
+                  "print(found)"
+                ],
+                "explanation": "No element is visited, so the not-found sentinel survives.",
+                "id": "py-dsa-linear-search-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "The target is absent from n elements. How many equality checks does this linear search need?",
+                "options": [
+                  "n",
+                  "1",
+                  "log₂ n",
+                  "n²"
+                ],
+                "answer": 0,
+                "explanation": "An absent target requires inspecting every element.",
+                "id": "py-dsa-linear-search-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-binary-search",
+            "title": "Binary Search",
+            "xp": 20,
+            "minutes": 5,
+            "level": "Intermediate",
+            "concept": "Binary search repeatedly halves an ordered candidate interval. In an ascending array, compare the middle value and discard the half that cannot contain the target. This lesson uses inclusive bounds [left, right]; moving past mid guarantees progress. Sorting first has its own cost. Examples use Python 3.",
+            "examples": [
+              "a = [1, 3, 5, 7, 9]\nleft, right, found = 0, len(a) - 1, -1\nwhile left <= right:\n    mid = left + (right - left) // 2\n    if a[mid] == 7:\n        found = mid\n        break\n    if a[mid] < 7:\n        left = mid + 1\n    else:\n        right = mid - 1\nprint(found)",
+              "a = [7]\nleft, right = 0, len(a) - 1\nmid = left + (right - left) // 2\nprint(mid if left <= right and a[mid] == 7 else -1)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What must hold for ordinary binary search on an array?",
+                "options": [
+                  "Every value is unique",
+                  "The array is sorted in the comparison order",
+                  "All values are positive",
+                  "The length is even"
+                ],
+                "answer": 1,
+                "explanation": "Ordering lets one comparison eliminate an entire half.",
+                "id": "py-dsa-binary-search-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "With inclusive bounds, keep searching while at least one candidate remains.",
+                "code": "while left ___ right:\n    pass  # inspect middle",
+                "options": [
+                  "<=",
+                  "<",
+                  ">"
+                ],
+                "answer": "<=",
+                "explanation": "left equal to right still represents one unchecked element.",
+                "id": "py-dsa-binary-search-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "a = [1, 3, 5, 7, 9]\nleft, right, found = 0, len(a) - 1, -1\nwhile left <= right:\n    mid = left + (right - left) // 2\n    if a[mid] == 7:\n        found = mid\n        break\n    if a[mid] < 7:\n        left = mid + 1\n    else:\n        right = mid - 1\nprint(found)",
+                "options": [
+                  "3",
+                  "2",
+                  "4",
+                  "-1"
+                ],
+                "answer": 0,
+                "explanation": "After discarding values below 7, the algorithm finds index 3.",
+                "id": "py-dsa-binary-search-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the one-candidate boundary check so it prints 0.",
+                "blocks": [
+                  "left, right = 0, len(a) - 1",
+                  "mid = left + (right - left) // 2",
+                  "print(mid if left <= right and a[mid] == 7 else -1)",
+                  "a = [7]"
+                ],
+                "answer": [
+                  "a = [7]",
+                  "left, right = 0, len(a) - 1",
+                  "mid = left + (right - left) // 2",
+                  "print(mid if left <= right and a[mid] == 7 else -1)"
+                ],
+                "explanation": "The inclusive loop condition preserves the singleton candidate.",
+                "id": "py-dsa-binary-search-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "For one lookup in an unsorted array, what is the cost of comparison-sorting before binary search?",
+                "options": [
+                  "O(log n) overall",
+                  "O(1) overall",
+                  "Sorting is unnecessary for binary search",
+                  "O(n log n) overall"
+                ],
+                "answer": 3,
+                "explanation": "The sorting cost dominates the subsequent logarithmic lookup.",
+                "id": "py-dsa-binary-search-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-two-pointers",
+            "title": "Two Pointers",
+            "xp": 20,
+            "minutes": 5,
+            "level": "Intermediate",
+            "concept": "For pair sums in an ascending array, start at both ends. A sum below the target means the left value is too small for any remaining partner at or below right; move left forward. A sum above the target moves right backward. Keep left < right to avoid using one element twice. Examples use Python 3.",
+            "examples": [
+              "a = [1, 2, 4, 8]\nleft, right = 0, len(a) - 1\nwhile left < right:\n    total = a[left] + a[right]\n    if total == 10:\n        break\n    if total < 10:\n        left += 1\n    else:\n        right -= 1\nprint(str(a[left]) + \",\" + str(a[right]))",
+              "a = [5]\nleft, right = 0, len(a) - 1\nfound = left < right and a[left] + a[right] == 10\nprint(1 if found else 0)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which input supports the opposite-end pair-sum technique directly?",
+                "options": [
+                  "Values sorted in ascending order",
+                  "Any unsorted values without preparation",
+                  "Only strings",
+                  "Only arrays of length two"
+                ],
+                "answer": 0,
+                "explanation": "Sorted values justify discarding candidates after each comparison.",
+                "id": "py-dsa-two-pointers-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "A pair sum is too small. Move the left pointer toward larger values.",
+                "code": "left ___ 1",
+                "options": [
+                  "-=",
+                  "*=",
+                  "+="
+                ],
+                "answer": "+=",
+                "explanation": "Increasing left raises its value in an ascending array.",
+                "id": "py-dsa-two-pointers-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "a = [1, 2, 4, 8]\nleft, right = 0, len(a) - 1\nwhile left < right:\n    total = a[left] + a[right]\n    if total == 10:\n        break\n    if total < 10:\n        left += 1\n    else:\n        right -= 1\nprint(str(a[left]) + \",\" + str(a[right]))",
+                "options": [
+                  "1,8",
+                  "4,8",
+                  "2,4",
+                  "2,8"
+                ],
+                "answer": 3,
+                "explanation": "The first sum is 9; moving left finds 2 + 8.",
+                "id": "py-dsa-two-pointers-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the guard that rejects using the sole element twice.",
+                "blocks": [
+                  "left, right = 0, len(a) - 1",
+                  "found = left < right and a[left] + a[right] == 10",
+                  "print(1 if found else 0)",
+                  "a = [5]"
+                ],
+                "answer": [
+                  "a = [5]",
+                  "left, right = 0, len(a) - 1",
+                  "found = left < right and a[left] + a[right] == 10",
+                  "print(1 if found else 0)"
+                ],
+                "explanation": "Distinct indices require left strictly less than right.",
+                "id": "py-dsa-two-pointers-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "In an already sorted n-element array, why does the pair-sum scan take O(n) time?",
+                "options": [
+                  "Every pair is tested",
+                  "The sum operation sorts the array",
+                  "Each move shrinks the interval by one",
+                  "Both pointers restart after every comparison"
+                ],
+                "answer": 2,
+                "explanation": "Each pointer moves in one direction, and the interval only shrinks.",
+                "id": "py-dsa-two-pointers-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-sliding-window",
+            "title": "Sliding Window",
+            "xp": 20,
+            "minutes": 5,
+            "level": "Intermediate",
+            "concept": "A fixed-size sliding window reuses a running aggregate across adjacent subarrays. For a window of k values, subtract the outgoing value and add the incoming value. Initialize from a real window so all-negative inputs work. Require 1 <= k <= n. Variable windows need additional monotonicity assumptions. Examples use Python 3.",
+            "examples": [
+              "a = [2, 1, 5, 1]\ntotal = a[0] + a[1]\nbest = total\nfor i in range(2, len(a)):\n    total += a[i] - a[i - 2]\n    best = max(best, total)\nprint(best)",
+              "a = [-2, -3]\ntotal = a[0] + a[1]\nbest = total\nprint(best)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What does a fixed-size sliding window avoid?",
+                "options": [
+                  "Reading the input",
+                  "Checking the window size",
+                  "Storing any running value",
+                  "Recomputing every overlapping sum from scratch"
+                ],
+                "answer": 3,
+                "explanation": "Adjacent windows share all but two values.",
+                "id": "py-dsa-sliding-window-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Remove the outgoing value before adding the incoming value.",
+                "code": "total = total ___ outgoing + incoming",
+                "options": [
+                  "*",
+                  "-",
+                  "+"
+                ],
+                "answer": "-",
+                "explanation": "Subtracting outgoing preserves exactly the current window sum.",
+                "id": "py-dsa-sliding-window-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "a = [2, 1, 5, 1]\ntotal = a[0] + a[1]\nbest = total\nfor i in range(2, len(a)):\n    total += a[i] - a[i - 2]\n    best = max(best, total)\nprint(best)",
+                "options": [
+                  "7",
+                  "9",
+                  "6",
+                  "3"
+                ],
+                "answer": 2,
+                "explanation": "The two-element sums are 3, 6, and 6.",
+                "id": "py-dsa-sliding-window-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order initialization for an all-negative length-two window; print -5.",
+                "blocks": [
+                  "total = a[0] + a[1]",
+                  "best = total",
+                  "print(best)",
+                  "a = [-2, -3]"
+                ],
+                "answer": [
+                  "a = [-2, -3]",
+                  "total = a[0] + a[1]",
+                  "best = total",
+                  "print(best)"
+                ],
+                "explanation": "Initializing best to zero would invent a nonexistent window.",
+                "id": "py-dsa-sliding-window-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Why can the usual shrink-when-sum-exceeds-target window fail when negative values are allowed?",
+                "options": [
+                  "Subarrays become sorted automatically",
+                  "Removing a negative value can increase the sum",
+                  "Negative values cannot be added",
+                  "Every window must have length one"
+                ],
+                "answer": 1,
+                "explanation": "Negative values break the monotonicity that justifies that shrinking rule.",
+                "id": "py-dsa-sliding-window-q5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "py-dsa-data-structures",
+        "title": "Data Structures",
+        "description": "Choose and reason about stacks, queues, links, trees, and key lookup.",
+        "level": "Advanced",
+        "lessons": [
+          {
+            "id": "py-dsa-stacks",
+            "title": "Stacks",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "A stack removes the newest item first: last in, first out. Push and pop at the same end. This matches nested parentheses, undo history, and explicit DFS worklists. Check for an empty stack before accessing its top. Dynamic-array stacks usually offer amortized constant-time push, not a guarantee for every resizing operation. Examples use Python 3.",
+            "examples": [
+              "stack = []\nstack.append(1)\nstack.append(2)\nstack.append(3)\nstack.pop()\nprint(stack[-1])",
+              "stack = []\nvalue = stack.pop() if stack else -1\nprint(value)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which item does a stack remove first?",
+                "options": [
+                  "The smallest item",
+                  "A random item",
+                  "The most recently pushed item",
+                  "The oldest item"
+                ],
+                "answer": 2,
+                "explanation": "Stacks follow last in, first out.",
+                "id": "py-dsa-stacks-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Complete the operation that removes the top stack item.",
+                "code": "value = stack.___()",
+                "options": [
+                  "pop",
+                  "clear",
+                  "reverse"
+                ],
+                "answer": "pop",
+                "explanation": "Pop removes the most recently added stack item.",
+                "id": "py-dsa-stacks-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "stack = []\nstack.append(1)\nstack.append(2)\nstack.append(3)\nstack.pop()\nprint(stack[-1])",
+                "options": [
+                  "0",
+                  "2",
+                  "1",
+                  "3"
+                ],
+                "answer": 1,
+                "explanation": "Removing 3 exposes 2 as the new top.",
+                "id": "py-dsa-stacks-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order a safe empty-stack read; print -1 instead of popping.",
+                "blocks": [
+                  "value = stack.pop() if stack else -1",
+                  "print(value)",
+                  "stack = []"
+                ],
+                "answer": [
+                  "stack = []",
+                  "value = stack.pop() if stack else -1",
+                  "print(value)"
+                ],
+                "explanation": "The emptiness guard prevents invalid top access.",
+                "id": "py-dsa-stacks-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "While validating parentheses, a closing bracket arrives with an empty stack. What should happen?",
+                "options": [
+                  "Reject immediately: it has no opening partner",
+                  "Push the closing bracket as a valid opener",
+                  "Declare the expression valid",
+                  "Ignore every remaining character"
+                ],
+                "answer": 0,
+                "explanation": "A closing bracket cannot match an opening bracket that never appeared.",
+                "id": "py-dsa-stacks-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-queues",
+            "title": "Queues",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "A queue serves the oldest item first: first in, first out. Use a deque, circular buffer, or an array with a moving head index. In JavaScript, repeated Array.shift() may move remaining items, so do not assume it is constant time. A growing head-index array also needs eventual compaction or bounded-buffer management to reclaim consumed storage. Examples use Python 3.",
+            "examples": [
+              "from collections import deque\nqueue = deque([4, 7, 9])\nqueue.popleft()\nprint(queue[0])",
+              "from collections import deque\nqueue = deque()\nvalue = queue.popleft() if queue else -1\nprint(value)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which item leaves a FIFO queue first?",
+                "options": [
+                  "The item with the shortest name",
+                  "The earliest enqueued item",
+                  "The latest enqueued item",
+                  "The largest item"
+                ],
+                "answer": 1,
+                "explanation": "FIFO preserves arrival order.",
+                "id": "py-dsa-queues-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Read the next FIFO item using the intended queue operation.",
+                "code": "value = queue.___()",
+                "options": [
+                  "pop",
+                  "reverse",
+                  "popleft"
+                ],
+                "answer": "popleft",
+                "explanation": "Advance the head or remove from the front to preserve FIFO order.",
+                "id": "py-dsa-queues-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "from collections import deque\nqueue = deque([4, 7, 9])\nqueue.popleft()\nprint(queue[0])",
+                "options": [
+                  "7",
+                  "4",
+                  "9",
+                  "3"
+                ],
+                "answer": 0,
+                "explanation": "After removing 4, the oldest remaining item is 7.",
+                "id": "py-dsa-queues-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order a safe empty-queue read that prints -1.",
+                "blocks": [
+                  "value = queue.popleft() if queue else -1",
+                  "print(value)",
+                  "from collections import deque\nqueue = deque()"
+                ],
+                "answer": [
+                  "from collections import deque\nqueue = deque()",
+                  "value = queue.popleft() if queue else -1",
+                  "print(value)"
+                ],
+                "explanation": "Check for queued items before accessing the front.",
+                "id": "py-dsa-queues-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Why use collections.deque.popleft() instead of list.pop(0) for a FIFO graph-traversal queue?",
+                "options": [
+                  "It makes every graph traversal O(1)",
+                  "It sorts neighbors automatically",
+                  "It eliminates the need for visited state",
+                  "It avoids shifting every remaining list element"
+                ],
+                "answer": 3,
+                "explanation": "deque.popleft() is approximately O(1); list.pop(0) moves remaining elements in O(n).",
+                "id": "py-dsa-queues-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-linked-lists",
+            "title": "Linked Lists",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "A singly linked list stores each value with a link to its successor. To remove a node when its predecessor is known, redirect the predecessor link. Searching for that predecessor can still take linear time. Reversal must save the next link before overwriting it, and every traversal must account for an empty head. Examples use Python 3.",
+            "examples": [
+              "class Node:\n    def __init__(self, value, next_node=None):\n        self.value, self.next = value, next_node\nhead = Node(1, Node(2, Node(3)))\nhead.next = head.next.next\nprint(head.next.value)",
+              "class Node:\n    def __init__(self, value):\n        self.value, self.next = value, None\ncurrent, previous = Node(4), None\nsaved = current.next\ncurrent.next = previous\nprint(current.value if saved is None else -1)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What connects adjacent nodes in a singly linked list?",
+                "options": [
+                  "A next reference or pointer",
+                  "Their equal values",
+                  "Their sorted indices",
+                  "A global array index only"
+                ],
+                "answer": 0,
+                "explanation": "Each node stores a link to its successor.",
+                "id": "py-dsa-linked-lists-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Skip the node after current without losing the remaining chain.",
+                "code": "current.next = current.next.___",
+                "options": [
+                  "length",
+                  "next",
+                  "value"
+                ],
+                "answer": "next",
+                "explanation": "Linking to the successor’s successor bypasses exactly one node.",
+                "id": "py-dsa-linked-lists-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "class Node:\n    def __init__(self, value, next_node=None):\n        self.value, self.next = value, next_node\nhead = Node(1, Node(2, Node(3)))\nhead.next = head.next.next\nprint(head.next.value)",
+                "options": [
+                  "2",
+                  "1",
+                  "0",
+                  "3"
+                ],
+                "answer": 3,
+                "explanation": "Redirecting the first link bypasses the node containing 2.",
+                "id": "py-dsa-linked-lists-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Save the next link, then rewire the one node, then print its value. Initialize the node first.",
+                "blocks": [
+                  "saved = current.next",
+                  "current.next = previous",
+                  "print(current.value if saved is None else -1)",
+                  "class Node:\n    def __init__(self, value):\n        self.value, self.next = value, None\ncurrent, previous = Node(4), None"
+                ],
+                "answer": [
+                  "class Node:\n    def __init__(self, value):\n        self.value, self.next = value, None\ncurrent, previous = Node(4), None",
+                  "saved = current.next",
+                  "current.next = previous",
+                  "print(current.value if saved is None else -1)"
+                ],
+                "explanation": "Saving next first preserves access to the unprocessed chain.",
+                "id": "py-dsa-linked-lists-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "What is the worst-case time to find and delete a value in a singly linked list of n nodes?",
+                "options": [
+                  "O(log n), without additional structure",
+                  "O(n²), for a single traversal",
+                  "O(n), because finding the node may scan the list",
+                  "O(1), because every deletion is constant time"
+                ],
+                "answer": 2,
+                "explanation": "Known-predecessor rewiring is constant time; finding that predecessor may be linear.",
+                "id": "py-dsa-linked-lists-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-trees",
+            "title": "Binary Trees",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "A binary tree gives each node up to two children. Define height here as the number of nodes on the longest root-to-leaf path, with an empty tree having height zero. A binary search tree adds an ordering invariant, but it is not automatically balanced. Shape determines whether search is logarithmic or linear. Examples use Python 3.",
+            "examples": [
+              "class Node:\n    def __init__(self, left=None, right=None):\n        self.left, self.right = left, right\ndef height(node):\n    return 0 if node is None else 1 + max(height(node.left), height(node.right))\nprint(height(Node(Node(Node()))))",
+              "def height(node):\n    if node is None:\n        return 0\n    return 1 + max(height(node.left), height(node.right))\nroot = None\nresult = height(root)\nprint(result)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "How many children can a binary-tree node have?",
+                "options": [
+                  "Exactly two",
+                  "Any number",
+                  "At most one",
+                  "At most two"
+                ],
+                "answer": 3,
+                "explanation": "A binary tree permits zero, one, or two children per node.",
+                "id": "py-dsa-trees-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "An empty subtree has height zero. Add one for the current node.",
+                "code": "return ___ + max(height(node.left), height(node.right))",
+                "options": [
+                  "1",
+                  "0",
+                  "2"
+                ],
+                "answer": "1",
+                "explanation": "The current node contributes one to the longer child path.",
+                "id": "py-dsa-trees-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "class Node:\n    def __init__(self, left=None, right=None):\n        self.left, self.right = left, right\ndef height(node):\n    return 0 if node is None else 1 + max(height(node.left), height(node.right))\nprint(height(Node(Node(Node()))))",
+                "options": [
+                  "1",
+                  "0",
+                  "3",
+                  "2"
+                ],
+                "answer": 2,
+                "explanation": "There are three nodes on the longest root-to-leaf path.",
+                "id": "py-dsa-trees-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the empty-tree base case before its height is used.",
+                "blocks": [
+                  "result = height(root)",
+                  "print(result)",
+                  "def height(node):\n    if node is None:\n        return 0\n    return 1 + max(height(node.left), height(node.right))\nroot = None"
+                ],
+                "answer": [
+                  "def height(node):\n    if node is None:\n        return 0\n    return 1 + max(height(node.left), height(node.right))\nroot = None",
+                  "result = height(root)",
+                  "print(result)"
+                ],
+                "explanation": "The null base case stops recursion before any child access.",
+                "id": "py-dsa-trees-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Insert sorted distinct keys into an ordinary unbalanced BST. What can happen to search time?",
+                "options": [
+                  "The tree automatically becomes a heap",
+                  "It becomes O(n) as the tree degenerates into a chain",
+                  "It stays O(log n) for every insertion order",
+                  "It becomes O(1) because keys are sorted"
+                ],
+                "answer": 1,
+                "explanation": "A BST ordering invariant alone does not guarantee balanced height.",
+                "id": "py-dsa-trees-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-hash-maps",
+            "title": "Hash Maps",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "A hash table maps keys to buckets using a hash function. Good distribution and controlled load support expected constant-time basic operations; collisions, resizing, and adversarial inputs prevent a blanket worst-case O(1) claim. JavaScript Map promises average sublinear access rather than a specific implementation. Distinguish a missing key from a stored zero. Examples use Python 3.",
+            "examples": [
+              "counts = {}\nfor value in [2, 2, 3]:\n    counts[value] = counts.get(value, 0) + 1\nprint(counts[2])",
+              "counts = {}\nvalue = counts.get(9, 0)\nprint(value)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What is a collision in a hash table?",
+                "options": [
+                  "A key is deleted",
+                  "The table is sorted",
+                  "Different keys map to the same bucket",
+                  "Two keys must have equal values"
+                ],
+                "answer": 2,
+                "explanation": "Collisions require a strategy to keep distinct keys distinguishable.",
+                "id": "py-dsa-hash-maps-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Treat a missing frequency as zero before adding one.",
+                "code": "counts[value] = counts.get(value, ___) + 1",
+                "options": [
+                  "1",
+                  "-1",
+                  "0"
+                ],
+                "answer": "0",
+                "explanation": "A first occurrence must produce a count of one.",
+                "id": "py-dsa-hash-maps-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "counts = {}\nfor value in [2, 2, 3]:\n    counts[value] = counts.get(value, 0) + 1\nprint(counts[2])",
+                "options": [
+                  "0",
+                  "2",
+                  "1",
+                  "3"
+                ],
+                "answer": 1,
+                "explanation": "The key 2 occurs twice.",
+                "id": "py-dsa-hash-maps-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order a missing-key read that prints zero without raising an error.",
+                "blocks": [
+                  "value = counts.get(9, 0)",
+                  "print(value)",
+                  "counts = {}"
+                ],
+                "answer": [
+                  "counts = {}",
+                  "value = counts.get(9, 0)",
+                  "print(value)"
+                ],
+                "explanation": "An explicit default handles absence without assuming the key exists.",
+                "id": "py-dsa-hash-maps-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "A hash table uses linear collision chains. If all n keys share one bucket, how long can lookup take?",
+                "options": [
+                  "O(n) in the worst case",
+                  "O(1) in every case",
+                  "O(log n) without changing the chains",
+                  "O(n²) for a single chain scan"
+                ],
+                "answer": 0,
+                "explanation": "Expected constant-time lookup depends on hash distribution; one long chain can require linear work.",
+                "id": "py-dsa-hash-maps-q5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "py-dsa-algorithms",
+        "title": "Algorithms",
+        "description": "Combine sorting, graph traversal, priority structures, and justified greedy choices.",
+        "level": "Advanced",
+        "lessons": [
+          {
+            "id": "py-dsa-merge-sort",
+            "title": "Merge Sort",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "Merge sort divides an array, sorts each half, and merges ordered runs. The merge invariant keeps the output sorted while both pointers mark the smallest unused value in each run. Taking the left item on equal keys preserves stability. Standard array merge sort uses O(n log n) time and O(n) auxiliary storage. Examples use Python 3.",
+            "examples": [
+              "left, right, out = [1, 4], [2, 3], []\ni = j = 0\nwhile i < len(left) and j < len(right):\n    if left[i] <= right[j]:\n        out.append(left[i])\n        i += 1\n    else:\n        out.append(right[j])\n        j += 1\nout.extend(left[i:])\nout.extend(right[j:])\nprint(\",\".join(map(str, out)))",
+              "left = [4, 8]\ni, out = 0, []\nwhile i < len(left):\n    out.append(left[i])\n    i += 1\nprint(\",\".join(map(str, out)))"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which operation combines merge sort’s recursively sorted halves?",
+                "options": [
+                  "Reversing both halves",
+                  "Merging the smallest remaining front values",
+                  "Concatenating without comparisons",
+                  "Selecting random elements"
+                ],
+                "answer": 1,
+                "explanation": "Comparing the run fronts preserves sorted output.",
+                "id": "py-dsa-merge-sort-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "To keep equal keys in original order, choose the left run on ties.",
+                "code": "if left[i] ___ right[j]:\n    pass  # take left[i]",
+                "options": [
+                  ">",
+                  "<=",
+                  "<"
+                ],
+                "answer": "<=",
+                "explanation": "Left-first ties preserve the original order of equal keys.",
+                "id": "py-dsa-merge-sort-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "left, right, out = [1, 4], [2, 3], []\ni = j = 0\nwhile i < len(left) and j < len(right):\n    if left[i] <= right[j]:\n        out.append(left[i])\n        i += 1\n    else:\n        out.append(right[j])\n        j += 1\nout.extend(left[i:])\nout.extend(right[j:])\nprint(\",\".join(map(str, out)))",
+                "options": [
+                  "1,2,3,4",
+                  "1,4,2,3",
+                  "4,3,2,1",
+                  "1,2,4,3"
+                ],
+                "answer": 0,
+                "explanation": "The merge repeatedly takes the smallest unused run front.",
+                "id": "py-dsa-merge-sort-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "The right run is empty. Order the remaining-left copy to print 4,8.",
+                "blocks": [
+                  "while i < len(left):\n    out.append(left[i])\n    i += 1",
+                  "print(\",\".join(map(str, out)))",
+                  "left = [4, 8]\ni, out = 0, []"
+                ],
+                "answer": [
+                  "left = [4, 8]\ni, out = 0, []",
+                  "while i < len(left):\n    out.append(left[i])\n    i += 1",
+                  "print(\",\".join(map(str, out)))"
+                ],
+                "explanation": "When one run ends, copy the other run’s remaining values.",
+                "id": "py-dsa-merge-sort-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "There are log₂ n merge levels with O(n) total work per level. What follows?",
+                "options": [
+                  "O(log n) time",
+                  "O(n² log n) time",
+                  "O(1) time",
+                  "O(n log n) time"
+                ],
+                "answer": 3,
+                "explanation": "Multiply the number of levels by the work per level.",
+                "id": "py-dsa-merge-sort-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-bfs",
+            "title": "Breadth-First Search",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "BFS explores a graph in distance layers using a FIFO queue. Mark a vertex when enqueuing it so cycles do not repeatedly schedule the same vertex. In an unweighted graph, first discovery gives the minimum number of edges from the source. With adjacency lists and efficient queues, time is O(V + E). Examples use Python 3.",
+            "examples": [
+              "from collections import deque\ngraph = [[1, 2], [3], [3], []]\ndist, queue = [0, -1, -1, -1], deque([0])\nwhile queue:\n    u = queue.popleft()\n    for v in graph[u]:\n        if dist[v] == -1:\n            dist[v] = dist[u] + 1\n            queue.append(v)\nprint(dist[3])",
+              "from collections import deque\ngraph, seen, queue = [[0]], set(), deque()\nseen.add(0)\nqueue.append(0)\nfor v in graph[queue[0]]:\n    if v not in seen:\n        seen.add(v)\n        queue.append(v)\nprint(len(queue))"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which worklist makes BFS explore distance layers?",
+                "options": [
+                  "A FIFO queue",
+                  "A LIFO stack",
+                  "An unsorted set with arbitrary removal",
+                  "A recursion-only call stack"
+                ],
+                "answer": 0,
+                "explanation": "FIFO processes earlier discoveries before the next layer.",
+                "id": "py-dsa-bfs-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Set an unseen neighbor’s distance when it enters the queue.",
+                "code": "distance[v] = distance[u] + ___",
+                "options": [
+                  "1",
+                  "0",
+                  "2"
+                ],
+                "answer": "1",
+                "explanation": "Traversing one unweighted edge adds one to the distance.",
+                "id": "py-dsa-bfs-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "from collections import deque\ngraph = [[1, 2], [3], [3], []]\ndist, queue = [0, -1, -1, -1], deque([0])\nwhile queue:\n    u = queue.popleft()\n    for v in graph[u]:\n        if dist[v] == -1:\n            dist[v] = dist[u] + 1\n            queue.append(v)\nprint(dist[3])",
+                "options": [
+                  "1",
+                  "3",
+                  "-1",
+                  "2"
+                ],
+                "answer": 3,
+                "explanation": "Vertex 3 is reached through 1 or 2 in two edges.",
+                "id": "py-dsa-bfs-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order discovery of a source with a self-loop: mark it before enqueuing.",
+                "blocks": [
+                  "queue.append(0)",
+                  "for v in graph[queue[0]]:\n    if v not in seen:\n        seen.add(v)\n        queue.append(v)\nprint(len(queue))",
+                  "from collections import deque\ngraph, seen, queue = [[0]], set(), deque()\nseen.add(0)"
+                ],
+                "answer": [
+                  "from collections import deque\ngraph, seen, queue = [[0]], set(), deque()\nseen.add(0)",
+                  "queue.append(0)",
+                  "for v in graph[queue[0]]:\n    if v not in seen:\n        seen.add(v)\n        queue.append(v)\nprint(len(queue))"
+                ],
+                "explanation": "Marking on discovery prevents the self-loop from adding the source again.",
+                "id": "py-dsa-bfs-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Edges have different positive weights. Does ordinary BFS guarantee the smallest total weight?",
+                "options": [
+                  "Yes, if the source has two neighbors",
+                  "Only if vertices are numbered consecutively",
+                  "No; its layers minimize edge count, not arbitrary weight",
+                  "Yes, for every positive weight"
+                ],
+                "answer": 2,
+                "explanation": "Use an appropriate weighted shortest-path algorithm when edge costs differ.",
+                "id": "py-dsa-bfs-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-dfs",
+            "title": "Depth-First Search",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "DFS follows one branch before backtracking. Use recursion or an explicit stack, and mark vertices before exploring their neighbors. Neighbor order determines a particular traversal order. On a graph with cycles, visited state is essential. Deep recursion may exceed the language’s call-stack limits even when the algorithm is correct. Examples use Python 3.",
+            "examples": [
+              "graph = [[1, 2], [3], [], []]\nseen, order = set(), []\ndef dfs(u):\n    seen.add(u)\n    order.append(u)\n    for v in graph[u]:\n        if v not in seen:\n            dfs(v)\ndfs(0)\nprint(\",\".join(map(str, order)))",
+              "graph = []\npending = []\nif graph:\n    pending.append(0)\nprint(len(pending))"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What characterizes depth-first search?",
+                "options": [
+                  "Always visit the nearest layer first",
+                  "Always choose the smallest edge weight",
+                  "Never revisit a call frame",
+                  "Explore a branch before backtracking"
+                ],
+                "answer": 3,
+                "explanation": "DFS postpones siblings while it explores the current branch.",
+                "id": "py-dsa-dfs-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Mark a vertex before recursive calls to prevent cycling back into it.",
+                "code": "seen.___(u)",
+                "options": [
+                  "remove",
+                  "clear",
+                  "add"
+                ],
+                "answer": "add",
+                "explanation": "Early marking stops back edges from starting duplicate traversals.",
+                "id": "py-dsa-dfs-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "graph = [[1, 2], [3], [], []]\nseen, order = set(), []\ndef dfs(u):\n    seen.add(u)\n    order.append(u)\n    for v in graph[u]:\n        if v not in seen:\n            dfs(v)\ndfs(0)\nprint(\",\".join(map(str, order)))",
+                "options": [
+                  "3,1,0,2",
+                  "0,2,1,3",
+                  "0,1,3,2",
+                  "0,1,2,3"
+                ],
+                "answer": 2,
+                "explanation": "DFS explores 1 and its child 3 before returning to 2.",
+                "id": "py-dsa-dfs-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Initialize the empty graph and stack, apply the source-exists guard, then print the stack size.",
+                "blocks": [
+                  "if graph:\n    pending.append(0)",
+                  "print(len(pending))",
+                  "graph = []\npending = []"
+                ],
+                "answer": [
+                  "graph = []\npending = []",
+                  "if graph:\n    pending.append(0)",
+                  "print(len(pending))"
+                ],
+                "explanation": "An empty graph has no source vertex to schedule.",
+                "id": "py-dsa-dfs-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "To detect cycles in a directed graph, why distinguish active recursion-stack vertices from finished vertices?",
+                "options": [
+                  "Visited state removes all edges",
+                  "An edge to an active vertex proves a directed cycle",
+                  "Every edge to any visited vertex proves a directed cycle",
+                  "Finished vertices cannot have outgoing edges"
+                ],
+                "answer": 1,
+                "explanation": "An active vertex is an ancestor on the current path; a finished vertex need not be.",
+                "id": "py-dsa-dfs-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-heaps",
+            "title": "Binary Heaps",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "A binary min-heap keeps each parent no greater than its children. The root is the minimum, but the entire array is not sorted. Inserting or removing the root usually needs O(log n) repair; peek is O(1). Building a heap bottom-up is O(n). Standard C++ priority_queue is a max-heap unless its comparator is changed. Examples use Python 3.",
+            "examples": [
+              "import heapq\nheap = [7, 2, 5]\nheapq.heapify(heap)\nprint(heap[0])",
+              "import heapq\nheap = []\nminimum = heap[0] if heap else -1\nprint(minimum)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which property defines a min-heap?",
+                "options": [
+                  "The array is fully sorted",
+                  "Only the leaves have values",
+                  "Every parent is no greater than its children",
+                  "Every child is smaller than its parent"
+                ],
+                "answer": 2,
+                "explanation": "The local parent-child rule places a minimum at the root.",
+                "id": "py-dsa-heaps-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "For zero-based heap indexing, find the left child of index i.",
+                "code": "left = 2 * i + ___",
+                "options": [
+                  "2",
+                  "1",
+                  "0"
+                ],
+                "answer": "1",
+                "explanation": "Zero-based children are at indices 2i + 1 and 2i + 2.",
+                "id": "py-dsa-heaps-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "import heapq\nheap = [7, 2, 5]\nheapq.heapify(heap)\nprint(heap[0])",
+                "options": [
+                  "0",
+                  "2",
+                  "7",
+                  "5"
+                ],
+                "answer": 1,
+                "explanation": "The min-heap root contains the smallest inserted value.",
+                "id": "py-dsa-heaps-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order a safe read of an empty min-heap; print -1.",
+                "blocks": [
+                  "minimum = heap[0] if heap else -1",
+                  "print(minimum)",
+                  "import heapq\nheap = []"
+                ],
+                "answer": [
+                  "import heapq\nheap = []",
+                  "minimum = heap[0] if heap else -1",
+                  "print(minimum)"
+                ],
+                "explanation": "Peek is only valid after confirming the heap has an item.",
+                "id": "py-dsa-heaps-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Maintain the largest k values in a min-heap while scanning n values, with 1 <= k <= n. What is the standard time bound?",
+                "options": [
+                  "O(n log(k + 1))",
+                  "O(log n) total",
+                  "O(n²) necessarily",
+                  "O(k) total"
+                ],
+                "answer": 0,
+                "explanation": "Each candidate needs at most one logarithmic heap update on at most k entries.",
+                "id": "py-dsa-heaps-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-greedy",
+            "title": "Greedy Algorithms",
+            "xp": 25,
+            "minutes": 5,
+            "level": "Advanced",
+            "concept": "Greedy algorithms commit to a locally preferred choice. They need a correctness argument, such as an exchange argument, rather than intuition alone. For maximizing the number of non-overlapping nonempty half-open intervals [start, end), with start < end, choosing earliest finish time is safe. Greedy largest-coin change is not optimal for arbitrary denominations. Examples use Python 3.",
+            "examples": [
+              "intervals = [(0, 3), (1, 2), (2, 4)]\nintervals.sort(key=lambda interval: interval[1])\nlast_end, count = float(\"-inf\"), 0\nfor start, finish in intervals:\n    if start >= last_end:\n        count += 1\n        last_end = finish\nprint(count)",
+              "coins = [4, 3, 1]\nremaining, used = 6, 0\nfor coin in coins:\n    while remaining >= coin:\n        remaining -= coin\n        used += 1\nprint(used)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What must justify a greedy choice?",
+                "options": [
+                  "The input has fewer than ten elements",
+                  "A proof that the choice preserves some optimal solution",
+                  "The choice looks attractive on one example",
+                  "The choice uses the largest number"
+                ],
+                "answer": 1,
+                "explanation": "A local preference is safe only when a correctness argument supports it.",
+                "id": "py-dsa-greedy-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Half-open intervals may touch endpoints. Accept the next interval if it starts after or at the previous end.",
+                "code": "if start ___ last_end:\n    pass  # accept",
+                "options": [
+                  ">=",
+                  ">",
+                  "<"
+                ],
+                "answer": ">=",
+                "explanation": "Half-open intervals ending and starting at the same point do not overlap.",
+                "id": "py-dsa-greedy-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "intervals = [(0, 3), (1, 2), (2, 4)]\nintervals.sort(key=lambda interval: interval[1])\nlast_end, count = float(\"-inf\"), 0\nfor start, finish in intervals:\n    if start >= last_end:\n        count += 1\n        last_end = finish\nprint(count)",
+                "options": [
+                  "2",
+                  "1",
+                  "3",
+                  "0"
+                ],
+                "answer": 0,
+                "explanation": "Earliest-finish selection accepts [1,2) and then [2,4).",
+                "id": "py-dsa-greedy-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order a largest-coin greedy trace for coins 4,3,1 and amount 6; it uses three coins.",
+                "blocks": [
+                  "for coin in coins:\n    while remaining >= coin:\n        remaining -= coin\n        used += 1",
+                  "print(used)",
+                  "coins = [4, 3, 1]\nremaining, used = 6, 0"
+                ],
+                "answer": [
+                  "coins = [4, 3, 1]\nremaining, used = 6, 0",
+                  "for coin in coins:\n    while remaining >= coin:\n        remaining -= coin\n        used += 1",
+                  "print(used)"
+                ],
+                "explanation": "Greedy takes 4 + 1 + 1; the optimal solution is 3 + 3.",
+                "id": "py-dsa-greedy-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Coins are 1, 3, and 4; the amount is 6. What defeats largest-coin-first greedy?",
+                "options": [
+                  "Coin 1 cannot make the amount",
+                  "Greedy always uses one coin",
+                  "Sorting coins ascending proves optimality",
+                  "Two 3-coins beat 4 + 1 + 1"
+                ],
+                "answer": 3,
+                "explanation": "This counterexample shows arbitrary coin systems need a different algorithm.",
+                "id": "py-dsa-greedy-q5"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "py-dsa-expert-dsa",
+        "title": "Expert DSA",
+        "description": "Reason about DP dependencies, weighted paths, connectivity, and shared prefixes.",
+        "level": "Expert",
+        "lessons": [
+          {
+            "id": "py-dsa-memoization",
+            "title": "Memoization",
+            "xp": 30,
+            "minutes": 5,
+            "level": "Expert",
+            "concept": "Memoization caches results of overlapping subproblems in a top-down recurrence. The cache key must include every input that affects the result. Store results before returning, and distinguish absence from a cached zero. For the recurrence ways(n) = ways(n-1) + ways(n-2), with ways(0)=ways(1)=1, caching reduces repeated work to O(n) states. Examples use Python 3.",
+            "examples": [
+              "memo = {0: 1, 1: 1}\ndef ways(n):\n    if n in memo:\n        return memo[n]\n    memo[n] = ways(n - 1) + ways(n - 2)\n    return memo[n]\nprint(ways(5))",
+              "memo = {\"zero\": 0}\nexists = \"zero\" in memo\nresult = memo[\"zero\"] if exists else -1\nprint(result)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What does memoization reuse?",
+                "options": [
+                  "The result of a previously solved identical state",
+                  "Any result with a similar-looking name",
+                  "Only the last recursive call",
+                  "A random base case"
+                ],
+                "answer": 0,
+                "explanation": "Identical subproblems can share their computed result.",
+                "id": "py-dsa-memoization-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "A zero result is valid. Test cache membership rather than truthiness.",
+                "code": "if key ___ memo:\n    return memo[key]",
+                "options": [
+                  "not in",
+                  "is",
+                  "in"
+                ],
+                "answer": "in",
+                "explanation": "Membership checks preserve valid cached results such as zero.",
+                "id": "py-dsa-memoization-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "memo = {0: 1, 1: 1}\ndef ways(n):\n    if n in memo:\n        return memo[n]\n    memo[n] = ways(n - 1) + ways(n - 2)\n    return memo[n]\nprint(ways(5))",
+                "options": [
+                  "5",
+                  "13",
+                  "16",
+                  "8"
+                ],
+                "answer": 3,
+                "explanation": "The cached recurrence produces 1, 1, 2, 3, 5, 8.",
+                "id": "py-dsa-memoization-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order a cache read that recognizes zero as an existing result.",
+                "blocks": [
+                  "exists = \"zero\" in memo",
+                  "result = memo[\"zero\"] if exists else -1",
+                  "print(result)",
+                  "memo = {\"zero\": 0}"
+                ],
+                "answer": [
+                  "memo = {\"zero\": 0}",
+                  "exists = \"zero\" in memo",
+                  "result = memo[\"zero\"] if exists else -1",
+                  "print(result)"
+                ],
+                "explanation": "A cached zero is a computed answer, not a missing state.",
+                "id": "py-dsa-memoization-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "A path-count function depends on both vertex and remaining steps. What must its memoization key include?",
+                "options": [
+                  "Only remaining steps",
+                  "Neither; one global cached result is enough",
+                  "Both vertex and remaining steps",
+                  "Only vertex"
+                ],
+                "answer": 2,
+                "explanation": "Different remaining budgets at the same vertex can have different answers.",
+                "id": "py-dsa-memoization-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-tabulation",
+            "title": "Tabulation & 0/1 Knapsack",
+            "xp": 30,
+            "minutes": 5,
+            "level": "Expert",
+            "concept": "Tabulation fills a DP table in dependency order. In one-dimensional 0/1 knapsack, dp[c] stores the best value within capacity c using processed items. Traverse capacities downward for each item so dp[c-weight] still excludes that item. Forward traversal would allow reusing the same item. These examples use nonnegative values and positive integer weights. Examples use Python 3.",
+            "examples": [
+              "dp = [0] * 5\nweight, value = 2, 3\nfor c in range(4, weight - 1, -1):\n    dp[c] = max(dp[c], dp[c - weight] + value)\nprint(dp[4])",
+              "capacity = 0\ndp = [0] * (capacity + 1)\nresult = dp[capacity]\nprint(result)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What distinguishes tabulation from recursive memoization?",
+                "options": [
+                  "It never stores results",
+                  "It requires every state to be independent",
+                  "It always uses exponential time",
+                  "It fills states iteratively in dependency order"
+                ],
+                "answer": 3,
+                "explanation": "Tabulation explicitly schedules state evaluation instead of relying on recursive calls.",
+                "id": "py-dsa-tabulation-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Process capacities downward so each 0/1 item is used at most once.",
+                "code": "for c in range(capacity, weight - 1, ___):\n    pass  # update dp[c]",
+                "options": [
+                  "2",
+                  "-1",
+                  "1"
+                ],
+                "answer": "-1",
+                "explanation": "Descending capacities prevent reading a state already updated by the current item.",
+                "id": "py-dsa-tabulation-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "dp = [0] * 5\nweight, value = 2, 3\nfor c in range(4, weight - 1, -1):\n    dp[c] = max(dp[c], dp[c - weight] + value)\nprint(dp[4])",
+                "options": [
+                  "0",
+                  "4",
+                  "3",
+                  "6"
+                ],
+                "answer": 2,
+                "explanation": "Only one weight-2 item exists, so capacity 4 still yields value 3.",
+                "id": "py-dsa-tabulation-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the zero-capacity base case. It must remain 0.",
+                "blocks": [
+                  "dp = [0] * (capacity + 1)",
+                  "result = dp[capacity]",
+                  "print(result)",
+                  "capacity = 0"
+                ],
+                "answer": [
+                  "capacity = 0",
+                  "dp = [0] * (capacity + 1)",
+                  "result = dp[capacity]",
+                  "print(result)"
+                ],
+                "explanation": "With positive item weights, zero capacity cannot hold any item.",
+                "id": "py-dsa-tabulation-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Why is O(nW) knapsack DP called pseudo-polynomial when weights and capacity are binary-encoded?",
+                "options": [
+                  "The algorithm cannot return exact values",
+                  "W can be exponential in the number of bits used to encode it",
+                  "nW is always exponential in n",
+                  "All table entries are floating-point numbers"
+                ],
+                "answer": 1,
+                "explanation": "Running time depends on the numeric capacity, not merely its encoded bit length.",
+                "id": "py-dsa-tabulation-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-dijkstra",
+            "title": "Dijkstra’s Algorithm",
+            "xp": 30,
+            "minutes": 5,
+            "level": "Expert",
+            "concept": "Dijkstra solves single-source shortest paths when every edge weight is nonnegative. Finalize the unvisited vertex with the smallest tentative distance, then relax its outgoing edges. Negative edges invalidate the finalization argument. The tiny examples use a dense O(V²) implementation; a suitable indexed binary heap gives O((V + E) log V). Infinity denotes an unreachable vertex. Examples use Python 3.",
+            "examples": [
+              "INF = float(\"inf\")\ngraph = [[0, 4, 1], [INF, 0, INF], [INF, 2, 0]]\ndist, used = [0, INF, INF], [False] * 3\nfor step in range(3):\n    u = min((v for v in range(3) if not used[v]), key=lambda v: dist[v], default=-1)\n    if u == -1 or dist[u] == INF:\n        break\n    used[u] = True\n    for v in range(3):\n        dist[v] = min(dist[v], dist[u] + graph[u][v])\nprint(int(dist[1]))",
+              "dist = [0, float(\"inf\")]\nunreachable = dist[1] == float(\"inf\")\nresult = -1 if unreachable else dist[1]\nprint(result)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "Which condition supports Dijkstra’s usual finalization proof?",
+                "options": [
+                  "The graph must be a tree",
+                  "Vertices must have consecutive labels",
+                  "Every edge weight is nonnegative",
+                  "Every edge weight is negative"
+                ],
+                "answer": 2,
+                "explanation": "Nonnegative edges prevent a later detour from improving a finalized distance.",
+                "id": "py-dsa-dijkstra-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Relax an edge only when the candidate distance improves the current best.",
+                "code": "if dist[u] + weight ___ dist[v]:\n    dist[v] = dist[u] + weight",
+                "options": [
+                  "<",
+                  ">",
+                  "=="
+                ],
+                "answer": "<",
+                "explanation": "Relaxation keeps the smallest discovered distance to each vertex.",
+                "id": "py-dsa-dijkstra-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "INF = float(\"inf\")\ngraph = [[0, 4, 1], [INF, 0, INF], [INF, 2, 0]]\ndist, used = [0, INF, INF], [False] * 3\nfor step in range(3):\n    u = min((v for v in range(3) if not used[v]), key=lambda v: dist[v], default=-1)\n    if u == -1 or dist[u] == INF:\n        break\n    used[u] = True\n    for v in range(3):\n        dist[v] = min(dist[v], dist[u] + graph[u][v])\nprint(int(dist[1]))",
+                "options": [
+                  "2",
+                  "3",
+                  "4",
+                  "1"
+                ],
+                "answer": 1,
+                "explanation": "The path 0 → 2 → 1 costs 1 + 2, improving the direct cost 4.",
+                "id": "py-dsa-dijkstra-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order an unreachable-distance guard so no infinity is mistaken for a finite path.",
+                "blocks": [
+                  "unreachable = dist[1] == float(\"inf\")",
+                  "result = -1 if unreachable else dist[1]",
+                  "print(result)",
+                  "dist = [0, float(\"inf\")]"
+                ],
+                "answer": [
+                  "dist = [0, float(\"inf\")]",
+                  "unreachable = dist[1] == float(\"inf\")",
+                  "result = -1 if unreachable else dist[1]",
+                  "print(result)"
+                ],
+                "explanation": "An untouched infinite distance means the vertex is unreachable.",
+                "id": "py-dsa-dijkstra-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Edges are S→A=2, S→B=5, B→A=-4. Why can finalizing A at 2 fail?",
+                "options": [
+                  "The later path through B has cost 1",
+                  "A has no incoming edges",
+                  "Dijkstra requires all edge weights to equal 1",
+                  "There must be a negative cycle"
+                ],
+                "answer": 0,
+                "explanation": "A negative edge can improve a distance after its vertex was finalized.",
+                "id": "py-dsa-dijkstra-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-disjoint-sets",
+            "title": "Disjoint Sets",
+            "xp": 30,
+            "minutes": 5,
+            "level": "Expert",
+            "concept": "Disjoint-set union maintains components using parent forests. Find follows parent links to a representative; union links representatives, not arbitrary interior nodes. Path compression shortens find paths. Combining compression with union by rank or size gives amortized O(α(n)) operations, not a universal worst-case O(1) guarantee. DSU supports merging connectivity, but ordinary DSU does not support arbitrary edge deletions. Examples use Python 3.",
+            "examples": [
+              "parent = [0, 0, 1, 2]\ndef find(x):\n    if parent[x] != x:\n        parent[x] = find(parent[x])\n    return parent[x]\nroot = find(3)\nprint(str(root) + \",\" + str(parent[3]))",
+              "parent = [0, 0]\nroot_a, root_b = parent[0], parent[1]\ncomponents = 1\nif root_a != root_b:\n    parent[root_b] = root_a\n    components -= 1\nprint(components)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What does find(x) return in a disjoint-set forest?",
+                "options": [
+                  "The number of graph edges",
+                  "A representative of x’s component",
+                  "Every member of x’s component",
+                  "The smallest key automatically"
+                ],
+                "answer": 1,
+                "explanation": "Following parent links reaches the component’s representative root.",
+                "id": "py-dsa-disjoint-sets-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "Compress a path by storing the representative returned by recursive find.",
+                "code": "parent[x] = ___(parent[x])",
+                "options": [
+                  "abs",
+                  "len",
+                  "find"
+                ],
+                "answer": "find",
+                "explanation": "The assignment redirects x straight to its representative.",
+                "id": "py-dsa-disjoint-sets-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "parent = [0, 0, 1, 2]\ndef find(x):\n    if parent[x] != x:\n        parent[x] = find(parent[x])\n    return parent[x]\nroot = find(3)\nprint(str(root) + \",\" + str(parent[3]))",
+                "options": [
+                  "0,0",
+                  "0,2",
+                  "3,3",
+                  "2,0"
+                ],
+                "answer": 0,
+                "explanation": "Full path compression rewrites parent[3] to the root 0.",
+                "id": "py-dsa-disjoint-sets-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Initialize the forest and component count, apply the same-component union guard, then print the unchanged count 1.",
+                "blocks": [
+                  "root_a, root_b = parent[0], parent[1]\ncomponents = 1",
+                  "if root_a != root_b:\n    parent[root_b] = root_a\n    components -= 1",
+                  "print(components)",
+                  "parent = [0, 0]"
+                ],
+                "answer": [
+                  "parent = [0, 0]",
+                  "root_a, root_b = parent[0], parent[1]\ncomponents = 1",
+                  "if root_a != root_b:\n    parent[root_b] = root_a\n    components -= 1",
+                  "print(components)"
+                ],
+                "explanation": "Union changes the component count only when the representatives differ.",
+                "id": "py-dsa-disjoint-sets-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "Which combination gives DSU its amortized O(α(n)) operation bound?",
+                "options": [
+                  "Arbitrary linking alone",
+                  "Only checking whether indices are equal",
+                  "Sorting the parent array after each find",
+                  "Path compression plus union by rank or size"
+                ],
+                "answer": 3,
+                "explanation": "The near-constant amortized bound relies on both forest-balancing and path-compression heuristics.",
+                "id": "py-dsa-disjoint-sets-q5"
+              }
+            ]
+          },
+          {
+            "id": "py-dsa-tries",
+            "title": "Tries & Prefix Search",
+            "xp": 30,
+            "minutes": 5,
+            "level": "Expert",
+            "concept": "A trie shares character paths among words with common prefixes. A terminal flag distinguishes a complete word from a mere prefix. Searching a word of length L takes O(L) when each child lookup is constant time, for example a fixed alphabet array; map-backed child lookup depends on the map. Deleting a word must preserve branches and terminal flags needed by other words. Examples use Python 3.",
+            "examples": [
+              "class Node:\n    def __init__(self):\n        self.children, self.terminal = {}, False\nroot = Node()\nfor word in [\"cat\", \"car\"]:\n    node = root\n    for ch in word:\n        if ch not in node.children:\n            node.children[ch] = Node()\n        node = node.children[ch]\n    node.terminal = True\nprint(len(root.children[\"c\"].children[\"a\"].children))",
+              "class Node:\n    def __init__(self):\n        self.terminal = False\nroot = Node()\nword, node = \"\", root\nif len(word) == 0:\n    node.terminal = True\nprint(1 if root.terminal else 0)"
+            ],
+            "questions": [
+              {
+                "type": "mcq",
+                "prompt": "What does a trie path naturally represent?",
+                "options": [
+                  "A sequence of characters forming a prefix",
+                  "A sorted list of all stored values",
+                  "A shortest path through a weighted graph",
+                  "A hash bucket index only"
+                ],
+                "answer": 0,
+                "explanation": "Words with common prefixes share their initial character path.",
+                "id": "py-dsa-tries-q1"
+              },
+              {
+                "type": "fill",
+                "prompt": "After following every character, exact-word search must check the terminal flag.",
+                "code": "return node.___",
+                "options": [
+                  "depth",
+                  "terminal",
+                  "children"
+                ],
+                "answer": "terminal",
+                "explanation": "A path can exist without marking the end of a stored word.",
+                "id": "py-dsa-tries-q2"
+              },
+              {
+                "type": "predict",
+                "prompt": "Trace the code. What is the output?",
+                "code": "class Node:\n    def __init__(self):\n        self.children, self.terminal = {}, False\nroot = Node()\nfor word in [\"cat\", \"car\"]:\n    node = root\n    for ch in word:\n        if ch not in node.children:\n            node.children[ch] = Node()\n        node = node.children[ch]\n    node.terminal = True\nprint(len(root.children[\"c\"].children[\"a\"].children))",
+                "options": [
+                  "1",
+                  "3",
+                  "0",
+                  "2"
+                ],
+                "answer": 3,
+                "explanation": "The shared prefix ca branches to t and r.",
+                "id": "py-dsa-tries-q3"
+              },
+              {
+                "type": "reorder",
+                "prompt": "Order the empty-word insertion: it marks the root terminal.",
+                "blocks": [
+                  "word, node = \"\", root",
+                  "if len(word) == 0:\n    node.terminal = True",
+                  "print(1 if root.terminal else 0)",
+                  "class Node:\n    def __init__(self):\n        self.terminal = False\nroot = Node()"
+                ],
+                "answer": [
+                  "class Node:\n    def __init__(self):\n        self.terminal = False\nroot = Node()",
+                  "word, node = \"\", root",
+                  "if len(word) == 0:\n    node.terminal = True",
+                  "print(1 if root.terminal else 0)"
+                ],
+                "explanation": "An empty word ends at the root without traversing any character.",
+                "id": "py-dsa-tries-q4"
+              },
+              {
+                "type": "mcq",
+                "prompt": "A trie contains car and cart. To delete car while preserving cart, what is essential?",
+                "options": [
+                  "Delete every node shared by both words",
+                  "Mark cart as absent too",
+                  "Clear car’s terminal flag but keep the branch to t",
+                  "Delete the entire c branch"
+                ],
+                "answer": 2,
+                "explanation": "A shared prefix remains necessary for the longer stored word.",
+                "id": "py-dsa-tries-q5"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
