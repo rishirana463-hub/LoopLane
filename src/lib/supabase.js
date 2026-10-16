@@ -37,11 +37,25 @@ export const supabase = authConfigured ? createClient(url, key, {
   auth: {
     persistSession: true,
     autoRefreshToken: true,
-    detectSessionInUrl: true,
+    // Recovery exchanges its code explicitly so an invalid link cannot reuse an old login.
+    detectSessionInUrl: typeof window === 'undefined' || window.location.pathname !== '/reset-password',
     flowType: 'pkce',
   },
 }) : null;
 
 export function authRedirectURL() {
   return typeof window === 'undefined' ? undefined : new URL('/', window.location.origin).href;
+}
+
+/** Bind sensitive updates to the verified recovery session, even across account switches. */
+export async function updatePasswordForSession(session, password) {
+  const isolated = createClient(url, key, { auth: {
+    persistSession: false, autoRefreshToken: false, detectSessionInUrl: false,
+    storageKey: `looplane-recovery-${crypto.randomUUID()}`,
+  } });
+  try {
+    const { data, error } = await isolated.auth.setSession({ access_token: session.access_token, refresh_token: session.refresh_token });
+    if (error || data.session?.user?.id !== session.user.id) return { data: { user: null }, error: error || new Error('The recovery session ended. Request a new reset link.') };
+    return await isolated.auth.updateUser({ password });
+  } finally { await isolated.auth.dispose(); }
 }

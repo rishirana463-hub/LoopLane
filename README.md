@@ -117,6 +117,8 @@ Keep the Google client secret in Supabase's provider settings. Restart Vite afte
 
 The progress table uses Row Level Security to limit authenticated users to their own row. Without account configuration, the app continues to work in guest mode.
 
+**Password recovery:** choose **Sign in → Forgot password?** in Account. The reset email must be opened in the browser where it was requested. Add the `/reset-password` destination to Supabase's redirect allow list; see [account support setup and verification](docs/account-support.md).
+
 ## Coding exercises
 
 Learner code runs locally in a short-lived Web Worker inside an isolated browser frame. Each run has a two-second timeout, reports test results, and captures console output.
@@ -174,5 +176,7 @@ Open an issue to discuss a proposed change, or submit a focused pull request. Ke
 ## Support
 
 For support or account-deletion requests, contact **[rishirana463@gmail.com](mailto:rishirana463@gmail.com)**. See the [privacy policy](https://looplane-jogger.vercel.app/privacy) for details about local and synced progress.
+
+Choose **Request account deletion** in Account, or visit the public [deletion-request page](https://looplane-jogger.vercel.app/delete-account). It explains how to request permanent removal of the account and cloud progress, without signing in. Requests are processed manually after ownership verification; local device copies are separate. Operators should follow the [account support runbook](docs/account-support.md).
 
 Use **Report a problem** below any question to prepare an email with its context. Looplane never sends this report automatically.
