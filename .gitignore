@@ -13,3 +13,15 @@ DEPLOY.md
 DEPLOYMENT_STATUS.md
 TEST_REPORT.md
 .impeccable/
+
+# Android build output and signing material
+android/.gradle/
+android/**/build/
+android/local.properties
+android/private/
+*.jks
+*.keystore
+*.p12
+*.aab
+*.apk
+*.apks

@@ -169,6 +169,14 @@ Add VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY only if accounts and cloud sync
 
 Enable Web Analytics in the Vercel project dashboard to view aggregate traffic. Analytics runs only on the configured production hostname and public page views; it does not track lesson actions. If deploying under another hostname, update the production hostname in src/lib/analytics.js and the canonical/share URLs in index.html.
 
+## Android package
+
+The [Android project](android/README.md) launches this website as a Trusted Web Activity. Its permanent app ID is `com.rishirana463.looplane`; version 1.0.0 targets Android API 36 and supports Android 7.0 or later.
+
+Build the signed Play Console bundle and test APK with `android/build-release.ps1` after configuring the local Android toolchain and private signing files. Output goes to `outputs/android/`; signing keys and generated packages are excluded from Git and website deployments.
+
+The website publishes [Digital Asset Links](https://looplane-jogger.vercel.app/.well-known/assetlinks.json) for the local signing certificate. Before testing a Google Play installation, add the **Play app-signing** certificate fingerprint as described in the Android guide. The package has not been published to Google Play.
+
 ## Contributing
 
 Open an issue to discuss a proposed change, or submit a focused pull request. Keep lesson content in the JSON curriculum, preserve the browser-only code runner, and run the tests and production build before submitting.

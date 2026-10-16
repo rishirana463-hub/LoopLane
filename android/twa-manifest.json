@@ -1,0 +1,51 @@
+{
+  "packageId": "com.rishirana463.looplane",
+  "host": "looplane-jogger.vercel.app",
+  "name": "Looplane",
+  "launcherName": "Looplane",
+  "display": "standalone",
+  "themeColor": "#19172E",
+  "themeColorDark": "#19172E",
+  "navigationColor": "#19172E",
+  "navigationColorDark": "#19172E",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#19172E",
+  "enableNotifications": false,
+  "startUrl": "/",
+  "iconUrl": "https://looplane-jogger.vercel.app/icon-512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./private/looplane-upload.keystore",
+    "alias": "looplane-upload"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "unknown",
+  "webManifestUrl": "https://looplane-jogger.vercel.app/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://looplane-jogger.vercel.app/",
+  "minSdkVersion": 24,
+  "orientation": "default",
+  "fingerprints": [
+    {
+      "name": "Local signing / Play upload certificate",
+      "value": "59:FD:18:11:19:7C:D6:20:3A:C1:FE:13:5E:2A:5F:6A:C8:DE:3A:13:D3:EA:5A:62:5F:69:83:8A:2A:7A:7A:1A"
+    }
+  ],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "protocolHandlers": [],
+  "fileHandlers": [],
+  "launchHandlerClientMode": "",
+  "displayOverride": [],
+  "appVersion": "1.0.0"
+}

@@ -1,0 +1,7 @@
+android/
+work/
+outputs/
+graphify-out/
+.git/
+.env*
+!.env.example
